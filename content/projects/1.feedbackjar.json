@@ -1,7 +1,7 @@
 {
-  "name": "Feedbackjar",
+  "name": "Accès libre",
   "url": "https://feedbackjar.app",
-  "description": "Open source feedback, roadmaps and changelogs",
+  "description": "App utilisant l'api d'accès libre.",
   "thumbnail": "/projects/feedbackjar.png",
   "status": "WIP",
   "opensource": true
