@@ -1,11 +1,11 @@
 <template>
   <main class="min-h-screen">
-    <AppHeader class="mb-12" title="Projects" :description="description" />
+    <AppHeader class="mb-12" title="Projets" :description="description" />
     <div class="space-y-4">
       <AppProjectCard
-        v-for="(project, id) in projects"
+        v-for="(projet, id) in projets"
         :key="id"
-        :project="project"
+        :project="projet"
       />
     </div>
   </main>
@@ -15,11 +15,11 @@
 const description =
   "Voici mes projets, la plupart sont open-source, donc si vous voyez quelque chose qui suscite votre intérêt, consultez le code et contribuez si vous avez des idées ou suggestions.";
 useSeoMeta({
-  title: "Réalisations | Kevin De Benedetti",
+  title: "Projets | Kevin De Benedetti",
   description,
 });
 
-const { data: projects } = await useAsyncData("projects-all", () =>
-  queryContent("/projects").find()
+const { data: projets } = await useAsyncData("projets-all", () =>
+  queryContent("/projets").find()
 );
 </script>
