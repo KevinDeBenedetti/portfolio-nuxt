@@ -1,8 +1,0 @@
-{
-  "name": "Accès libre",
-  "url": "https://feedbackjar.app",
-  "description": "App utilisant l'api d'accès libre.",
-  "thumbnail": "/projects/feedbackjar.png",
-  "status": "WIP",
-  "opensource": true
-}

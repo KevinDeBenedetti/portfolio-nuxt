@@ -13,9 +13,9 @@
 
 <script setup>
 const description =
-  "I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved.";
+  "Voici mes projets, la plupart sont open-source, donc si vous voyez quelque chose qui suscite votre intérêt, consultez le code et contribuez si vous avez des idées ou suggestions.";
 useSeoMeta({
-  title: "Projects | Fayaz Ahmed",
+  title: "Réalisations | Kevin De Benedetti",
   description,
 });
 
