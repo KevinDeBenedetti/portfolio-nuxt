@@ -6,12 +6,12 @@
     <h2 class="text-xl font-bold tracking-tight text-gray-800 dark:text-gray-100">
       Salut !
     </h2>
+    <p class="text-gray-900 dark:text-gray-400">
+      Je suis Kevin, spécialisé dans la réalisation d'applications te de sites web utilisant Javascript, Vue, Nuxt, , Express & Symfony.
+    </p>
     <h1 class="font-bold tracking-tight text-gray-800 dark:text-gray-100">
       Développeur Web Fullstack
     </h1>
-    <p class="text-gray-900 dark:text-gray-400">
-      Je suis Kevin, je suis spécialisé dans la réalisation d'applications te de sites web utilisant Javascript, Vue, Nuxt, , Express & Symfony.
-    </p>
   </div>
 </template>
 

@@ -35,7 +35,7 @@ defineProps({
 
 const getReadableDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString("fr-FR", {
     year: "numeric",
     month: "short",
     day: "numeric",
