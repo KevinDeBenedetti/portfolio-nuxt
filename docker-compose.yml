@@ -1,14 +1,8 @@
-version: '3.3'
-
+version: "3"
 services:
-  nuxt:
+  production:
+    platform: linux/amd64
     build:
       context: .
-    image: portfolio_nuxt
-    container_name: portfolio_nuxt
-    command: npm run dev
-    volumes:
-    - .:/app
-    - /app/node_modules
     ports:
-      - "3000:3000"
+      - "3001:3001"
