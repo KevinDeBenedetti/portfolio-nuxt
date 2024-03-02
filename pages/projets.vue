@@ -1,6 +1,6 @@
 <template>
   <main class="min-h-screen">
-    <AppHeader class="mb-12" title="Projets" :description="description" />
+    <AppHeader class="mb-12" title="Réalisations" :description="description" />
     <div class="space-y-4">
       <AppProjectCard
         v-for="(projet, id) in projets"
@@ -13,9 +13,9 @@
 
 <script setup>
 const description =
-  "Voici mes projets, la plupart sont open-source, donc si vous voyez quelque chose qui suscite votre intérêt, consultez le code et contribuez si vous avez des idées ou suggestions.";
+  "Voici mes réalisations, si vous voyez quelque chose qui suscite votre intérêt, consultez le code et contribuez si vous avez des idées ou suggestions.";
 useSeoMeta({
-  title: "Projets | Kevin De Benedetti",
+  title: "Réalisations | Kevin De Benedetti",
   description,
 });
 

@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       htmlAttrs: {
-        lang: "en",
+        lang: "fr",
         class: "h-full",
       },
       bodyAttrs: {

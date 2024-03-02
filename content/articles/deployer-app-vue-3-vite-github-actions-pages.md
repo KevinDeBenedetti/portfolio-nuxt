@@ -89,4 +89,4 @@ jobs:
         uses: actions/deploy-pages@v2
 ```
 
-Il ne vous reste plus qu'à push votre projet sur Github et le déploiement se fera de façon automatiser !
+Il ne vous reste plus qu'à push votre projet sur Github et le déploiement se fera de façon automatisé !

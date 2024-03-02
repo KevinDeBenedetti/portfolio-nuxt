@@ -1,5 +1,11 @@
 # Zooper
 
+## Docker
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
 Zooper is a beautiful personal portfolio template for developers, programmers, freelancers and designers.
 
 ![Zooper template home preview](https://zooper.pages.dev/preview.jpg)
