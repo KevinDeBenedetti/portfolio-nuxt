@@ -1,15 +1,24 @@
-# Zooper
+# Portfolio
 
 ## Docker
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+docker compose up -d
 ```
 
-Zooper is a beautiful personal portfolio template for developers, programmers, freelancers and designers.
+```bash
+docker save -o portfolio.tar portfolio_nuxt-production
+scp -r portfolio.tar vpn0:~/
+```
 
-![Zooper template home preview](https://zooper.pages.dev/preview.jpg)
+```bash
+sudo docker load --input portfolio.tar
+docker run -d --name portfolio -p 3001:3001 portfolio_nuxt-production
+```
 
+## Lighthouse
+
+- [x] Add Brotli 👉 [Fix](https://www.brotli.pro/enable-brotli/frameworks/nuxt/)
 
 ## Features
 
