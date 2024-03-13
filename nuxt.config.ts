@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  site: {
+    url: 'https://kevindb.dev'
+  },
   devtools: { enabled: true },
   modules: [
     "@nuxt/ui",
@@ -8,7 +11,8 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/content",
     "@nuxthq/studio",
-    "@vueuse/nuxt"
+    "@vueuse/nuxt",
+    '@nuxtjs/sitemap'
   ],
   ui: {
     icons: ["heroicons", "lucide"],
@@ -36,4 +40,8 @@ export default defineNuxtConfig({
       Inter: [400, 500, 600, 700, 800, 900],
     },
   },
+/*  sitemap: {
+    hostname: 'https://kevindb.dev',
+    gzip: true
+  },*/
 });
