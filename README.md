@@ -1,21 +1,5 @@
 # Portfolio
 
-## Docker
-
-```bash
-docker compose up -d
-```
-
-```bash
-docker save -o portfolio.tar portfolio_nuxt-production
-scp -r portfolio.tar vpn0:~/
-```
-
-```bash
-sudo docker load --input portfolio.tar
-docker run -d --name portfolio -p 3001:3001 portfolio_nuxt-production
-```
-
 ## Lighthouse
 
 - [x] Add Brotli 👉 [Fix](https://www.brotli.pro/enable-brotli/frameworks/nuxt/)
