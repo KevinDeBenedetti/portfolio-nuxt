@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://kevindb.dev/sitemap.xml
+Sitemap: https://www.kevindb.dev/sitemap.xml
