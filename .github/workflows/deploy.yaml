@@ -51,7 +51,7 @@ jobs:
               cd portfolio/
               docker pull ghcr.io/${{ vars.repository_owner }}/portfolio:latest
 
-              docker stack deploy -c compose.prod.yaml portfolio_stack
+              docker stack deploy -c compose.prod.yaml portfolio_stack --detach=false
 
               docker container prune -f
               docker image prune -f
