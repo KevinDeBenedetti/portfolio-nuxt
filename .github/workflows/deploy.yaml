@@ -25,7 +25,7 @@ jobs:
 
         - name: Build and push App Docker image
           run: |
-            docker build ghcr.io/${{ vars.repository_owner }}/portfolio:latest ./
+            docker build -t ghcr.io/${{ vars.repository_owner }}/portfolio:latest ./
             docker push ghcr.io/${{ vars.repository_owner }}/portfolio:latest
 
         - name: Logout from GHCR
