@@ -43,9 +43,11 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             port: ${{ secrets.SSH_PORT }}
             script: |
+              docker login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
               docker network create -d overlay portfolio_network || true
               docker stack rm portfolio_stack
               cd portfolio/
+              echo "${{ vars.repository_owner }}"
               docker pull ghcr.io/${{ vars.repository_owner }}/portfolio:latest
               docker stack deploy -c compose.prod.yaml portfolio_stack --detach=false
               docker container prune -f
