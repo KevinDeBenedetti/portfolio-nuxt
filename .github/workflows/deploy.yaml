@@ -45,7 +45,7 @@ jobs:
             script: |
               docker stack rm portfolio_stack
               cd portfolio/
-              docker login ghcr.io --username ${{ github.actor }} --password-stdin ${{ secrets.GITHUB_TOKEN }}
+              docker login ghcr.io --username ${{ github.actor }} --password-stdin <<< "${{ secrets.GITHUB_TOKEN }}"
               docker pull ghcr.io/${{ vars.repository_owner }}/portfolio:latest
               docker stack deploy -c compose.prod.yaml portfolio_stack --detach=false
               docker container prune -f
