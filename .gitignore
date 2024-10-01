@@ -26,3 +26,6 @@ logs
 !.env.example
 docker/portfolio.tar
 docker/
+
+# Docker
+docker-compose.prod.yaml

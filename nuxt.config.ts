@@ -2,7 +2,9 @@ export default defineNuxtConfig({
   site: {
     url: 'https://kevindb.dev'
   },
+
   devtools: { enabled: true },
+
   modules: [
     "@nuxt/ui",
     "nuxt-icon",
@@ -14,9 +16,11 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     '@nuxtjs/sitemap'
   ],
+
   ui: {
     icons: ["heroicons", "lucide"],
   },
+
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
@@ -29,19 +33,28 @@ export default defineNuxtConfig({
       },
     },
   },
+
   content: {
     highlight: {
       theme: "github-dark",
     },
   },
+
   googleFonts: {
     display: "swap",
     families: {
       Inter: [400, 500, 600, 700, 800, 900],
     },
-  },
-/*  sitemap: {
-    hostname: 'https://kevindb.dev',
-    gzip: true
-  },*/
+  }
+  /*  sitemap: {
+      hostname: 'https://kevindb.dev',
+      gzip: true
+    },*/,
+
+  compatibilityDate: "2024-10-01",
+
+  tailwindcss: {
+    configPath: './tailwind.config.ts', // Lien vers le fichier de config séparé
+    quiet: true,  // Supprime les warnings
+  }
 });
