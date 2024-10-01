@@ -1,37 +1,40 @@
 # syntax=docker/dockerfile:1
 
-# Comments are provided throughout this file to help you get started.
-# If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/go/dockerfile-reference/
+# ARG NODE_VERSION=20.10.0
+ARG NODE_VERSION=21.0.0
 
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
+ARG PORT=3000
 
-ARG NODE_VERSION=20.10.0
-
-################################################################################
-# Use node image for base image for all stages.
 FROM node:${NODE_VERSION}-alpine as base
 
-ARG PORT=3001
+# ENV NODE_ENV=production
 
-ENV NODE_ENV=production
-
-WORKDIR /src
+WORKDIR /app
 
 FROM base as build
 
-COPY --link package.json yarn.lock .
+COPY package.json pnpm-lock.yaml ./
 
-RUN yarn install --production=false
+RUN npm install -g pnpm
 
-COPY --link . .
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
-RUN yarn run build
+RUN pnpm install
+
+# COPY --link package.json yarn.lock .
+
+# RUN yarn install --production=false
+
+COPY . .
+
+RUN pnpm run build
 
 FROM base
 
-ENV PORT=$PORT
+WORKDIR /APP
 
-COPY --from=build /src/.output /src/.output
+EXPOSE $PORT
+
+COPY --from=build /app/.output ./.output
 
 CMD ["node", ".output/server/index.mjs"]
