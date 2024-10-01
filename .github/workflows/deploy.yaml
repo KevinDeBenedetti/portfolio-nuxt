@@ -11,7 +11,6 @@ jobs:
         permissions:
             contents: write
             packages: write
-            attestations: write
             id-token: write
 
         steps:
@@ -27,9 +26,7 @@ jobs:
 
         - name: Build and push App Docker image
           run: |
-            docker build \
-            --build-arg NUXT_API_ENTREPRISES_GOUV="${{ secrets.NUXT_API_ENTREPRISES_GOUV }}" \
-            -t ghcr.io/${{ vars.repository_owner }}/portfolio:latest ./
+            docker build ghcr.io/${{ vars.repository_owner }}/portfolio:latest ./
             docker push ghcr.io/${{ vars.repository_owner }}/portfolio:latest
 
         - name: Logout from GHCR
