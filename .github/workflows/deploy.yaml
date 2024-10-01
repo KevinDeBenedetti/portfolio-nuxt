@@ -57,4 +57,4 @@ jobs:
 
         - name: Check if application is running
           run: |
-            curl -f https://${{ secrets.SSH_HOST }}:3001 || exit 1
+            curl -f https://kevindb.dev || exit 1
