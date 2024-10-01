@@ -89,4 +89,6 @@ jobs:
         uses: actions/deploy-pages@v2
 ```
 
+Paramétrer Github Pages, dans `Settings`, `Pages`, `Build and deployment` `Source` => `GitHub Actions`.
+
 Il ne vous reste plus qu'à push votre projet sur Github et le déploiement se fera de façon automatisé !

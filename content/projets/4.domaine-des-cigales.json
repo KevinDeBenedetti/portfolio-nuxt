@@ -1,6 +1,6 @@
 {
-  "name": "Le domaine des Cigales\n",
+  "name": "API Lab",
   "url": "https://domaine-des-cigales.com/",
-  "description": "Site wordpress, design avec Figma.",
-  "thumbnail": "/projects/domaine-des-cigales.png"
+  "description": "Laboratoire pour APIs, dévéloppé avec Nuxt",
+  "thumbnail": "/projects/nuxt.png"
 }
