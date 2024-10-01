@@ -43,13 +43,18 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             port: ${{ secrets.SSH_PORT }}
             script: |
-              docker login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-              docker network create -d overlay portfolio_network || true
               docker stack rm portfolio_stack
               cd portfolio/
-              echo "${{ vars.repository_owner }}"
+              docker login ghcr.io --username ${{ github.actor }} --password-stdin ${{ secrets.GITHUB_TOKEN }}
               docker pull ghcr.io/${{ vars.repository_owner }}/portfolio:latest
               docker stack deploy -c compose.prod.yaml portfolio_stack --detach=false
               docker container prune -f
               docker image prune -f
               docker logout ghcr.io
+
+        - name: Wait for deployment
+          run: sleep 30
+
+        - name: Check if application is running
+          run: |
+            curl -f https://${{ secrets.SSH_HOST }}:3001 || exit 1
