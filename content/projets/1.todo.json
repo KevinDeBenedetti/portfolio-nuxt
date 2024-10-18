@@ -1,0 +1,6 @@
+{
+  "name": "Todo List",
+  "url": "https://api-lab.kevindb.dev/",
+  "description": "Gestionnaire de tâches - Django",
+  "thumbnail": "/projects/django-logo.webp"
+}
