@@ -15,19 +15,19 @@ export default defineNuxtConfig({
   ],
 
   site: {
-    url: 'https://wwww.kevindb.dev',
+    url: 'https://www.kevindb.dev',
     name: 'Kevin De Benedetti Portfolio',
   },
 
   robots: {
     UserAgent: '*',
-    Allow: '/',
     Disallow: [
       '/articles/',
       '/icons/',
       '/projects/',
       '/images/'
     ],
+    Allow: '/',
     Sitemap: 'https://www.kevindb.dev/sitemap.xml' 
   },
 
