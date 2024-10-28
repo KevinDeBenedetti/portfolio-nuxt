@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     '@nuxtjs/sitemap',
     "@nuxtjs/robots",
+    "nuxt-gtag"
   ],
 
   site: {
@@ -31,6 +32,10 @@ export default defineNuxtConfig({
     sitemap: 'https://www.kevindb.dev/sitemap.xml',
     blockNonSeoBots: true,
     credits: false,
+  },
+
+  gtag: {
+    id: 'G-88N7G2X4PE'
   },
 
   ui: {
