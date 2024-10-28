@@ -1,3 +1,23 @@
+<script setup>
+import { useFixedHeader } from 'vue-use-fixed-header'
+const headerRef = ref(null);
+const { styles } = useFixedHeader(headerRef);
+
+const items = [
+  { name: "Accueil", path: "/", icon: "solar:home-smile-outline" },
+  {
+    name: "Réalisations",
+    path: "/projets",
+    icon: "solar:folder-with-files-outline",
+  },
+  {
+    name: "Articles",
+    path: "/articles",
+    icon: "solar:document-add-outline",
+  }
+];
+</script>
+
 <template>
   <div ref="headerRef" :style="styles" class="fixed top-0 w-full z-50">
     <nav class="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
@@ -35,23 +55,3 @@
     </nav>
   </div>
 </template>
-
-<script setup>
-import { useFixedHeader } from 'vue-use-fixed-header'
-const headerRef = ref(null);
-const { styles } = useFixedHeader(headerRef);
-
-const items = [
-  { name: "Accueil", path: "/", icon: "solar:home-smile-outline" },
-  {
-    name: "Réalisations",
-    path: "/projets",
-    icon: "solar:folder-with-files-outline",
-  },
-  {
-    name: "Articles",
-    path: "/articles",
-    icon: "solar:document-add-outline",
-  }
-];
-</script>
