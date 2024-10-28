@@ -11,7 +11,17 @@ export default defineNuxtConfig({
     "@nuxthq/studio",
     "@vueuse/nuxt",
     '@nuxtjs/sitemap',
-    "@nuxtjs/robots"
+    ["@nuxtjs/robots", {
+      UserAgent: '*',
+      Disallow: [
+        '/articles/',
+        '/icons/',
+        '/projects/',
+        '/images/'
+      ],
+      Allow: '/',
+      Sitemap: 'https://www.kevindb.dev/sitemap.xml'
+    }]  
   ],
 
   site: {
@@ -19,17 +29,17 @@ export default defineNuxtConfig({
     name: 'Kevin De Benedetti Portfolio',
   },
 
-  robots: {
-    UserAgent: '*',
-    Disallow: [
-      '/articles/',
-      '/icons/',
-      '/projects/',
-      '/images/'
-    ],
-    Allow: '/',
-    Sitemap: 'https://www.kevindb.dev/sitemap.xml' 
-  },
+  // robots: {
+  //   UserAgent: '*',
+  //   Allow: '/',
+  //   Disallow: [
+  //     '/articles/',
+  //     '/icons/',
+  //     '/projects/',
+  //     '/images/'
+  //   ],
+  //   Sitemap: 'https://www.kevindb.dev/sitemap.xml' 
+  // },
 
   ui: {
     icons: ["heroicons", "lucide"],
