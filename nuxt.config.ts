@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   ],
 
   site: {
-    url: 'https://kevindb.dev',
+    url: 'https://wwww.kevindb.dev',
     name: 'Kevin De Benedetti Portfolio',
   },
 
