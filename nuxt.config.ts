@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxthq/studio",
     "@vueuse/nuxt",
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    "@nuxtjs/robots"
   ],
 
   site: {
@@ -46,11 +47,7 @@ export default defineNuxtConfig({
     families: {
       Inter: [400, 500, 600, 700, 800, 900],
     },
-  }
-  /*  sitemap: {
-      hostname: 'https://kevindb.dev',
-      gzip: true
-    },*/,
+  },
 
   compatibilityDate: "2024-10-01",
 
