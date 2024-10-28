@@ -1,10 +1,4 @@
 export default defineNuxtConfig({
-  site: {
-    url: 'https://kevindb.dev',
-    name: 'Kevin De Benedetti Portfolio',
-
-  },
-
   devtools: { enabled: true },
 
   modules: [
@@ -18,6 +12,11 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     '@nuxtjs/sitemap'
   ],
+
+  site: {
+    url: 'https://kevindb.dev',
+    name: 'Kevin De Benedetti Portfolio',
+  },
 
   ui: {
     icons: ["heroicons", "lucide"],
