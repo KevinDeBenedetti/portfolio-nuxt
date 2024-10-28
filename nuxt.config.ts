@@ -31,7 +31,6 @@ export default defineNuxtConfig({
     sitemap: 'https://www.kevindb.dev/sitemap.xml',
     blockNonSeoBots: true,
     credits: false,
-    debug: true
   },
 
   ui: {
