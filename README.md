@@ -1,6 +1,6 @@
 # Kevin De Benedetti - Portfolio
 
-[🇫🇷 Lire en français](./README_FR.md)
+[🇫🇷 Read in french](./README_FR.md)
 
 Welcome to my fullstack web developer portfolio, created with [Nuxt.js](https://nuxtjs.org)! This site showcases my projects, skills, and journey in web development.
 
