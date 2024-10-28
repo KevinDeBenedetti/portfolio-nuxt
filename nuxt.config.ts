@@ -19,6 +19,18 @@ export default defineNuxtConfig({
     name: 'Kevin De Benedetti Portfolio',
   },
 
+  robots: {
+    UserAgent: '*',
+    Allow: '/',
+    Disallow: [
+      '/articles/',
+      '/icons/',
+      '/projects/',
+      '/images/'
+    ],
+    Sitemap: 'https://www.kevindb.dev/sitemap.xml' 
+  },
+
   ui: {
     icons: ["heroicons", "lucide"],
   },
