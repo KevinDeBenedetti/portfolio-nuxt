@@ -29,3 +29,7 @@ docker/
 
 # Docker
 docker-compose.prod.yaml
+docker-compose.yaml
+README.Docker.md
+
+README.template.md
