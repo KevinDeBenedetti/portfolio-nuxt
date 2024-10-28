@@ -7,8 +7,6 @@ ARG PORT=3000
 
 FROM node:${NODE_VERSION}-alpine as base
 
-# ENV NODE_ENV=production
-
 WORKDIR /app
 
 FROM base as build
@@ -20,10 +18,6 @@ RUN npm install -g pnpm
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 RUN pnpm install
-
-# COPY --link package.json yarn.lock .
-
-# RUN yarn install --production=false
 
 COPY . .
 
