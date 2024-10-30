@@ -31,6 +31,11 @@ RUN pnpm i --frozen-lockfile
 
 COPY . ./
 
+# Add ARG
+ARG NUXT_GTAG_ID
+# Add ENV
+ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
+
 RUN pnpm run build
 
 # Build Stage 2

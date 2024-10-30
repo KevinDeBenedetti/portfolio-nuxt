@@ -3,12 +3,6 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-26',
 
-  runtimeConfig: {
-    public: {
-      gtagId: 'process.env.NUXT_GTAG_ID'
-    }
-  },
-
   modules: [
     '@nuxt/ui',
     '@nuxt/icon',
@@ -37,9 +31,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
-    ghToken: 'ghp_1234567890abcdefghijklmnopqrstuvwxyzABCDEF',
-    adminPassword: process.env.NUXT_ADMIN_PASSWORD,
-    userPassword: process.env.NUXT_USER_PASSWORD,
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
     },
@@ -65,18 +56,7 @@ export default defineNuxtConfig({
 
   robots: {
     allow: '/',
-<<<<<<< HEAD
     disallow: ['/articles/', '/icons/', '/projects/', '/images/'],
-=======
-    disallow: [
-      '/articles/',
-      '/icons/',
-      '/projects/',
-      '/images/',
-      '/legals'
-    ],
-    sitemap: 'https://www.kevindb.dev/sitemap.xml',
->>>>>>> 1df9353 (Update seo and add env)
     blockNonSeoBots: true,
     credits: false,
   },
