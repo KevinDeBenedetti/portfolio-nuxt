@@ -1,6 +1,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    public: {
+      gtagId: 'G-7S7VZZ54ME'
+    }
+  },
+
   modules: [
     "@nuxt/ui",
     "nuxt-icon",
@@ -27,7 +33,8 @@ export default defineNuxtConfig({
       '/articles/',
       '/icons/',
       '/projects/',
-      '/images/'
+      '/images/',
+      '/legals'
     ],
     sitemap: 'https://www.kevindb.dev/sitemap.xml',
     blockNonSeoBots: true,

@@ -1,11 +1,12 @@
-export default defineNuxtPlugin(async () => {
+export default defineNuxtPlugin((nuxtApp) => {
+    const config = useRuntimeConfig()
     const cookieControl = useCookieControl();
 
     function initGoogleAnalytics() {
         if (!window.gtag) {
             // Injecter le script Google Analytics si ce n'est pas déjà fait
             const script = document.createElement('script');
-            script.src = `https://www.googletagmanager.com/gtag/js?id=G-7S7VZZ54ME`;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${config.public.gtagId}`;
             script.async = true;
             document.head.appendChild(script);
 
@@ -15,7 +16,7 @@ export default defineNuxtPlugin(async () => {
                 window.dataLayer.push(args);
             }
             window.gtag('js', new Date());
-            window.gtag('config', 'G-7S7VZZ54ME', { anonymize_ip: true }); // RGPD: Anonymisation de l'IP
+            window.gtag('config', config.public.gtagId, { anonymize_ip: true }); // RGPD: Anonymisation de l'IP
         }
     }
 
