@@ -2,7 +2,6 @@
 useSeoMeta({
     title: "Mentions Légales | Kevin De Benedetti - Développeur Web",
     description: "Consultez les mentions légales de Kevin De Benedetti, développeur web. Informations sur l’éditeur du site, les conditions d’utilisation et les droits applicables.",
-    robots: "index, follow",
     author: "Kevin De Benedetti"
 });
 </script>
