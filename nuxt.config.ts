@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      gtagId: 'G-7S7VZZ54ME'
+      gtagId: process.env.NUXT_GTAG_ID
     }
   },
 
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
 
   gtag: {
     enabled: false,
-    id: 'G-7S7VZZ54ME'
+    id: process.env.NUXT_GTAG_ID
   },
 
   cookieControl: {
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
             en: 'Google Analytics is used to track website traffic and analyze data.',
           },
           // description: 'Suivi pour améliorer l\'expérience utilisateur.',
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-7S7VZZ54ME',
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_GTAG_ID}`,
           targetCookieIds: ['_ga', '_gid', '_gat'],
         },
       ],
