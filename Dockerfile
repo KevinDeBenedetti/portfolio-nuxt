@@ -21,6 +21,11 @@ RUN pnpm install
 
 COPY . .
 
+# Add ARG
+ARG NUXT_GTAG_ID
+# Add ENV
+ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
+
 RUN pnpm run build
 
 FROM base
