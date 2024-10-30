@@ -12,7 +12,8 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     '@nuxtjs/sitemap',
     "@nuxtjs/robots",
-    "nuxt-gtag"
+    "nuxt-gtag",
+    "@dargmuesli/nuxt-cookie-control"
   ],
 
   site: {
@@ -21,7 +22,6 @@ export default defineNuxtConfig({
   },
 
   robots: {
-    userAgent: '*',
     allow: '/',
     disallow: [
       '/articles/',
@@ -35,7 +35,59 @@ export default defineNuxtConfig({
   },
 
   gtag: {
+    enabled: false,
     id: 'G-7S7VZZ54ME'
+  },
+
+  cookieControl: {
+    // options spécifiques pour configurer les cookies
+    barPosition: 'bottom-full',
+    closeModalOnClickOutside: true,
+    colors: {
+      barBackground: '#11181C',
+      barButtonColor: '#000',
+      barButtonHoverBackground: 'teal',
+      checkboxActiveBackground: '#00A34A', // text-green-600
+    },
+    isAcceptNecessaryButtonEnabled: true,
+
+    cookies: {
+      necessary: [
+      ],
+      optional: [
+        {
+          name: 'google-analytics',
+          id: 'google-analytics',
+          isPreselected: true,
+          description: {
+            fr: 'Google Analytics est utilisé pour analyser le trafic et les données du site.',
+            en: 'Google Analytics is used to track website traffic and analyze data.',
+          },
+          // description: 'Suivi pour améliorer l\'expérience utilisateur.',
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-7S7VZZ54ME',
+          targetCookieIds: ['_ga', '_gid', '_gat'],
+        },
+      ],
+    },
+    // isAcceptNecessaryButtonEnabled: true
+    // isControlButtonEnabled: true,
+    // isCssEnabled: true,
+    locales: ['fr', 'en'],
+
+    localeTexts: {
+      fr: {
+        bannerTitle: "Cookies",
+        bannerDescription: "Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser l’utilisation du site afin d'optimiser nos services. En continuant sur ce site, vous acceptez leur utilisation.",
+        save: "Enregistrer",
+        // accept: "Accepter",
+        // decline: "J'accepte le nécessaire"
+        // Gérer les cookies
+      },
+      en: {
+        bannerDescription: "We use cookies to enhance your browsing experience and analyze site usage to optimize our services. By continuing on this site, you accept their use.",
+        save: 'Remember',
+      }
+    }
   },
 
   ui: {
