@@ -21,13 +21,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     if (cookieControl.cookiesEnabledIds?.value && cookieControl.cookiesEnabledIds.value.includes('google-analytics')) {
-        console.log('Consentement pour Google Analytics obtenu');
+        // console.log('Consentement pour Google Analytics obtenu');
         initGoogleAnalytics();
     }
 
     watch(cookieControl.cookiesEnabledIds, (newIds) => {
         if (newIds && newIds.includes('google-analytics')) {
-            console.log('Consentement pour Google Analytics mis à jour');
+            // console.log('Consentement pour Google Analytics mis à jour');
             initGoogleAnalytics();
         }
     });
