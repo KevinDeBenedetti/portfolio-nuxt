@@ -9,28 +9,26 @@ FROM node:${NODE_VERSION}-alpine as base
 
 WORKDIR /app
 
-FROM base as build
-
-COPY package.json pnpm-lock.yaml ./
-
 RUN npm install -g pnpm
 
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
-RUN pnpm install
+FROM base as build
+
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-# Add ARG
 ARG NUXT_GTAG_ID
-# Add ENV
 ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
 
 RUN pnpm run build
 
 FROM base
 
-WORKDIR /APP
+WORKDIR /app
 
 EXPOSE $PORT
 
