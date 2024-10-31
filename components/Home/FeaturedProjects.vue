@@ -1,8 +1,14 @@
+<script lang="ts" setup>
+const { data: projects } = await useAsyncData("projects-home", () =>
+  queryContent("/projects").limit(3).find()
+);
+const { t } = useI18n()
+const localePath = useLocalePath()
+</script>
+
 <template>
   <div>
-    <h2 class="uppercase text-xs font-semibold text-gray-400 mb-6">
-      RÉALISATIONS
-    </h2>
+    <h2 class="uppercase text-xs font-semibold text-gray-400 mb-6">{{ t('home.projects_featured') }}</h2>
     <div class="space-y-4">
       <AppProjectCard
         v-for="(project, id) in projects"
@@ -12,17 +18,11 @@
     </div>
     <div class="flex items-center justify-center mt-6 text-sm">
       <UButton
-        label="Toutes les réalisations &rarr;"
-        to="/projets"
+        :label="t('home.projects_link')"
+        :to="localePath('projects')"
         variant="link"
         color="gray"
       />
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-const { data: projects } = await useAsyncData("projets-home", () =>
-  queryContent("/projets").limit(3).find()
-);
-</script>

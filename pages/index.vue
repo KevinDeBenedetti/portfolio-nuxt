@@ -1,8 +1,13 @@
 <script setup>
+const { t } = useI18n()
+
 useSeoMeta({
-  title: "Portfolio | Kevin De Benedetti",
-  description:
-    "Je suis Kevin De Benedetti, bienvenue sur mon portfolio. Découvrez mes projets et ma passion pour le développement web, avec une expertise en PHP, Symfony, Node.js et Express.js. Mais également, en JavaScript, Vue.js et Twig.",
+  title: t('home.title'),
+  ogTitle: t('home.title'),
+  description: t('home.description'),
+  ogDescription: t('home.description'),
+  ogImage: '/images/avatar.png',
+  twitterCard: 'summary_large_image',
 });
 </script>
 
