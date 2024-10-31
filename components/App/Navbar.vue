@@ -2,20 +2,14 @@
 import { useFixedHeader } from 'vue-use-fixed-header'
 const headerRef = ref(null);
 const { styles } = useFixedHeader(headerRef);
+const { t } = useI18n()
+const localePath = useLocalePath()
 
-const items = [
-  { name: "Accueil", path: "/", icon: "solar:home-smile-outline" },
-  {
-    name: "Réalisations",
-    path: "/projets",
-    icon: "solar:folder-with-files-outline",
-  },
-  {
-    name: "Articles",
-    path: "/articles",
-    icon: "solar:document-add-outline",
-  }
-];
+const items = computed(() => [
+  { name: t('nav.home_title'), path: localePath('index'), icon: "solar:home-smile-outline" },
+  { name: t('nav.projects_title'), path: localePath('projects'), icon: "solar:folder-with-files-outline" },
+  { name: t('nav.articles_title'), path: localePath('articles'), icon: "solar:document-add-outline" }
+]);
 </script>
 
 <template>
@@ -48,6 +42,9 @@ const items = [
           </UTooltip>
         </li>
         <li class="flex-1"></li>
+        <li>
+          <AppLangChoice />
+        </li>
         <li>
           <AppThemeToggle />
         </li>

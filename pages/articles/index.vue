@@ -1,9 +1,13 @@
 <script setup>
-const description =
-  "Voici une partie de mes réflexions et du contenu de ma documentation sur la programmation.";
+const { t } = useI18n();
+
 useSeoMeta({
-  title: "Articles | Kevin De Benedetti",
-  description,
+  title: t('articles.title'),
+  ogTitle: t('articles.title'),
+  description: t('articles.description'),
+  ogDescription: t('articles.description'),
+  ogImage: '/images/avatar.png',
+  twitterCard: 'summary_large_image',
 });
 
 const { data: articles } = await useAsyncData("all-articles", () =>
@@ -13,7 +17,7 @@ const { data: articles } = await useAsyncData("all-articles", () =>
 
 <template>
   <main class="min-h-screen">
-    <AppHeader class="mb-16" title="Articles" :description="description" />
+    <AppHeader class="mb-16" :title="t('articles.h1')" :description="t('articles.first_p')" />
     <ul class="space-y-16">
       <li v-for="(article, id) in articles" :key="id">
         <AppArticleCard :article="article" />

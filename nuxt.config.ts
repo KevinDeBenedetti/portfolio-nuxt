@@ -19,8 +19,35 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     "@nuxtjs/robots",
     "nuxt-gtag",
-    "@dargmuesli/nuxt-cookie-control"
+    "@dargmuesli/nuxt-cookie-control",
+    "@nuxtjs/i18n"
   ],
+
+  i18n: {
+    // TODO : Ajouter la détection de la langue
+    vueI18n: './i18n.config.ts',
+    locales: ['en', 'fr'],
+    defaultLocale: 'fr',
+    customRoutes: 'config',
+    pages: {
+      index: {
+        fr: '/',
+        en: '/'
+      },
+      projects: {
+        fr: '/realisations',
+        en: '/projects'
+      },
+      articles: {
+        fr: '/articles',
+        en: '/articles'
+      },
+      legals: {
+        fr: '/mentions-legales',
+        en: '/privacy-policy'
+      }
+    }
+  },
 
   site: {
     url: 'https://www.kevindb.dev',
