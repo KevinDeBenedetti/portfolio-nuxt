@@ -22,7 +22,9 @@ RUN pnpm install --frozen-lockfile && pnpm store prune
 COPY . .
 
 ARG NUXT_GTAG_ID
+ARG NODE_ENV
 ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
+ENV NODE_ENV=$NODE_ENV
 
 # RUN pnpm run build
 RUN node --max-old-space-size=8192 $(which pnpm) run build

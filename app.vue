@@ -9,15 +9,21 @@ const {
   moduleOptions,
 } = useCookieControl();
 
-const { locale } = useI18n()
+const { locale } = useI18n();
+const { initialize, disableAnalytics } = useGtag()
 
 watch(() => cookiesEnabledIds.value, (current, previous) => {
   if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
-    window.location.reload() // placeholder for your custom change handler
+    console.log('Active analytics')
+    initialize();
+  } else if (previous?.includes('google-analytics') && !current?.includes('google-analytics')) {
+    console.log('Désactive analytics')
+    disableAnalytics();
   }
   },
   { deep: true },
 )
+
 </script>
 
 <template>
