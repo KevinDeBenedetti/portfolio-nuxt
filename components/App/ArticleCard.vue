@@ -1,5 +1,25 @@
+<script setup lang="ts">
+const props = defineProps<{
+  article: Article
+}>();
+
+const { locale } = useI18n()
+const localePath = useLocalePath()
+const articleLink = computed(() => localePath({ name: 'articles-slug', params: { slug: props.article.slug } }))
+
+const getReadableDate = (dateString: string | Date | undefined) => {
+  const date = new Date(dateString ?? new Date());
+  return date.toLocaleDateString(locale.value, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
+
+</script>
+
 <template>
-  <NuxtLink :to="article._path" class="group">
+  <NuxtLink :to="articleLink" class="group">
     <article>
       <time
         class="relative z-10 order-first mb-3 flex items-center text-sm text-gray-400 dark:text-gray-500 pl-3.5"
@@ -24,21 +44,3 @@
     </article>
   </NuxtLink>
 </template>
-
-<script setup>
-defineProps({
-  article: {
-    type: Object,
-    required: true,
-  },
-});
-
-const getReadableDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("fr-FR", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-};
-</script>

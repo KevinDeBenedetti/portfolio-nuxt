@@ -1,15 +1,16 @@
 ---
-title: "Déployer son projet Vue 3 avec GitHub Actions & Pages"
-description: "Un tuto pour bien démarrer avec le déploiement d'un projet Vue 3 et GitHub"
+title: "Deploying Your Vue 3 Project with GitHub Actions & Pages"
+description: "A tutorial to get started with deploying a Vue 3 project using GitHub"
 published: 2024/02/20
 slug: "deployer-app-vue-3-vite-github-actions-pages"
+lang: "en"
 ---
 
-> Cette article vous permettra de déployer votre code Vue 3 utilisant Vite grâce à GitHub Actions & Pages.
+> This article will guide you through deploying your Vue 3 code with Vite using GitHub Actions & Pages.
 
-## Configurer un projet Vue 3 pour GitHub Actions & Pages
+## Setting Up a Vue 3 Project for GitHub Actions & Pages
 
-### Étape 1 : Modifier le fichier vite.config.js
+### Step 1: Modify the vite.config.js File
 
 ```js
 // vite.config.js
@@ -32,7 +33,7 @@ export default defineConfig({
 })
 ```
 
-### Étape 2 : Créer un fichier GitHub Actions Workflow
+### Step 2: Create a GitHub Actions Workflow File
 
 ```yml
 // .github/workflows/deploy.yml
@@ -89,6 +90,6 @@ jobs:
         uses: actions/deploy-pages@v2
 ```
 
-Paramétrer Github Pages, dans `Settings`, `Pages`, `Build and deployment` `Source` => `GitHub Actions`.
+Set up GitHub Pages in `Settings` -> `Pages` -> `Build and deployment` -> `Source` => `GitHub Actions`.
 
-Il ne vous reste plus qu'à push votre projet sur Github et le déploiement se fera de façon automatisé !
+Now, simply push your project to GitHub, and deployment will happen automatically !

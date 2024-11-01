@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
-    // TODO : Ajouter la détection de la langue
+    // TODO : Ajouter la détection de la langue avec cookie
     vueI18n: './i18n.config.ts',
     locales: ['en', 'fr'],
     defaultLocale: 'fr',
@@ -41,6 +41,10 @@ export default defineNuxtConfig({
       articles: {
         fr: '/articles',
         en: '/articles'
+      },
+      'articles-slug': {
+        fr: '/articles/:slug',
+        en: '/articles/:slug'
       },
       legals: {
         fr: '/mentions-legales',
@@ -157,7 +161,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-10-01",
 
   tailwindcss: {
-    configPath: './tailwind.config.ts', // Lien vers le fichier de config séparé
-    quiet: true,  // Supprime les warnings
+    configPath: './tailwind.config.ts', // Link to separate config file
+    quiet: true,  // Delete warnings
   }
 });

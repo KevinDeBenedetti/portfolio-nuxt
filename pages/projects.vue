@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n();
 
 useSeoMeta({
   title: t('projects.title'),
@@ -10,8 +10,10 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
+console.log(locale.value)
+
 const { data: projects } = await useAsyncData("projects-all", () =>
-  queryContent("/projects").find()
+  queryContent("/projects").where({ lang: locale.value }).find()
 );
 </script>
 

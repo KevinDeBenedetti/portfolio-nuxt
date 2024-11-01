@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-const { data: projects } = await useAsyncData("projects-home", () =>
-  queryContent("/projects").limit(3).find()
-);
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
+
+const { data: projects } = await useAsyncData("projects-home", () =>
+  queryContent("/projects").where({ lang: locale.value }).limit(3).find()
+);
 </script>
 
 <template>
