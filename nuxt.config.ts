@@ -65,7 +65,8 @@ export default defineNuxtConfig({
       '/icons/',
       '/projects/',
       '/images/',
-      '/legals'
+      '/mentions-legales',
+      '/privacy-policy',
     ],
     sitemap: 'https://www.kevindb.dev/sitemap.xml',
     blockNonSeoBots: true,
