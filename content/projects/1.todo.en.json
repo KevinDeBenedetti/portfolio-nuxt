@@ -1,0 +1,7 @@
+{
+  "name": "Todo List",
+  "url": "https://todolist.kevindb.dev/",
+  "description": "Task manager - Django",
+  "thumbnail": "/projects/django-logo.webp",
+  "lang": "en"
+}
