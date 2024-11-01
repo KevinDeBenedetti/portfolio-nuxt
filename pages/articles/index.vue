@@ -1,5 +1,5 @@
 <script setup>
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 useSeoMeta({
   title: t('articles.title'),
@@ -11,7 +11,7 @@ useSeoMeta({
 });
 
 const { data: articles } = await useAsyncData("all-articles", () =>
-  queryContent("/articles").sort({ published: -1 }).find()
+  queryContent("/articles").where({ lang: locale.value }).sort({ published: -1 }).find()
 );
 </script>
 

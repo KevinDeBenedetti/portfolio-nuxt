@@ -1,13 +1,15 @@
 <script lang="ts" setup>
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
+
 const { data: articles } = await useAsyncData("articles-home", () =>
   queryContent("/articles")
+    .where({ lang: locale.value })
     .sort({ published: -1 })
     .limit(3)
-    .only(["title", "description", "published", "slug", "_path"])
+    .only(["title", "description", "published", "slug", "_path", "lang"])
     .find()
 );
-const { t } = useI18n()
-const localePath = useLocalePath()
 </script>
 
 <template>

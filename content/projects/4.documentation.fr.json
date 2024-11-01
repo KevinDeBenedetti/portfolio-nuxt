@@ -2,5 +2,6 @@
   "name": "RunesDoc",
   "url": "https://kevindebenedetti.github.io/documentation/",
   "description": "Ma documentation - Astro JS",
-  "thumbnail": "/projects/astro-js.webp"
+  "thumbnail": "/projects/astro-js.webp",
+  "lang": "fr"
 }
