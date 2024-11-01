@@ -77,19 +77,19 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    enabled: false,
-    id: process.env.NUXT_GTAG_ID
+    initMode: 'manual',
+    id: process.env.NUXT_GTAG_ID,
+    enabled: process.env.NODE_ENV === 'production'
   },
 
   cookieControl: {
-    // options spécifiques pour configurer les cookies
     barPosition: 'bottom-full',
     closeModalOnClickOutside: true,
     colors: {
       barBackground: '#11181C',
       barButtonColor: '#000',
       barButtonHoverBackground: 'teal',
-      checkboxActiveBackground: '#00A34A', // text-green-600
+      checkboxActiveBackground: '#00A34A',
     },
     isAcceptNecessaryButtonEnabled: false,
 
@@ -105,8 +105,8 @@ export default defineNuxtConfig({
             en: 'Google Analytics is used to track website traffic and analyze data.',
           },
           // description: 'Suivi pour améliorer l\'expérience utilisateur.',
-          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_GTAG_ID}`,
-          targetCookieIds: ['_ga', '_gid', '_gat'],
+          // src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_GTAG_ID}`,
+          // targetCookieIds: ['_ga', '_gid', '_gat'],
         },
       ],
     },
