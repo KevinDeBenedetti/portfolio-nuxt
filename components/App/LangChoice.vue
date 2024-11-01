@@ -1,12 +1,9 @@
 <script setup>
 const { locale, setLocale, t } = useI18n()
 
-const currentLocale = ref(locale.value)
-
 function toggleLocale() {
-  const newLocale = currentLocale.value === 'fr' ? 'en' : 'fr'
+  const newLocale = locale.value === 'fr' ? 'en' : 'fr'
   setLocale(newLocale)
-  currentLocale.value = newLocale
 }
 </script>
 
@@ -17,9 +14,9 @@ function toggleLocale() {
             @click="toggleLocale"
         >
             <Icon
-            aria-hidden="true"
-            :name="currentLocale === 'fr' ? 'circle-flags:gb' : 'circle-flags:fx'"
-            class="w-5 h-5"
+                aria-hidden="true"
+                :name="locale === 'fr' ? 'circle-flags:gb' : 'circle-flags:fx'"
+                class="w-5 h-5"
             />
             <span class="sr-only">{{ t('change_language') }}</span>
         </button>

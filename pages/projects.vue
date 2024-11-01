@@ -10,8 +10,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
-console.log(locale.value)
-
 const { data: projects } = await useAsyncData("projects-all", () =>
   queryContent("/projects").where({ lang: locale.value }).find()
 );
