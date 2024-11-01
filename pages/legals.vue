@@ -1,12 +1,12 @@
-<script setup>
+<script setup lang="ts">
 useSeoMeta({
     title: "Mentions Légales | Kevin De Benedetti - Développeur Web",
     description: "Consultez les mentions légales de Kevin De Benedetti, développeur web. Informations sur l’éditeur du site, les conditions d’utilisation et les droits applicables.",
-    author: "Kevin De Benedetti"
 });
 </script>
 
 <template>
+    <main class="min-h-screen">
     <h1 class="text-primary font-bold text-3xl text-center">Mentions Légales</h1>
 
     <h2>Définitions</h2>
@@ -123,31 +123,27 @@ useSeoMeta({
 
     <p>Dans ce cas, l’Utilisateur doit indiquer les Données Personnelles qu’il souhaiterait que <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> corrige, mette à jour ou supprime, en s’identifiant précisément avec une copie d’une pièce d’identité (carte d’identité ou passeport). </p>
 
-    <p>
-    Les demandes de suppression de Données Personnelles seront soumises aux obligations qui sont imposées à <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> par la loi, notamment en matière de conservation ou d’archivage des documents. Enfin, les Utilisateurs de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> peuvent déposer une réclamation auprès des autorités de contrôle, et notamment de la CNIL (https://www.cnil.fr/fr/plaintes).</p>
+    <p>Les demandes de suppression de Données Personnelles seront soumises aux obligations qui sont imposées à <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> par la loi, notamment en matière de conservation ou d’archivage des documents. Enfin, les Utilisateurs de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> peuvent déposer une réclamation auprès des autorités de contrôle, et notamment de la CNIL (https://www.cnil.fr/fr/plaintes).</p>
 
     <h3>7.4 Non-communication des données personnelles</h3>
 
-    <p>
-    <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> s’interdit de traiter, héberger ou transférer les Informations collectées sur ses Clients vers un pays situé en dehors de l’Union européenne ou reconnu comme « non adéquat » par la Commission européenne sans en informer préalablement le client. Pour autant, <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> reste libre du choix de ses sous-traitants techniques et commerciaux à la condition qu’il présentent les garanties suffisantes au regard des exigences du Règlement Général sur la Protection des Données (RGPD : n° 2016-679).</p>
+    <p><a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> s’interdit de traiter, héberger ou transférer les Informations collectées sur ses Clients vers un pays situé en dehors de l’Union européenne ou reconnu comme « non adéquat » par la Commission européenne sans en informer préalablement le client. Pour autant, <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> reste libre du choix de ses sous-traitants techniques et commerciaux à la condition qu’il présentent les garanties suffisantes au regard des exigences du Règlement Général sur la Protection des Données (RGPD : n° 2016-679).</p>
 
     <p>
     <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> s’engage à prendre toutes les précautions nécessaires afin de préserver la sécurité des Informations et notamment qu’elles ne soient pas communiquées à des personnes non autorisées. Cependant, si un incident impactant l’intégrité ou la confidentialité des Informations du Client est portée à la connaissance de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a>, celle-ci devra dans les meilleurs délais informer le Client et lui communiquer les mesures de corrections prises. Par ailleurs <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> ne collecte aucune « données sensibles ».</p>
 
-    <p>
-    Les Données Personnelles de l’Utilisateur peuvent être traitées par des filiales de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> et des sous-traitants (prestataires de services), exclusivement afin de réaliser les finalités de la présente politique.</p>
-    <p>
-    Dans la limite de leurs attributions respectives et pour les finalités rappelées ci-dessus, les principales personnes susceptibles d’avoir accès aux données des Utilisateurs de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> sont principalement les agents de notre service client.</p>
+    <p>Les Données Personnelles de l’Utilisateur peuvent être traitées par des filiales de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> et des sous-traitants (prestataires de services), exclusivement afin de réaliser les finalités de la présente politique.</p>
+
+    <p>Dans la limite de leurs attributions respectives et pour les finalités rappelées ci-dessus, les principales personnes susceptibles d’avoir accès aux données des Utilisateurs de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> sont principalement les agents de notre service client.</p>
 
     <div ng-bind-html="rgpdHTML"></div>
 
-
     <h2>8. Notification d’incident</h2>
-    <p>
-    Quels que soient les efforts fournis, aucune méthode de transmission sur Internet et aucune méthode de stockage électronique n'est complètement sûre. Nous ne pouvons en conséquence pas garantir une sécurité absolue. 
+
+    <p>Quels que soient les efforts fournis, aucune méthode de transmission sur Internet et aucune méthode de stockage électronique n'est complètement sûre. Nous ne pouvons en conséquence pas garantir une sécurité absolue. 
     Si nous prenions connaissance d'une brèche de la sécurité, nous avertirions les utilisateurs concernés afin qu'ils puissent prendre les mesures appropriées. Nos procédures de notification d’incident tiennent compte de nos obligations légales, qu'elles se situent au niveau national ou européen. Nous nous engageons à informer pleinement nos clients de toutes les questions relevant de la sécurité de leur compte et à leur fournir toutes les informations nécessaires pour les aider à respecter leurs propres obligations réglementaires en matière de reporting.</p>
-    <p>
-    Aucune information personnelle de l'utilisateur du site <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers. Seule l'hypothèse du rachat de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> et de ses droits permettrait la transmission des dites informations à l'éventuel acquéreur qui serait à son tour tenu de la même obligation de conservation et de modification des données vis à vis de l'utilisateur du site <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a>.</p>
+    
+    <p>Aucune information personnelle de l'utilisateur du site <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers. Seule l'hypothèse du rachat de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> et de ses droits permettrait la transmission des dites informations à l'éventuel acquéreur qui serait à son tour tenu de la même obligation de conservation et de modification des données vis à vis de l'utilisateur du site <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a>.</p>
 
     <h3>Sécurité</h3>
 
@@ -196,11 +192,11 @@ useSeoMeta({
     <p>
     Le prestataire externe pourra éventuellement recueillir des informations sur les visiteurs du Site et d’autres sites Internet grâce à ces balises, constituer des rapports sur l’activité du Site à l’attention de <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a>, et fournir d’autres services relatifs à l’utilisation de celui-ci et d’Internet.</p>
     <p>
-    </p><h2>10. Droit applicable et attribution de juridiction.</h2>  
-    <p>
-    Tout litige en relation avec l’utilisation du site <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> est soumis au droit français. 
+    </p>
+    <h2>10. Droit applicable et attribution de juridiction.</h2>  
+    <p>Tout litige en relation avec l’utilisation du site <a href="https://www.kevindb.dev/">https://www.kevindb.dev/</a> est soumis au droit français. 
     En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de </p>
-
+    </main>
 </template>
 
 <style scoped>
