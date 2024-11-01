@@ -14,16 +14,13 @@ const { initialize, disableAnalytics } = useGtag()
 
 watch(() => cookiesEnabledIds.value, (current, previous) => {
   if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
-    console.log('Active analytics')
     initialize();
   } else if (previous?.includes('google-analytics') && !current?.includes('google-analytics')) {
-    console.log('Désactive analytics')
     disableAnalytics();
   }
   },
   { deep: true },
 )
-
 </script>
 
 <template>
