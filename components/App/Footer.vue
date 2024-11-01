@@ -9,7 +9,8 @@ const localePath = useLocalePath()
   >
     <br>
     <p>© 2024 Kevin De Benedetti</p>
-    
+
     <ULink :to="localePath('legals')" class="mt-2 text-xs hover:text-primary">{{ t('legals_title') }}</ULink>
+
   </footer>
 </template>
