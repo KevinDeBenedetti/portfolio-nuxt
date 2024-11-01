@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
 
 const {
   cookiesEnabled,
@@ -6,35 +7,17 @@ const {
   isConsentGiven,
   isModalActive,
   moduleOptions,
-} = useCookieControl()
+} = useCookieControl();
 
-// example: react to a cookie being accepted
-watch(
-  () => cookiesEnabledIds.value,
-  (current, previous) => {
-    if (
-      !previous?.includes('google-analytics') &&
-      current?.includes('google-analytics')
-    ) {
-      // cookie with id `google-analytics` got added
-      window.location.reload() // placeholder for your custom change handler
-    }
+const { locale } = useI18n()
+
+watch(() => cookiesEnabledIds.value, (current, previous) => {
+  if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
+    window.location.reload() // placeholder for your custom change handler
+  }
   },
   { deep: true },
 )
-
-// onMounted(() => {
-//   console.log(cookiesEnabled.value)
-// })
-
-// Gestion de locale Cookie avec i18n
-// const { locale } = useI18n()
-// const cookieControl = useCookieControl()
-
-// // Regarder les changements de langue et mettre à jour `cookieControl`
-// watch(locale, (newLocale) => {
-//   cookieControl.changeLocale(newLocale) // Change la langue dans `cookieControl`
-// })
 </script>
 
 <template>
@@ -47,7 +30,7 @@ watch(
   <div class="h-32"></div>
   <AppFooter />
 
-  <CookieControl locale="fr" />
+  <CookieControl :locale="locale as Locale" />
 
 </template>
 
@@ -66,5 +49,4 @@ watch(
   opacity: 0;
   transform: translateY(5px);
 }
-
 </style>

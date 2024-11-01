@@ -24,11 +24,14 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
-    // TODO : Ajouter la détection de la langue avec cookie
     vueI18n: './i18n.config.ts',
     locales: ['en', 'fr'],
     defaultLocale: 'fr',
     customRoutes: 'config',
+    detectBrowserLanguage: {
+      useCookie: false,
+      redirectOn: 'root',
+    },
     pages: {
       index: {
         fr: '/',
@@ -88,11 +91,10 @@ export default defineNuxtConfig({
       barButtonHoverBackground: 'teal',
       checkboxActiveBackground: '#00A34A', // text-green-600
     },
-    isAcceptNecessaryButtonEnabled: true,
+    isAcceptNecessaryButtonEnabled: false,
 
     cookies: {
-      necessary: [
-      ],
+      necessary: [],
       optional: [
         {
           name: 'google-analytics',
@@ -108,7 +110,6 @@ export default defineNuxtConfig({
         },
       ],
     },
-    // isAcceptNecessaryButtonEnabled: true
     // isControlButtonEnabled: true,
     // isCssEnabled: true,
     locales: ['fr', 'en'],
@@ -123,6 +124,7 @@ export default defineNuxtConfig({
         // Gérer les cookies
       },
       en: {
+        bannerTitle: "Cookies",
         bannerDescription: "We use cookies to enhance your browsing experience and analyze site usage to optimize our services. By continuing on this site, you accept their use.",
         save: 'Remember',
       }
