@@ -3,6 +3,8 @@ title: Legal Notice
 description: Here is the legal notice for the website.
 ---
 
+---
+
 ## Definitions
 
 **Client**: Any professional or capable individual within the meaning of articles 1123 and following of the French Civil Code, or legal entity, who visits the Site subject to these general conditions.
@@ -17,6 +19,8 @@ description: Here is the legal notice for the website.
 **Personal Information**: "Information that allows, in any form, directly or indirectly, the identification of the individuals to whom it applies" (article 4 of the law n° 78-17 of January 6, 1978).  
 The terms "personal data," "data subject," "processor," and "sensitive data" have the meanings defined by the General Data Protection Regulation (GDPR: n° 2016-679).
 
+---
+
 ## 1. Presentation of the Website
 
 Pursuant to Article 6 of Law n° 2004-575 of June 21, 2004, regarding trust in the digital economy, users of the site [https://www.kevindb.dev/](https://www.kevindb.dev/) are informed of the identities of the various parties involved in its creation and maintenance:
@@ -28,6 +32,8 @@ Pursuant to Article 6 of Law n° 2004-575 of June 21, 2004, regarding trust in t
 - **Host**: PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60  
 - **Data Protection Officer**: Kevin De Benedetti – contact@kevindb.dev  
 
+---
+
 ## 2. General Conditions of Use for the Site and Services Offered
 
 The Site constitutes an intellectual work protected by the provisions of the French Intellectual Property Code and applicable International Regulations. The Client may in no way reuse, transfer, or exploit for their own benefit all or part of the Site's elements or works.
@@ -36,11 +42,15 @@ Using the site [https://www.kevindb.dev/](https://www.kevindb.dev/) implies full
 
 This website is normally accessible to users at all times. However, [https://www.kevindb.dev/](https://www.kevindb.dev/) may decide to interrupt it for technical maintenance purposes, and will endeavor to communicate the dates and times of the intervention to users in advance. The website [https://www.kevindb.dev/](https://www.kevindb.dev/) is regularly updated by [https://www.kevindb.dev/](https://www.kevindb.dev/). In the same way, the legal notice may be modified at any time; it nevertheless binds the user, who is invited to refer to it as often as possible in order to be aware of any changes.
 
+---
+
 ## 3. Description of Services Provided
 
 The website [https://www.kevindb.dev/](https://www.kevindb.dev/) aims to provide information about all the company's activities. [https://www.kevindb.dev/](https://www.kevindb.dev/) strives to provide information on the site that is as accurate as possible. However, it cannot be held responsible for omissions, inaccuracies, or deficiencies in updates, whether they are its fault or the fault of third-party partners providing this information.
 
 All the information provided on the site [https://www.kevindb.dev/](https://www.kevindb.dev/) is indicative and may change. Furthermore, the information on the site [https://www.kevindb.dev/](https://www.kevindb.dev/) is not exhaustive. It is given subject to changes that have been made since they were published online.
+
+---
 
 ## 4. Technical Data Limitations
 
@@ -58,6 +68,8 @@ The goal is to provide a service that ensures the best level of accessibility. T
 
 Any unauthorized use of the site or any of the elements it contains will be considered as an infringement and will be pursued according to the provisions of articles L.335-2 and following of the Intellectual Property Code.
 
+---
+
 ## 6. Liability Limitations
 
 [https://www.kevindb.dev/](https://www.kevindb.dev/) acts as the site's publisher. [https://www.kevindb.dev/](https://www.kevindb.dev/) is responsible for the quality and accuracy of the Content it publishes.
@@ -65,6 +77,8 @@ Any unauthorized use of the site or any of the elements it contains will be cons
 [https://www.kevindb.dev/](https://www.kevindb.dev/) cannot be held responsible for any direct or indirect damage caused to the user's equipment when accessing the website, resulting either from the use of equipment that does not meet the specifications indicated in point 4 or from the occurrence of a bug or incompatibility.
 
 [https://www.kevindb.dev/](https://www.kevindb.dev/) is also not liable for indirect damages (such as loss of market or loss of opportunity) resulting from the use of the site [https://www.kevindb.dev/](https://www.kevindb.dev/). Interactive spaces (contact area for asking questions) are available to users. [https://www.kevindb.dev/](https://www.kevindb.dev/) reserves the right to delete, without prior notice, any content deposited in this area that may violate the applicable law in France, particularly the data protection provisions. If necessary, [https://www.kevindb.dev/](https://www.kevindb.dev/) also reserves the right to hold the user civilly and/or criminally liable, particularly in the event of racist, abusive, defamatory, or pornographic messages, regardless of the medium used (text, photograph, etc.).
+
+---
 
 ## 7. Management of Personal Data
 
@@ -110,6 +124,8 @@ Kevin De Benedetti – DPO, Kevin De Benedetti
 Regardless of the efforts made, no transmission method over the Internet and no method of electronic storage is completely secure. Consequently, we cannot guarantee absolute security. If we become aware of a security breach, we would notify the affected users so they can take appropriate action. Our incident notification procedures take into account our legal obligations, whether at a national or European level. We are committed to fully informing our clients of all security-related issues affecting their account and providing them with all the necessary information to help them comply with their own regulatory reporting obligations.
 
 No personal information of the user of the site [https://www.kevindb.dev/](https://www.kevindb.dev/) is published without the user's knowledge, exchanged, transferred, assigned, or sold on any medium to third parties.
+
+---
 
 ## 9. Hyperlinks, Cookies, and Internet Tags
 
