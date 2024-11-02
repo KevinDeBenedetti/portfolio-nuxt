@@ -4,6 +4,9 @@ description: "Un tuto pour bien démarrer avec le déploiement d'un projet Vue 3
 published: 2024/02/20
 slug: "deployer-app-vue-3-vite-github-actions-pages"
 lang: "fr"
+sitemap:
+  loc: /articles/deployer-app-vue-3-vite-github-actions-pages
+  lastmod: 2024-02-20
 ---
 
 > Cette article vous permettra de déployer votre code Vue 3 utilisant Vite grâce à GitHub Actions & Pages.

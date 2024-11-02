@@ -4,6 +4,9 @@ description: "A tutorial to get started with deploying a Vue 3 project using Git
 published: 2024/02/20
 slug: "deployer-app-vue-3-vite-github-actions-pages"
 lang: "en"
+sitemap:
+  loc: /en/articles/deployer-app-vue-3-vite-github-actions-pages
+  lastmod: 2024-02-20
 ---
 
 > This article will guide you through deploying your Vue 3 code with Vite using GitHub Actions & Pages.
