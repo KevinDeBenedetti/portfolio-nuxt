@@ -6,6 +6,7 @@ const { locale } = useI18n();
 useSeoMeta({
   articleAuthor: "Kevin De Benedetti"
 });
+
 </script>
 
 <template>
