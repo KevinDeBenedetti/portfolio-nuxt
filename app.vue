@@ -1,35 +1,33 @@
 <script setup lang="ts">
 import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
-
-// const {
-//   cookiesEnabled,
-//   cookiesEnabledIds,
-//   isConsentGiven,
-//   isModalActive,
-//   moduleOptions,
-// } = useCookieControl();
-
 const { locale } = useI18n();
-const { initialize, disableAnalytics, gtag } = useGtag();
-const config = useRuntimeConfig();
+const { cookiesEnabledIds } = useCookieControl()
+const { initialize, gtag } = useGtag()
+const config = useRuntimeConfig()
 
+// Fonction de mise à jour du consentement des cookies
 function onCookieUpdated(cookieId) {
-  if (cookieId === 'google-analytics' && useCookieControl().cookiesEnabledIds.value.includes('google-analytics')) {
-    // Initialiser Google Analytics après consentement
-    initialize()
-    gtag('config', config.public.gtagId)
+  if (cookieId === 'google-analytics' && cookiesEnabledIds.value.includes('google-analytics')) {
+    initialize(config.public.gtagId) // Initialise gtag.js avec l'ID configuré
+    gtag('config', config.public.gtagId) // Configure gtag avec les paramètres par défaut
   }
 }
 
-// watch(() => cookiesEnabledIds.value, (current, previous) => {
-//   if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
-//     initialize();
-//   } else if (previous?.includes('google-analytics') && !current?.includes('google-analytics')) {
-//     disableAnalytics();
-//   }
-//   },
-//   { deep: true },
-// )
+// Surveille les changements dans les cookies activés
+watch(
+  () => cookiesEnabledIds.value,
+  (current, previous) => {
+    if (
+      !previous?.includes('google-analytics') &&
+      current?.includes('google-analytics')
+    ) {
+      // Si Google Analytics a été accepté, initialisez-le
+      initialize(config.public.gtagId)
+      gtag('config', config.public.gtagId)
+    }
+  },
+  { deep: true }
+)
 </script>
 
 <template>
@@ -42,7 +40,7 @@ function onCookieUpdated(cookieId) {
   <div class="h-32"></div>
   <AppFooter />
 
-  <CookieControl :locale="locale as Locale" @cookieUpdated="onCookieUpdated" />
+  <CookieControl :locale="locale as Locale" />
 
 </template>
 
