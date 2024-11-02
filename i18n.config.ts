@@ -34,6 +34,10 @@ export default defineI18nConfig(() => ({
                 description: "Here is a part of my thoughts and content from my documentation on programming.",
                 h1: "Articles",
                 first_p: "Here is a part of my thoughts and content from my documentation on programming."   
+            },
+            legals: {
+                title: "Legal Notice | Kevin De Benedetti",
+                description: "Here is the legal notice for the website."
             }
         },
         fr: {
@@ -68,6 +72,10 @@ export default defineI18nConfig(() => ({
                 description: "Voici une partie de mes réflexions et du contenu de ma documentation sur la programmation.",
                 h1: "Articles",
                 first_p: "Voici une partie de mes réflexions et du contenu de ma documentation sur la programmation."   
+            },
+            legals: {
+                title: "Mentions légales | Kevin De Benedetti",
+                description: "Voici les mentions légales du site."
             }
         }
     }
