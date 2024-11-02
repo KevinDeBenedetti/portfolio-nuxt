@@ -1,26 +1,35 @@
 <script setup lang="ts">
 import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
 
-const {
-  cookiesEnabled,
-  cookiesEnabledIds,
-  isConsentGiven,
-  isModalActive,
-  moduleOptions,
-} = useCookieControl();
+// const {
+//   cookiesEnabled,
+//   cookiesEnabledIds,
+//   isConsentGiven,
+//   isModalActive,
+//   moduleOptions,
+// } = useCookieControl();
 
 const { locale } = useI18n();
-const { initialize, disableAnalytics } = useGtag()
+const { initialize, disableAnalytics, gtag } = useGtag();
+const config = useRuntimeConfig();
 
-watch(() => cookiesEnabledIds.value, (current, previous) => {
-  if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
-    initialize();
-  } else if (previous?.includes('google-analytics') && !current?.includes('google-analytics')) {
-    disableAnalytics();
+function onCookieUpdated(cookieId) {
+  if (cookieId === 'google-analytics' && useCookieControl().cookiesEnabledIds.value.includes('google-analytics')) {
+    // Initialiser Google Analytics après consentement
+    initialize()
+    gtag('config', config.public.gtagId)
   }
-  },
-  { deep: true },
-)
+}
+
+// watch(() => cookiesEnabledIds.value, (current, previous) => {
+//   if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
+//     initialize();
+//   } else if (previous?.includes('google-analytics') && !current?.includes('google-analytics')) {
+//     disableAnalytics();
+//   }
+//   },
+//   { deep: true },
+// )
 </script>
 
 <template>
@@ -33,7 +42,7 @@ watch(() => cookiesEnabledIds.value, (current, previous) => {
   <div class="h-32"></div>
   <AppFooter />
 
-  <CookieControl :locale="locale as Locale" />
+  <CookieControl :locale="locale as Locale" @cookieUpdated="onCookieUpdated" />
 
 </template>
 
