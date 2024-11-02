@@ -1,5 +1,3 @@
-import { serverQueryContent } from '@nuxt/content'
-
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
