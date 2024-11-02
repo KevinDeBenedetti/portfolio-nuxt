@@ -1,3 +1,5 @@
+import { serverQueryContent } from '@nuxt/content'
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -46,8 +48,8 @@ export default defineNuxtConfig({
         en: '/articles'
       },
       'articles-slug': {
-        fr: '/articles/:slug',
-        en: '/articles/:slug'
+        fr: '/articles/[slug]',
+        en: '/articles/[slug]'
       },
       legals: {
         fr: '/mentions-legales',
@@ -58,7 +60,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://www.kevindb.dev',
-    name: 'Kevin De Benedetti Portfolio',
+    name: 'Kevin De Benedetti | Portfolio',
   },
 
   robots: {
@@ -68,12 +70,16 @@ export default defineNuxtConfig({
       '/icons/',
       '/projects/',
       '/images/',
-      '/mentions-legales',
-      '/privacy-policy',
     ],
-    sitemap: 'https://www.kevindb.dev/sitemap.xml',
     blockNonSeoBots: true,
     credits: false,
+  },
+
+  sitemap: {
+    exclude: [
+      '/mentions-legales',
+      '/en/legal-notice',
+    ],
   },
 
   gtag: {
