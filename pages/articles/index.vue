@@ -6,7 +6,7 @@ useSeoMeta({
   ogTitle: t('articles.title'),
   description: t('articles.description'),
   ogDescription: t('articles.description'),
-  ogImage: '/images/avatar.png',
+  ogImage: 'https://www.kevindb.dev/images/home.webp',
   twitterCard: 'summary_large_image',
 });
 
