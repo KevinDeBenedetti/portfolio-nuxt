@@ -4,7 +4,7 @@ export default defineI18nConfig(() => ({
     messages: {
         en: {
             change_language: 'French',
-            legals_title: 'Privacy Policy',
+            legals_title: 'Legal Notice',
             toggle_theme: 'Toggle theme',
             nav: {
                 home_title: 'Home',

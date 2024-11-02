@@ -51,7 +51,7 @@ export default defineNuxtConfig({
       },
       legals: {
         fr: '/mentions-legales',
-        en: '/privacy-policy'
+        en: '/legal-notice'
       }
     }
   },
@@ -119,9 +119,6 @@ export default defineNuxtConfig({
         bannerTitle: "Cookies",
         bannerDescription: "Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser l’utilisation du site afin d'optimiser nos services. En continuant sur ce site, vous acceptez leur utilisation.",
         save: "Enregistrer",
-        // accept: "Accepter",
-        // decline: "J'accepte le nécessaire"
-        // Gérer les cookies
       },
       en: {
         bannerTitle: "Cookies",
