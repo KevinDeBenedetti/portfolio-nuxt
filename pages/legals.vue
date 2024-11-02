@@ -8,9 +8,6 @@ useSeoMeta({
     ogDescription: t('legals.description'),
 });
 
-useServerSeoMeta({
-  robots: 'noindex, nofollow'
-})
 
 const { data: legals } = await useAsyncData("legalsall", () => queryContent(`/legals/${locale.value}`).findOne());
 </script>
