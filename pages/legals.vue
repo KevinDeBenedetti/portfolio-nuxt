@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 useSeoMeta({
-    title: "Mentions Légales | Kevin De Benedetti - Développeur Web",
-    description: "Consultez les mentions légales de Kevin De Benedetti, développeur web. Informations sur l’éditeur du site, les conditions d’utilisation et les droits applicables.",
+    title: t('legals.title'),
+    ogTitle: t('legals.title'),
+    description: t('legals.description'),
+    ogDescription: t('legals.description'),
 });
 
 const { data: legals } = await useAsyncData("legalsall", () => queryContent(`/legals/${locale.value}`).findOne());
-
-console.log(legals.value)
 </script>
 
 <template>
