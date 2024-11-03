@@ -5,15 +5,6 @@ const { cookiesEnabledIds } = useCookieControl()
 const { initialize, gtag } = useGtag()
 const config = useRuntimeConfig()
 
-// Fonction de mise à jour du consentement des cookies
-function onCookieUpdated(cookieId) {
-  if (cookieId === 'google-analytics' && cookiesEnabledIds.value.includes('google-analytics')) {
-    initialize(config.public.gtagId) // Initialise gtag.js avec l'ID configuré
-    gtag('config', config.public.gtagId) // Configure gtag avec les paramètres par défaut
-  }
-}
-
-// Surveille les changements dans les cookies activés
 watch(
   () => cookiesEnabledIds.value,
   (current, previous) => {
@@ -21,12 +12,13 @@ watch(
       !previous?.includes('google-analytics') &&
       current?.includes('google-analytics')
     ) {
-      // Si Google Analytics a été accepté, initialisez-le
+      // cookie with id `google-analytics` got added
+      window.location.reload() // placeholder for your custom change handler
       initialize(config.public.gtagId)
-      gtag('config', config.public.gtagId)
+      gtag('config', config.public.gtagId) 
     }
   },
-  { deep: true }
+  { deep: true },
 )
 </script>
 

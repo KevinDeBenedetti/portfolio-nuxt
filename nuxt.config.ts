@@ -83,7 +83,7 @@ export default defineNuxtConfig({
   gtag: {
     initMode: 'manual',
     id: process.env.NUXT_GTAG_ID,
-    // enabled: process.env.NODE_ENV === 'production'
+    enabled: process.env.NODE_ENV === 'production'
   },
 
   cookieControl: {
@@ -109,13 +109,13 @@ export default defineNuxtConfig({
             en: 'Google Analytics is used to track website traffic and analyze data.',
           },
           src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_GTAG_ID}`,
-          // targetCookieIds: ['_ga', '_gid', '_gat'],
+          targetCookieIds: ['_ga', '_gid', '_gat'],
         },
       ],
     },
     // isControlButtonEnabled: true,
     // isCssEnabled: true,
-    isAcceptNecessaryButtonEnabled: false,
+    isAcceptNecessaryButtonEnabled: true,
 
     localeTexts: {
       fr: {
