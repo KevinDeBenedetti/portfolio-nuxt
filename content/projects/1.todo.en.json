@@ -2,6 +2,6 @@
   "name": "Todo List",
   "url": "https://REDACTED_URL/",
   "description": "Task manager - Django",
-  "thumbnail": "/projects/django-logo.webp",
+  "thumbnail": "/projects/django-logo_40x40.webp",
   "lang": "en"
 }
