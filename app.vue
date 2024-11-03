@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
 const { locale } = useI18n();
-const { cookiesEnabledIds } = useCookieControl()
-const { initialize, gtag } = useGtag()
-const config = useRuntimeConfig()
+const { cookiesEnabledIds } = useCookieControl();
+const { initialize, gtag } = useGtag();
+const config = useRuntimeConfig();
 
 watch(
   () => cookiesEnabledIds.value,
@@ -13,9 +13,9 @@ watch(
       current?.includes('google-analytics')
     ) {
       // cookie with id `google-analytics` got added
-      window.location.reload() // placeholder for your custom change handler
-      initialize(config.public.gtagId)
-      gtag('config', config.public.gtagId) 
+      initialize(config.public.gtagId);
+      gtag('config', config.public.gtagId);
+      window.location.reload();
     }
   },
   { deep: true },
