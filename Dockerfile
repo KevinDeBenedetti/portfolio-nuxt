@@ -15,7 +15,7 @@ FROM base AS build
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm install --frozen-lockfile --no-optional
+RUN pnpm install --frozen-lockfile
 
 ADD . /app
 
