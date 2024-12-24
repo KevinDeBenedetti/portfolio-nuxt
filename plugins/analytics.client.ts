@@ -7,4 +7,4 @@ export default defineNuxtPlugin(nuxtApp => {
         initialize(config.public.gtagId)
         gtag('config', config.public.gtagId) 
     }
-  })
+})

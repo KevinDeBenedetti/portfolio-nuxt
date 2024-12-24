@@ -2,8 +2,10 @@ name: Deploy Portfolio
 
 on:
     push:
-      branches:
-        - main
+      # branches:
+      #   - main
+      branches-ignore:
+        - '*'
 
 jobs:
     ghcr:
