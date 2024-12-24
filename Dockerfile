@@ -15,7 +15,7 @@ FROM base AS build
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --no-optional
 
 ADD . /app
 
@@ -24,7 +24,7 @@ ARG NODE_ENV
 
 ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
 ENV NODE_ENV=$NODE_ENV
-ENV NODE_OPTIONS="--max_old_space_size=4096"
+ENV NODE_OPTIONS="--max_old_space_size=8192"
 
 RUN pnpm run build
 
