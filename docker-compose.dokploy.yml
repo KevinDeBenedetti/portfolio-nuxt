@@ -14,6 +14,13 @@ services:
       - traefik.http.routers.nuxt-app.entrypoints=web
       - traefik.http.services.nuxt-app.loadbalancer.server.port=3000
 
+      - traefik.http.routers.redirect-www.rule=Host(`www.kevindb.dev`)
+      - traefik.http.routers.redirect-www.entrypoints=web
+      - traefik.http.routers.redirect-www.middlewares=redirect-to-non-www
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https://www\.(.*)
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://$1
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
+      
 networks:
   dokploy-network:
     external: true
