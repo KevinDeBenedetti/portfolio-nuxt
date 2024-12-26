@@ -11,28 +11,17 @@ services:
     labels:
       - traefik.enable=true
 
-      # Définition explicite du service
-      # - traefik.http.services.portfolio.loadbalancer.server.port=3000
-
-      # Routeur principal pour kevindb.dev
       - traefik.http.routers.portfolio.rule=Host(`kevindb.dev`) || Host(`www.kevindb.dev`)
       - traefik.http.routers.portfolio.entrypoints=websecure
       - traefik.http.routers.portfolio.tls.certResolver=letsencrypt
-      # - traefik.http.routers.portfolio.service=portfolio
       - traefik.http.services.portfolio.loadbalancer.server.port=3000
-
-      # Routeur pour gérer la redirection de www.kevindb.dev
-      # - traefik.http.routers.redirect-www.rule=Host(`www.kevindb.dev`)
-      # - traefik.http.routers.redirect-www.entrypoints=websecure
-      # - traefik.http.routers.redirect-www.tls=true
-      # - traefik.http.routers.redirect-www.tls.certResolver=letsencrypt
-      # - traefik.http.routers.redirect-www.middlewares=redirect-to-non-www
 
       # Middleware pour rediriger www.kevindb.dev vers kevindb.dev
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https?://www.kevindb.dev/(.*)
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
 
+      # Associe explicitement le middleware de redirection au routeur
       - traefik.http.routers.portfolio.middlewares=redirect-to-non-www
 
 networks:
