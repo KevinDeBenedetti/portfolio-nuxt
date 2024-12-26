@@ -23,11 +23,12 @@ services:
       # Routeur pour gérer la redirection de www.kevindb.dev
       - traefik.http.routers.redirect-www.rule=Host(`www.kevindb.dev`)
       - traefik.http.routers.redirect-www.entrypoints=websecure
-      - traefik.http.routers.redirect-www.tls.certResolver=letsencrypt
+      - traefik.http.routers.redirect-www.tls=true
+      # - traefik.http.routers.redirect-www.tls.certResolver=letsencrypt
       - traefik.http.routers.redirect-www.middlewares=redirect-to-non-www
 
       # Middleware pour rediriger www.kevindb.dev vers kevindb.dev
-      - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https://www\\.kevindb\\.dev/(.*)
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https://www\\.kevindb\\.dev/?(.*)
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
 
