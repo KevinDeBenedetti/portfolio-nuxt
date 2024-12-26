@@ -33,6 +33,8 @@ services:
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
       - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
 
+      - traefik.http.routers.portfolio.middlewares=redirect-to-non-www
+
 networks:
   dokploy-network:
     external: true
