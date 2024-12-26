@@ -10,20 +10,25 @@ services:
       - dokploy-network
     labels:
       - traefik.enable=true
+
       # Définition explicite du service
       - traefik.http.services.portfolio.loadbalancer.server.port=3000
 
-      # Configuration du routeur principal
-      - traefik.http.routers.portfolio.rule=Host(`kevindb.dev`) || Host(`www.kevindb.dev`)
+      # Routeur principal pour kevindb.dev
+      - traefik.http.routers.portfolio.rule=Host(`kevindb.dev`)
       - traefik.http.routers.portfolio.entrypoints=websecure
       - traefik.http.routers.portfolio.tls.certResolver=letsencrypt
       - traefik.http.routers.portfolio.service=portfolio
 
-      # Redirection www vers non-www
-      - traefik.http.middlewares.redirect-regex.redirectregex.regex=^https://www\\.kevindb\\.dev/(.*)
-      - traefik.http.middlewares.redirect-regex.redirectregex.replacement=https://kevindb.dev/$${1}
-      - traefik.http.middlewares.redirect-regex.redirectregex.permanent=true
-      - traefik.http.routers.portfolio.middlewares=redirect-regex
+      # Routeur pour gérer la redirection de www.kevindb.dev
+      - traefik.http.routers.redirect-www.rule=Host(`www.kevindb.dev`)
+      - traefik.http.routers.redirect-www.entrypoints=websecure
+      - traefik.http.routers.redirect-www.tls.certResolver=letsencrypt
+
+      # Middleware pour rediriger www.kevindb.dev vers kevindb.dev
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https://www\\.kevindb\\.dev/(.*)
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
 
 networks:
   dokploy-network:
