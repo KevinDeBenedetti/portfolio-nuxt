@@ -8,11 +8,13 @@ useSeoMeta({
   ogDescription: t('projects.description'),
   ogImage: 'https://www.kevindb.dev/images/projects.webp',
   twitterCard: 'summary_large_image',
-});
+})
 
-const { data: projects } = await useAsyncData("projects-all", () =>
-  queryContent("/projects").where({ lang: locale.value }).find()
-);
+const { data: projects } = await useAsyncData("projects", () =>
+queryCollection('projects')
+    .where('lang', '=', locale.value )
+    .all() 
+)
 </script>
 
 <template>

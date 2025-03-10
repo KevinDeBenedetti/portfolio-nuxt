@@ -2,14 +2,13 @@
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const { data: articles } = await useAsyncData("articles-home", () =>
-  queryContent("/articles")
-    .where({ lang: locale.value })
-    .sort({ published: -1 })
+const { data: articles } = await useAsyncData('articles-home', () =>
+  queryCollection('articles')
+    .where('lang', '=', locale.value)
+    .order('published', 'DESC')
     .limit(3)
-    .only(["title", "description", "published", "slug", "_path", "lang"])
-    .find()
-);
+    .all()
+)
 </script>
 
 <template>

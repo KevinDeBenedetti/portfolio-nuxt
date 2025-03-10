@@ -9,19 +9,21 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/ui",
-    "nuxt-icon",
+    "@nuxt/icon",
     "@nuxtjs/google-fonts",
     "@nuxtjs/fontaine",
     "@nuxt/image",
-    "@nuxt/content",
     "@nuxthq/studio",
     "@vueuse/nuxt",
     '@nuxtjs/sitemap',
     "@nuxtjs/robots",
+    "@nuxt/content",
     "nuxt-gtag",
     "@dargmuesli/nuxt-cookie-control",
     "@nuxtjs/i18n"
   ],
+
+  documentDriven: true,
 
   i18n: {
     vueI18n: './i18n.config.ts',
