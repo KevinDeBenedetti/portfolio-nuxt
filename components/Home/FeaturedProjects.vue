@@ -2,9 +2,12 @@
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const { data: projects } = await useAsyncData("projects-home", () =>
-  queryContent("/projects").where({ lang: locale.value }).limit(3).find()
-);
+const { data: projects } = await useAsyncData('projects-home', () => 
+  queryCollection('projects')
+    .where('lang', '=', locale.value)
+    .limit(3)
+    .all()
+)
 </script>
 
 <template>

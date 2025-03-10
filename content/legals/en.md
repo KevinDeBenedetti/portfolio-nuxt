@@ -25,7 +25,7 @@ The terms "personal data," "data subject," "processor," and "sensitive data" hav
 
 Pursuant to Article 6 of Law n° 2004-575 of June 21, 2004, regarding trust in the digital economy, users of the site [https://www.kevindb.dev/](https://www.kevindb.dev/) are informed of the identities of the various parties involved in its creation and maintenance:
 
-- **Owner**: Kevin De Benedetti – 229 rue Saint-Honoré 75001 Paris  
+- **Owner**: Kevin De Benedetti
 - **Publication Manager**: Kevin De Benedetti – contact@kevindb.dev  
   The publication manager is either an individual or legal entity.  
 - **Webmaster**: Kevin De Benedetti – contact@kevindb.dev  
@@ -114,8 +114,7 @@ In accordance with the European regulations in force, Users of [https://www.kevi
 - Right to define the fate of Users' data after their death and to choose to whom [https://www.kevindb.dev/](https://www.kevindb.dev/) should (or should not) communicate their data to a third party previously designated.
 
 If the User wishes to know how [https://www.kevindb.dev/](https://www.kevindb.dev/) uses their Personal Data, request to rectify it, or oppose its processing, the User can contact [https://www.kevindb.dev/](https://www.kevindb.dev/) in writing at the following address:  
-Kevin De Benedetti – DPO, Kevin De Benedetti  
-229 rue Saint-Honoré 75001 Paris.
+Kevin De Benedetti – DPO, Kevin De Benedetti
 
 ---
 

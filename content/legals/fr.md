@@ -25,7 +25,7 @@ Les termes « données à caractère personnel », « personne concernée », «
 
 En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet [https://www.kevindb.dev/](https://www.kevindb.dev/) l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
 
-- **Propriétaire** : Kevin De Benedetti – 229 rue Saint-Honoré 75001 Paris  
+- **Propriétaire** : Kevin De Benedetti
 - **Responsable publication** : Kevin De Benedetti – contact@kevindb.dev  
   Le responsable publication est une personne physique ou une personne morale.  
 - **Webmaster** : Kevin De Benedetti – contact@kevindb.dev  
@@ -116,8 +116,7 @@ Conformément à la réglementation européenne en vigueur, les Utilisateurs de 
 - droit de définir le sort des données des Utilisateurs après leur mort et de choisir à qui [https://www.kevindb.dev/](https://www.kevindb.dev/) devra communiquer (ou non) ses données à un tiers qu’ils aura préalablement désigné.
 
 Si l’Utilisateur souhaite savoir comment [https://www.kevindb.dev/](https://www.kevindb.dev/) utilise ses Données Personnelles, demander à les rectifier ou s’opposer à leur traitement, l’Utilisateur peut contacter [https://www.kevindb.dev/](https://www.kevindb.dev/) par écrit à l’adresse suivante :  
-Kevin De Benedetti – DPO, Kevin De Benedetti  
-229 rue Saint-Honoré 75001 Paris.
+Kevin De Benedetti – DPO, Kevin De Benedetti
 
 ---
 
