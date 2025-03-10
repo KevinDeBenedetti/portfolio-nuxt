@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/fontaine",
     "@nuxt/image",
-    "@nuxthq/studio",
     "@vueuse/nuxt",
     '@nuxtjs/sitemap',
     "@nuxtjs/robots",
