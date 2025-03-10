@@ -11,7 +11,10 @@ useSeoMeta({
 });
 
 const { data: articles } = await useAsyncData("all-articles", () =>
-  queryContent("/articles").where({ lang: locale.value }).sort({ published: -1 }).find()
+  queryCollection('articles')
+    .where('lang', '=', locale.value)
+    .order('published', 'DESC')
+    .all()
 );
 </script>
 
