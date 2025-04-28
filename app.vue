@@ -23,17 +23,19 @@ watch(
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="#14b8a6" />
-  <AppNavbar />
-  <div class="h-32"></div>
-  <UContainer>
-    <NuxtPage />
-  </UContainer>
-  <div class="h-32"></div>
-  <AppFooter />
-
-  <CookieControl :locale="locale as Locale" />
-
+  <UApp>
+    <NuxtLoadingIndicator color="#14b8a6" />
+    <AppNavbar />
+      <div class="h-32"></div>
+        <UContainer>
+          <div class="">
+            <NuxtPage />
+          </div>
+        </UContainer>
+      <div class="h-32"></div>
+    <AppFooter />
+    <CookieControl :locale="locale as Locale" />
+  </UApp>
 </template>
 
 <style>
