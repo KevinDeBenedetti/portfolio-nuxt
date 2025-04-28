@@ -1,0 +1,39 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.set_vars.outputs.image_tag }}
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set environment variables
+      id: set_vars
+      run: |
+        BRANCH_NAME=${GITHUB_REF##*/}
+        IMAGE_TAG="$BRANCH_NAME-${GITHUB_RUN_NUMBER}"
+        echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+    - uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      run: |
+        docker build \
+          --build-arg NUXT_GTAG_ID="${{ secrets.NUXT_GTAG_ID }}" \
+          --build-arg NODE_ENV="${{ secrets.NODE_ENV }}" \
+          -t ghcr.io/${{ github.repository }}:${{ steps.set_vars.outputs.image_tag }} .
+        docker push ghcr.io/${{ github.repository }}:${{ steps.set_vars.outputs.image_tag }}
+
+    - name: Logout
+      run: docker logout ghcr.io
