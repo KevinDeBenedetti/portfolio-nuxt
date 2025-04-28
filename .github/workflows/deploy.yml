@@ -2,17 +2,11 @@ name: Deploy on Dokploy
 
 on:
   workflow_run:
-    workflows: [Build Docker Image]
+    workflows: ["Build Docker Image"]
     types: [completed]
-  push:
-    branches: [dev]
 
 jobs:
   deploy:
-    if: >
-      github.event_name == 'push' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +16,7 @@ jobs:
       with:
         script: |
             core.setOutput('branch', '${{ github.event.workflow_run.head_branch }}')
-            
+
     - name: Determine Compose ID
       run: |
         COMPOSE_ID=${{ secrets.DOKPLOY_COMPOSE_ID_PROD }}
