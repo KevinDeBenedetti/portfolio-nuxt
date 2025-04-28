@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
     outputs:
       image_tag: ${{ steps.set_vars.outputs.image_tag }}
     steps:
