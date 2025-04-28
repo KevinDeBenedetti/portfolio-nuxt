@@ -10,6 +10,5 @@ const { t } = useI18n();
     >
     <h2 class="text-xl font-bold tracking-tight text-gray-800 dark:text-gray-100">{{ t('home.h2') }}</h2>
     <p class="text-gray-900 dark:text-gray-400">{{ t('home.first_p') }}</p>
-    
   </div>
 </template>
