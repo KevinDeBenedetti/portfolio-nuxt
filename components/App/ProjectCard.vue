@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    class="flex items-end gap-4 group p-2 -m-2 rounded-lg"
+    class="flex items-end gap-4 group p-2 max-m-2 rounded-lg"
     :to="project.url"
     target="_blank"
     external
