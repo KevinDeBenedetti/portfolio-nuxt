@@ -9,25 +9,27 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@dargmuesli/nuxt-cookie-control": "^8.5.3",
-    "@nuxt/content": "^3.3.0",
-    "@nuxt/devtools": "2.2.1",
+    "@dargmuesli/nuxt-cookie-control": "^9.0.2",
+    "@nuxt/content": "^3.5.1",
+    "@nuxt/devtools": "2.4.0",
+    "@nuxt/fonts": "^0.11.2",
+    "@nuxt/ui": "^3.1.0",
     "@nuxtjs/fontaine": "^0.5.0",
-    "@nuxtjs/google-fonts": "3.2.0",
-    "@nuxtjs/i18n": "^9.3.1",
-    "@nuxtjs/robots": "^5.2.6",
-    "@nuxtjs/sitemap": "^7.2.7",
-    "@vueuse/nuxt": "^13.0.0",
-    "nuxt": "^3.16.0",
+    "@nuxtjs/i18n": "^9.5.3",
+    "@nuxtjs/robots": "^5.2.10",
+    "@nuxtjs/sitemap": "^7.2.10",
+    "@tailwindcss/vite": "^4.1.4",
+    "@vueuse/nuxt": "^13.1.0",
+    "nuxt": "^3.17.0",
     "nuxt-gtag": "^3.0.2",
     "prettier": "3.5.3",
-    "prettier-plugin-tailwindcss": "0.6.11"
+    "prettier-plugin-tailwindcss": "0.6.11",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "1.2.28",
-    "@nuxt/icon": "^1.10.3",
-    "@nuxt/image": "1.9.0",
-    "@nuxt/ui": "2.21.1",
+    "@iconify-json/lucide": "1.2.39",
+    "@nuxt/icon": "^1.12.0",
+    "@nuxt/image": "1.10.0",
     "vue-use-fixed-header": "^2.0.3"
   },
   "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
