@@ -1,0 +1,29 @@
+services:
+
+  nuxt:
+    image: ghcr.io/kevindebenedetti/portfolio:dev-latest
+    pull_policy: always
+    restart: always
+    expose:
+      - 3000
+#     networks:
+#       - dokploy-network
+#     labels:
+#       - traefik.enable=true
+
+#       - traefik.http.routers.portfolio.rule=Host(`kevindb.dev`) || Host(`www.kevindb.dev`)
+#       - traefik.http.routers.portfolio.entrypoints=websecure
+#       - traefik.http.routers.portfolio.tls.certResolver=letsencrypt
+#       - traefik.http.services.portfolio.loadbalancer.server.port=3000
+
+#       # Middleware pour rediriger www.kevindb.dev vers kevindb.dev
+#       - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https?://www.kevindb.dev/(.*)
+#       - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
+#       - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
+
+#       # Associe explicitement le middleware de redirection au routeur
+#       - traefik.http.routers.portfolio.middlewares=redirect-to-non-www
+
+# networks:
+#   dokploy-network:
+#     external: true
