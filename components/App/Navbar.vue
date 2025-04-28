@@ -8,7 +8,7 @@ const localePath = useLocalePath()
 const items = computed(() => [
   { name: t('nav.home_title'), path: localePath('index'), icon: "solar:home-smile-outline" },
   { name: t('nav.projects_title'), path: localePath('projects'), icon: "solar:folder-with-files-outline" },
-  { name: t('nav.articles_title'), path: localePath('articles'), icon: "solar:document-add-outline" }
+  // { name: t('nav.articles_title'), path: localePath('articles'), icon: "solar:document-add-outline" }
 ]);
 </script>
 
