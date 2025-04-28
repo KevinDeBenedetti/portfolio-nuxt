@@ -1,8 +1,10 @@
 export default defineAppConfig({
   ui: {
-    primary: "teal",
-    gray: "neutral",
-    formGroup: {
+    colors: {
+      primary: "teal",
+      gray: "neutral",
+    },
+    formField: {
       help: "text-xs mt-1 text-gray-500 dark:text-gray-400",
       error: "text-xs mt-1 text-red-500 dark:text-red-400",
       label: {
@@ -23,9 +25,6 @@ export default defineAppConfig({
         enterFrom: "opacity-0 translate-y-full sm:translate-y-0 sm:scale-x-95",
         leaveFrom: "opacity-100 translate-y-0 sm:scale-x-100",
       },
-    },
-    container: {
-      constrained: "max-w-2xl",
     },
   },
 });
