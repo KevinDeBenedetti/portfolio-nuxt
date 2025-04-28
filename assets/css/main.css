@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-display: "Inter", sans-serif;
+  --font-sans: "Inter", "Avenir Next", "Roboto", "-apple-system", "BlinkMacSystemFont", '"Segoe UI"', "Ubuntu", '"Helvetica Neue"', "Arial", '"Noto Sans"', "sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"';
+  --font-mono: "Cascadia Code", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
+
+  --shadow-zoop:
+  rgba(102 109 128/0.08) 0px 1.2672px 1.2672px,
+  rgba(102 109 128/0.08) 0px 5.0688px 10.1376px;
+  --shadow-zoopdark:
+    rgba(10 10 10/0.2) 0px 1.2672px 1.2672px,
+    rgba(10 10 10/0.2) 0px 5.0688px 10.1376px;
+
+  --ui-container: var(--container-2xl);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+}
