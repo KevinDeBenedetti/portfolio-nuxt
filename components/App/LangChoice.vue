@@ -10,7 +10,7 @@ function toggleLocale() {
 <template>
     <UTooltip :text="t('change_language')" :ui="{ popper: { strategy: 'absolute' } }">
         <button
-            class="relative px-3 py-4 flex items-center justify-center"
+            class="relative px-3 py-4 flex items-center justify-center cursor-pointer"
             @click="toggleLocale"
         >
             <Icon
