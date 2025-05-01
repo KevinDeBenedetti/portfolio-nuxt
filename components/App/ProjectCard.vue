@@ -8,11 +8,6 @@ const props = defineProps({
 
 const config = useRuntimeConfig()
 const { $readFile, $directus } = useNuxtApp();
-
-
-// const { data: imageMeta } = await useAsyncData('imageMeta', () => {
-//   return $directus.request($readFile(props.project?.image))
-// })
 const imageMeta = ref(null)
 
 if (!props.project?.image) {
@@ -24,7 +19,6 @@ if (!props.project?.image) {
   );
   imageMeta.value = data.value;
 }
-console.log('imageMeta', imageMeta.value)
 
 </script>
 <template>
