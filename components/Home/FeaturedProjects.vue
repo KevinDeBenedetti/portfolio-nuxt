@@ -1,13 +1,41 @@
 <script lang="ts" setup>
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+const { $directus, $readItems } = useNuxtApp()
 
-const { data: projects } = await useAsyncData('projects-home', () => 
-  queryCollection('projects')
-    .where('lang', '=', locale.value)
-    .limit(3)
-    .all()
-)
+const codeMap: Record<string,string> = { fr: 'fr-FR', en: 'en-US' };
+const directusLang = codeMap[locale.value] || locale.value;
+const projects = ref([])
+
+const fetchProjects = async () => {
+  const directusLang = codeMap[locale.value] || locale.value
+  const result = await $directus.request($readItems('projects', {
+    fields: ['*', { translations: ['*'] }],
+    deep: {
+      translations: {
+        _filter: { languages_code: { _eq: directusLang } }
+      }
+    },
+    limit: 3,
+    sort: ['sort'],
+  }))
+  projects.value = result
+}
+
+// Initial fetch
+onMounted(fetchProjects)
+
+// Re-fetch when language changes
+watch(locale, () => {
+  fetchProjects()
+})
+
+// const { data: projects } = await useAsyncData('projects-home', () => 
+//   queryCollection('projects')
+//     .where('lang', '=', locale.value)
+//     .limit(3)
+//     .all()
+// )
 </script>
 
 <template>
