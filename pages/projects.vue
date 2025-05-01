@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const { t, locale } = useI18n();
+const { t, locale } = useI18n()
+
+// TODO : Charger les données de la page en fonction de la langue
+
+// TODO : Charger les projets en fonction de la langue
+
+
 const { $projects } = useNuxtApp()
 
 useSeoMeta({
@@ -16,6 +22,11 @@ queryCollection('projects')
     .where('lang', '=', locale.value)
     .all()
 )
+
+onMounted(() => {
+  console.log('Locale : ', locale.value)
+})
+
 </script>
 
 <template>
