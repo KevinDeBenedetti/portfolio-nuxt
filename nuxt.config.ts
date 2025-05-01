@@ -11,7 +11,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      gtagId: process.env.NUXT_GTAG_ID
+      gtagId: process.env.NUXT_GTAG_ID,
+      directusUrl: process.env.NUXT_DIRECTUS_URL || "https://directus.kevindb.dev",
     }
   },
 
