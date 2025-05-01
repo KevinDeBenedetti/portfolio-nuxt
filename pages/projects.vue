@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n();
+const { $projects } = useNuxtApp()
 
 useSeoMeta({
   title: t('projects.title'),
@@ -12,8 +13,8 @@ useSeoMeta({
 
 const { data: projects } = await useAsyncData("projects", () =>
 queryCollection('projects')
-    .where('lang', '=', locale.value )
-    .all() 
+    .where('lang', '=', locale.value)
+    .all()
 )
 </script>
 
@@ -21,6 +22,12 @@ queryCollection('projects')
   <main class="min-h-screen">
     <AppHeader class="mb-12" :title="t('projects.h1')" :description="t('projects.first_p')" />
     <div class="space-y-4">
+      <AppProjectCard
+        v-for="(project, id) in $projects"
+        :key="id"
+        :project="project"
+      />
+
       <AppProjectCard
         v-for="(project, id) in projects"
         :key="id"
