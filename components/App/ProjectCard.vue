@@ -7,16 +7,11 @@ const props = defineProps({
 });
 
 const config = useRuntimeConfig()
-const { $getFileMeta } = useNuxtApp();
-const imageMeta = ref(null)
+const { $readFile, $directus } = useNuxtApp();
 
-onBeforeMount(async () => {
-  try {
-    imageMeta.value = await $getFileMeta(props.project?.image)
-  } catch (error) {
-    console.error('Error fetching image:', error);
-  }
-});
+const { data: imageMeta } = await useAsyncData('imageMeta', () => {
+  return $directus.request($readFile(props.project?.image))
+})
 </script>
 <template>
   <NuxtLink
