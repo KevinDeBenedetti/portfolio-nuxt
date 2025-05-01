@@ -42,7 +42,10 @@ export default defineNuxtPlugin( async nuxtApp => {
   //   },
 	// };
 
-  nuxtApp.provide('directus', directus);
-  nuxtApp.provide('Projects', projects);
-  nuxtApp.provide('getFileMeta', getFileMeta);
+  nuxtApp.provide('directus', directus)
+  nuxtApp.provide('Projects', projects)
+  nuxtApp.provide('readFile', readFile)
+
+  nuxtApp.provide('readItems', readItems)
+
 });
