@@ -34,11 +34,15 @@ export default defineNuxtPlugin( async nuxtApp => {
    */
   const projects = await directus.request(readItems('projects'))
 
-	return {
-		provide: {  
-      directus,
-      projects,
-      getFileMeta
-    },
-	};
+	// return {
+	// 	provide: {  
+  //     directus,
+  //     projects,
+  //     getFileMeta
+  //   },
+	// };
+
+  nuxtApp.provide('directus', directus);
+  nuxtApp.provide('Projects', projects);
+  nuxtApp.provide('getFileMeta', getFileMeta);
 });
