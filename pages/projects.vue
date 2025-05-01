@@ -2,20 +2,30 @@
 const { t, locale } = useI18n()
 const { $directus, $readItems } = useNuxtApp()
 
-// TODO : Charger les données de la page en fonction de la langue
+const codeMap: Record<string,string> = { fr: 'fr-FR', en: 'en-US' };
+const directusLang = codeMap[locale.value] || locale.value;
+const projects = ref([])
 
-// TODO : Charger les projets en fonction de la langue
-
-const { data: projects } = await useAsyncData('test', () => {
-  return $directus.request($readItems('projects', {
-    // filter: {
-    //   lang: {
-    //     _eq: locale.value,
-    //   },
-    // },
+const fetchProjects = async () => {
+  const directusLang = codeMap[locale.value] || locale.value
+  const result = await $directus.request($readItems('projects', {
+    fields: ['*', { translations: ['*'] }],
+    deep: {
+      translations: {
+        _filter: { languages_code: { _eq: directusLang } }
+      }
+    },
   }))
-})
+  projects.value = result
+}
 
+// Initial fetch
+onMounted(fetchProjects)
+
+// Re-fetch when language changes
+watch(locale, () => {
+  fetchProjects()
+})
 
 useSeoMeta({
   title: t('projects.title'),
