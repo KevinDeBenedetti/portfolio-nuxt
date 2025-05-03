@@ -33,7 +33,6 @@ export default defineNuxtPlugin( async nuxtApp => {
   const directus = createDirectus<Schema>(config.public.directusUrl).with(rest());
 
   nuxtApp.provide('directus', directus)
-  // nuxtApp.provide('Projects', projects)
   nuxtApp.provide('readFile', readFile)
 
   nuxtApp.provide('readItem', readItem)
