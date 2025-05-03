@@ -5,7 +5,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 const config = useRuntimeConfig()
 const { $readFile, $directus } = useNuxtApp();
 const imageMeta = ref(null)
@@ -39,8 +38,8 @@ if (!props.project?.image) {
     ></div>
     <UAvatar
       :src="config.public.directusUrl + '/assets/' + imageMeta?.filename_disk"
-      :ui="{ rounded: 'rounded z-10 relative' }"
-      size="md"
+      :ui="{ root: 'p-1', rounded: 'rounded z-10 relative' }"
+      size="lg"
       :alt="project.name"
     />
   </NuxtLink>
