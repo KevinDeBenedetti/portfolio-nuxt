@@ -1,7 +1,5 @@
 <script setup lang="ts">
-// const { t } = useI18n();
 const { page } = await usePageContent('home')
-
 </script>
 
 <template>
