@@ -4,31 +4,19 @@ const localePath = useLocalePath()
 const { $directus, $readItems } = useNuxtApp()
 
 const codeMap: Record<string,string> = { fr: 'fr-FR', en: 'en-US' };
-const directusLang = codeMap[locale.value] || locale.value;
-const projects = ref([])
+const directusLang = computed(() => codeMap[locale.value] || locale.value)
 
-const fetchProjects = async () => {
-  const directusLang = codeMap[locale.value] || locale.value
-  const result = await $directus.request($readItems('projects', {
+const { data: projects, pending, error, refresh } = await useAsyncData(
+  () => $directus.request($readItems('projects', {
     fields: ['*', { translations: ['*'] }],
     deep: {
-      translations: {
-        _filter: { languages_code: { _eq: directusLang } }
-      }
+      translations: { _filter: { languages_code: { _eq: directusLang.value } } }
     },
     limit: 3,
     sort: ['sort'],
-  }))
-  projects.value = result
-}
-
-// Initial fetch
-onMounted(fetchProjects)
-
-// Re-fetch when language changes
-watch(locale, () => {
-  fetchProjects()
-})
+  })),
+  { watch: [locale] }
+)
 
 // const { data: projects } = await useAsyncData('projects-home', () => 
 //   queryCollection('projects')
