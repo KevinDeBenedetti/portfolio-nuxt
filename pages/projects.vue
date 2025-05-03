@@ -1,14 +1,10 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
-const { $directus, $readItems, $getPage } = useNuxtApp()
-
-const codeMap: Record<string,string> = { fr: 'fr-FR', en: 'en-US' }
+const { $directus, $readItems } = useNuxtApp()
+const codeMap: Record<string, string> = { fr: 'fr-FR', en: 'en-US' }
 const directusLang = computed(() => codeMap[locale.value] || locale.value)
 
-const { data: page } = await useAsyncData(
-  `page-${directusLang.value}`,
-  () => $getPage('projects', directusLang.value)
-)
+const { page } = await usePageContent('projects')
 
 const { data: projects } = await useAsyncData(
   `projects-${directusLang.value}`,
@@ -18,14 +14,14 @@ const { data: projects } = await useAsyncData(
       translations: { _filter: { languages_code: { _eq: directusLang.value } } }
     }
   })),
-  { watch: [locale] }
+  // { watch: [locale] }
 )
 
 useSeoMeta({
-  title: page.value?.translations[0]?.title,
-  description: page.value?.translations[0]?.description,
-  ogTitle: page.value?.translations[0]?.title,
-  ogDescription: page.value?.translations[0]?.description,
+  title: page.title,
+  description: page.description,
+  ogTitle: page.title,
+  ogDescription: page.description,
   ogImage: 'https://www.kevindb.dev/images/projects.webp',
   twitterCard: 'summary_large_image',
 })
@@ -49,7 +45,8 @@ useSeoMeta({
 
 <template>
   <main class="min-h-screen">
-    <AppHeader class="mb-12" :title="page?.translations[0]?.h1" :description="page?.translations[0]?.first_p" />
+    <AppHeader class="mb-12" :title="page?.h1" :description="page?.first_p" />
+
     <!--
     <AppHeader class="mb-12" :title="t('projects.h1')" :description="t('projects.first_p')" />
     -->
