@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const { page } = await usePageContent('legals')
-const localePath = useLocalePath();
-const currentYear = computed(() => new Date().getFullYear());
-
+const localePath = useLocalePath()
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <template>
