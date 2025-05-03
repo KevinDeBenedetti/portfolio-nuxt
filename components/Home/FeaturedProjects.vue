@@ -15,7 +15,7 @@ const { data: projects, pending, error, refresh } = await useAsyncData(
     limit: 3,
     sort: ['sort'],
   })),
-  { watch: [locale] }
+  // { watch: [locale] }
 )
 
 // const { data: projects } = await useAsyncData('projects-home', () => 
