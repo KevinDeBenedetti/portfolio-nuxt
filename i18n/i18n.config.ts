@@ -16,6 +16,10 @@ export default defineI18nConfig(() => ({
                 projects_link: 'All projects',
                 articles_featured: 'Recent articles',
                 articles_link: 'All articles',
+            },
+            error: {
+                title: 'Error',
+                projects: 'No projects found.',
             }
         },
         fr: {
@@ -33,6 +37,10 @@ export default defineI18nConfig(() => ({
                 articles_featured: 'Articles récents',
                 articles_link: 'Tous les articles',
             },
+            error: {
+                title: 'Erreur',
+                projects: 'Pas de projets trouvés.',
+            }
         }
     }
 }))
