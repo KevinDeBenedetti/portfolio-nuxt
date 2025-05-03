@@ -13,39 +13,53 @@ export default defineNuxtPlugin( async nuxtApp => {
     status: string
   }
 
-  interface Schema {
-    projects: Project[]
+  interface PageTranslation {
+    id: string
+    languages_code: string
+    title: string
+    description: string
   }
 
+  interface Page {
+    id: string
+    translations: PageTranslation[]
+  }
+
+  interface Schema {
+    projects: Project[],
+    pages: Page[],
+  }
   
-  const directus = createDirectus<Schema>(config.public.directusUrl)
-  .with(rest());
+  const directus = createDirectus<Schema>(config.public.directusUrl).with(rest());
 
   /**
    * Get metadata from a directus file
    */
-  async function getFileMeta(id: string) {
-    const data = await directus.request(readFile(id))
+  // async function getFileMeta(id: string) {
+  //   const data = await directus.request(readFile(id))
+  //   return data
+  // }
+
+  /**
+   * Get a page by id
+   */
+  async function getPage(id: string, lang: string) {
+    const data = await directus.request(readItem('pages', id, {
+      fields: ['*', { translations: ['*'] }],
+      deep: {
+        translations: { _filter: { languages_code: { _eq: lang } } }
+      }
+    }))
     return data
   }
 
-  /**
-   * Get all projects
-   */
-  const projects = await directus.request(readItems('projects'))
-
-	// return {
-	// 	provide: {  
-  //     directus,
-  //     projects,
-  //     getFileMeta
-  //   },
-	// };
-
   nuxtApp.provide('directus', directus)
-  nuxtApp.provide('Projects', projects)
-  nuxtApp.provide('readFile', readFile)
+  // nuxtApp.provide('Projects', projects)
+  // nuxtApp.provide('readFile', readFile)
 
+  nuxtApp.provide('getPage', getPage)
+
+  nuxtApp.provide('readItem', readItem)
   nuxtApp.provide('readItems', readItems)
 
 });
