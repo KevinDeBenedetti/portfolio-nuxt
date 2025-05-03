@@ -13,39 +13,30 @@ export default defineNuxtPlugin( async nuxtApp => {
     status: string
   }
 
+  interface PageTranslation {
+    id: string
+    languages_code: string
+    title: string
+    description: string
+  }
+
+  interface Page {
+    id: string
+    translations: PageTranslation[]
+  }
+
   interface Schema {
-    projects: Project[]
+    projects: Project[],
+    pages: Page[],
   }
-
   
-  const directus = createDirectus<Schema>(config.public.directusUrl)
-  .with(rest());
-
-  /**
-   * Get metadata from a directus file
-   */
-  async function getFileMeta(id: string) {
-    const data = await directus.request(readFile(id))
-    return data
-  }
-
-  /**
-   * Get all projects
-   */
-  const projects = await directus.request(readItems('projects'))
-
-	// return {
-	// 	provide: {  
-  //     directus,
-  //     projects,
-  //     getFileMeta
-  //   },
-	// };
+  const directus = createDirectus<Schema>(config.public.directusUrl).with(rest());
 
   nuxtApp.provide('directus', directus)
-  nuxtApp.provide('Projects', projects)
+  // nuxtApp.provide('Projects', projects)
   nuxtApp.provide('readFile', readFile)
 
+  nuxtApp.provide('readItem', readItem)
   nuxtApp.provide('readItems', readItems)
 
 });
