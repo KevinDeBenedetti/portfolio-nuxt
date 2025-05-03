@@ -16,6 +16,16 @@ const { data: projects, pending, error, refresh } = await useAsyncData(
   })),
 )
 
+const toast = useToast()
+
+if (error.value) {
+  toast.add({ 
+    title: t('error.title'),
+    description: t('error.projects'),
+    color: 'error'
+  })
+}
+
 // const { data: projects } = await useAsyncData('projects-home', () => 
 //   queryCollection('projects')
 //     .where('lang', '=', locale.value)
