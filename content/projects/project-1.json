@@ -1,0 +1,7 @@
+{
+  "name": "Portfolio Website",
+  "url": "https://github.com/KevinDeBenedetti/portfolio_nuxt",
+  "description": "A modern portfolio website built with Nuxt 3, featuring internationalization, content management, and responsive design.",
+  "thumbnail": "/images/portfolio-thumbnail.webp",
+  "lang": "en"
+}
