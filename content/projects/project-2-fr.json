@@ -1,0 +1,7 @@
+{
+  "name": "Plateforme E-commerce",
+  "url": "https://github.com/example/ecommerce",
+  "description": "Une solution e-commerce complète avec frontend Vue.js, backend Node.js et base de données PostgreSQL.",
+  "thumbnail": "/images/ecommerce-thumbnail.webp",
+  "lang": "fr"
+}
