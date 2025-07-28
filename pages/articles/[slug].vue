@@ -7,8 +7,12 @@ useSeoMeta({
   articleAuthor: "Kevin De Benedetti"
 });
 
-const { data: article } = await useAsyncData(`/articles/${slug}.${locale}`, () => {
-  return queryCollection('articles').where('lang', '=', locale.value).first()
+// Get the specific article by slug and language
+const { data: article } = await useAsyncData(`article-${slug}-${locale.value}`, () => {
+  return queryCollection('articles')
+    .where('slug', '=', slug)
+    .where('lang', '=', locale.value)
+    .first()
 })
 </script>
 
