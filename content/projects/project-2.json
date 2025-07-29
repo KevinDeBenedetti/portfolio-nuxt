@@ -2,6 +2,6 @@
   "name": "E-commerce Platform",
   "url": "https://github.com/example/ecommerce",
   "description": "A full-stack e-commerce solution with Vue.js frontend, Node.js backend, and PostgreSQL database.",
-  "thumbnail": "/images/ecommerce-thumbnail.webp",
+  "thumbnail": "/projects/vue_40x40.webp",
   "lang": "en"
 }

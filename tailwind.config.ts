@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
+
 module.exports = {
   content: [
     "./components/**/*.{js,vue,ts}",
@@ -47,5 +49,5 @@ module.exports = {
       ],
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [typography],
 } satisfies Config;
