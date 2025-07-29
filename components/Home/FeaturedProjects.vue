@@ -1,19 +1,14 @@
 <script lang="ts" setup>
 const { t, locale, locales } = useI18n()
 const localePath = useLocalePath()
-const { $directus, $readItems } = useNuxtApp()
 
-const currentLocale = locales.value.find((l) => l.code === locale.value)
-
-const { data: projects } = await useAsyncData(
-  () => $directus.request($readItems('projects', {
-    fields: ['*', { translations: ['*'] }],
-    deep: {
-      translations: { _filter: { languages_code: { _eq: currentLocale?.iso } } }
-    },
-    limit: 3,
-    sort: ['sort'],
-  })),
+// Utiliser Nuxt Content au lieu de Directus
+const { data: projects, error } = await useAsyncData(
+  `projects-home-${locale.value}`,
+  () => queryCollection('projects')
+    .where('lang', '=', locale.value)
+    .limit(3)
+    .all()
 )
 
 const toast = useToast()
@@ -25,13 +20,6 @@ if (error.value) {
     color: 'error'
   })
 }
-
-// const { data: projects } = await useAsyncData('projects-home', () => 
-//   queryCollection('projects')
-//     .where('lang', '=', locale.value)
-//     .limit(3)
-//     .all()
-// )
 </script>
 
 <template>
