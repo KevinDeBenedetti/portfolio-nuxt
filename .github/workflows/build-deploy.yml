@@ -20,10 +20,8 @@ jobs:
     - name: Set environment variables
       run: |
         BRANCH_NAME=${GITHUB_REF##*/}
-        # Remplacer les caractères invalides dans les tags Docker
-        SAFE_BRANCH_NAME=$(echo "$BRANCH_NAME" | sed 's/[^a-zA-Z0-9._-]/-/g')
-        IMAGE_TAG="$SAFE_BRANCH_NAME-${GITHUB_RUN_NUMBER}"
-        LATEST_TAG="$SAFE_BRANCH_NAME-latest"
+        IMAGE_TAG="$BRANCH_NAME-${GITHUB_RUN_NUMBER}"
+        LATEST_TAG="$BRANCH_NAME-latest"
         REPO_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
         echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
         echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
