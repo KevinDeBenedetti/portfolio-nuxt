@@ -1,15 +1,13 @@
-import { useI18n } from 'vue-i18n'
-import { writeFile, mkdir } from 'fs/promises'
-import { join } from 'path'
+import { writeFile, mkdir } from 'node:fs/promises'
+import { join } from 'node:path'
 
 export const useDirectusSync = () => {
   const { $directus, $readItems } = useNuxtApp()
-  const { locales } = useI18n()
 
   const syncProjectsToContent = async () => {
     try {
       // Only run in development
-      if (process.server && process.env.NODE_ENV === 'development') {
+      if (import.meta.server && process.env.NODE_ENV === 'development') {
         console.log('Syncing Directus projects to Nuxt Content...')
         
         const projects = await $directus.request($readItems('projects', {
