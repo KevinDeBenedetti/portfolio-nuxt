@@ -1,14 +1,20 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t, locale, locales } = useI18n()
+const { $directus, $readItems } = useNuxtApp()
+// const codeMap: Record<string, string> = { fr: 'fr-FR', en: 'en-US' }
+// const directusLang = computed(() => codeMap[locale.value] || locale.value)
+const currentLocale = locales.value.find((l) => l.code === locale.value)
 
 const { page } = await usePageContent('projects')
 
-// Use Nuxt Content to fetch projects based on current locale
 const { data: projects, error } = await useAsyncData(
-  `projects-${locale.value}`,
-  () => queryCollection('projects')
-    .where('lang', '=', locale.value)
-    .all()
+  `projects-${currentLocale?.code}`,
+  () => $directus.request($readItems('projects', {
+    fields: ['*', { translations: ['*'] }],
+    deep: {
+      translations: { _filter: { languages_code: { _eq: currentLocale?.iso } } }
+    }
+  }))
 )
 
 useSeoMeta({

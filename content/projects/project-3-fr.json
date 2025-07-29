@@ -1,7 +1,0 @@
-{
-  "name": "Application de Gestion de Tâches",
-  "url": "https://github.com/example/taskmanager",
-  "description": "Une application collaborative de gestion de tâches avec mises à jour en temps réel, construite avec Nuxt 3 et Socket.io.",
-  "thumbnail": "/images/taskmanager-thumbnail.webp",
-  "lang": "fr"
-}
