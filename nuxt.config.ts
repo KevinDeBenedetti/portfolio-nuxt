@@ -28,7 +28,8 @@ export default defineNuxtConfig({
     "nuxt-gtag",
     "@dargmuesli/nuxt-cookie-control",
     "@nuxtjs/i18n",
-    "@nuxt/fonts"
+    "@nuxt/fonts",
+    "@nuxt/eslint",
   ],
 
   documentDriven: true,
