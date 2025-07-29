@@ -4,7 +4,7 @@
       <div
         class="flex-none rounded-full p-1 text-primary-500 bg-primary-500/10"
       >
-        <div class="h-1.5 w-1.5 rounded-full bg-current"/>
+        <div class="h-1.5 w-1.5 rounded-full bg-current"></div>
       </div>
       <h2 class="uppercase text-xs font-semibold text-gray-400">
         STAY IN TOUCH

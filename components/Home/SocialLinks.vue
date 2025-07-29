@@ -28,8 +28,8 @@ const links = [
         class="flex items-end gap-4 dark:hover:text-gray-300 group"
       >
         <span class="text-sm">{{ link.name }}</span>
-        <div class="flex-1 border-b border-dashed border-gray-300 dark:border-gray-800 group-hover:border-gray-700"/>
-        <Icon :name="link.icon" class="w-6 h-6"/>
+        <div class="flex-1 border-b border-dashed border-gray-300 dark:border-gray-800 group-hover:border-gray-700"></div>
+        <Icon :name="link.icon" class="w-6 h-6"></Icon>
       </NuxtLink>
     </div>
   </div>

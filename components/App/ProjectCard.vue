@@ -45,7 +45,7 @@ if (!projectThumbnail) {
     </div>
     <div
       class="flex-1 border-b border-dashed border-gray-300 dark:border-gray-800 group-hover:border-gray-700"
-    />
+    ></div>
     <UAvatar
       :src="isDirectusProject ? (config.public.directusUrl + '/assets/' + imageMeta?.filename_disk) : imageMeta?.filename_disk"
       :ui="{ root: 'p-1', rounded: 'rounded z-10 relative' }"

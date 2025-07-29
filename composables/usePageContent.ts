@@ -7,7 +7,7 @@ export const usePageContent = async (pageId: string) => {
 
   const currentLocale = locales.value.find((l) => l.code === locale.value)
 
-  const { data: page } = await useAsyncData(
+  const { data: page, error, pending } = await useAsyncData(
     `page-${pageId}-${currentLocale?.code}`,
     () =>
       $directus.request(

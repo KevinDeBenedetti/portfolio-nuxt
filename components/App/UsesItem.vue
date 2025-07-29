@@ -13,9 +13,7 @@
 
 <script setup>
 defineProps({
-  item: {
-    type: Object,
-    required: true,
-  },
+  item: Object,
+  required: true,
 });
 </script>

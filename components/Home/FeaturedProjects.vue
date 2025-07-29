@@ -5,7 +5,7 @@ const { $directus, $readItems } = useNuxtApp()
 
 const currentLocale = locales.value.find((l) => l.code === locale.value)
 
-const { data: projects } = await useAsyncData(
+const { data: projects, pending, error, refresh } = await useAsyncData(
   () => $directus.request($readItems('projects', {
     fields: ['*', { translations: ['*'] }],
     deep: {

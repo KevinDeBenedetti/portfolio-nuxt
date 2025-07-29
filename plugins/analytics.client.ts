@@ -1,4 +1,4 @@
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin(nuxtApp => {
     const cookieControl = useCookieControl()
     const { initialize, gtag } = useGtag()
     const config = useRuntimeConfig()

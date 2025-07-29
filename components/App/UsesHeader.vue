@@ -13,9 +13,6 @@
 
 <script lang="ts" setup>
 defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
+  title: String,
 });
 </script>

@@ -2,6 +2,6 @@
   "name": "Site Web Portfolio",
   "url": "https://github.com/KevinDeBenedetti/portfolio_nuxt",
   "description": "Un site portfolio moderne construit avec Nuxt 3, incluant l'internationalisation, la gestion de contenu et un design responsive.",
-  "thumbnail": "/projects/vue_40x40.webp",
+  "thumbnail": "/images/portfolio-thumbnail.webp",
   "lang": "fr"
 }
