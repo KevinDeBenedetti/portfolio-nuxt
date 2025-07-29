@@ -29,8 +29,7 @@ const getReadableDate = (dateString: string | Date | undefined) => {
           aria-hidden="true"
           ><span
             class="h-4 w-0.5 rounded-full bg-gray-200 dark:bg-gray-500"
-          ></span
-        ></span>
+          /></span>
         {{ getReadableDate(article.published) }}
       </time>
       <h2

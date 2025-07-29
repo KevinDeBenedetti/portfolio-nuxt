@@ -1,4 +1,4 @@
-import { createDirectus, rest, readItem, readItems, readFile, readFiles, readAssetRaw } from '@directus/sdk';
+import { createDirectus, rest, readItem, readItems, readFile } from '@directus/sdk';
 
 export default defineNuxtPlugin( async nuxtApp => {
   const config = useRuntimeConfig();

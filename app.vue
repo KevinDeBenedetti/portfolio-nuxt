@@ -26,13 +26,13 @@ watch(
   <UApp>
     <NuxtLoadingIndicator color="#14b8a6" />
     <AppNavbar />
-      <div class="h-32"></div>
+      <div class="h-32"/>
         <UContainer>
           <div class="">
             <NuxtPage />
           </div>
         </UContainer>
-      <div class="h-32"></div>
+      <div class="h-32"/>
     <AppFooter />
     <CookieControl :locale="locale as Locale" />
   </UApp>
