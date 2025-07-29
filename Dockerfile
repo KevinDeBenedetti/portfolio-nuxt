@@ -1,11 +1,14 @@
-# syntax=docker/dockerfile:1
+FROM docker.io/node:22.17.0-slim AS dev
 
-# ARG NODE_VERSION=20.10.0
-ARG NODE_VERSION=21.0.0
+WORKDIR /app
+RUN npm install --location=global pnpm
+COPY package.json pnpm-lock.yaml ./
 
-ARG PORT=3000
+RUN pnpm install --frozen-lockfile
+COPY . .
+CMD ["pnpm", "run", "dev"]
 
-FROM node:lts-alpine AS base
+FROM docker.io/node:22.17.0-slim AS base
 
 RUN npm install -g npm@latest && npm install -g pnpm@latest
 
