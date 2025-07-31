@@ -2,12 +2,23 @@
 import cookieConfig from "./config/cookie.config"
 import i18nConfig from "./config/i18n.config"
 import seoConfig from "./config/seo.config"
-import styleConfig from "./config/style.config"
 
 export default defineNuxtConfig({
+
+  devServer: {
+    // host: '0.0.0.0',
+    host: 'localhost',
+    port: 3000
+  },
+
   devtools: { enabled: true },
 
-  compatibilityDate: "2024-10-01",
+  nitro: {
+    logLevel: 5, // Maximum de logs
+    timing: true // Affiche les temps d'exécution
+  },
+
+  compatibilityDate: "2025-07-30",
 
   runtimeConfig: {
     public: {
@@ -19,9 +30,8 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/ui",
     "@nuxt/icon",
-    "@nuxtjs/fontaine",
+    // "@nuxtjs/fontaine",
     "@nuxt/image",
-    "@vueuse/nuxt",
     '@nuxtjs/sitemap',
     "@nuxtjs/robots",
     "@nuxt/content",
@@ -32,12 +42,39 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
   ],
 
-  documentDriven: true,
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  },
+
+  // documentDriven: true,
 
   ...i18nConfig,
   ...seoConfig,
   ...cookieConfig,
-  ...styleConfig,
+
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    head: {
+      htmlAttrs: {
+        lang: "fr",
+        class: "h-full",
+      },
+      bodyAttrs: {
+        class: "antialiased bg-gray-50 dark:bg-black min-h-screen",
+      },
+    },
+  },
+
+  fonts: {
+    provider: 'google',
+    families: [
+      { name: 'Inter', provider: 'google' },
+    ]
+  },
+
+  css: ['~/assets/css/main.css'],
 
   gtag: {
     initMode: 'manual',
