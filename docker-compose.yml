@@ -22,6 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: prod
       args:
         - NODE_ENV=production
         - NUXT_GTAG_ID=${NUXT_GTAG_ID}

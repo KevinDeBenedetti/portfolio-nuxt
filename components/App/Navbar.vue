@@ -1,9 +1,37 @@
 <script setup>
-import { useFixedHeader } from 'vue-use-fixed-header'
-const headerRef = ref(null);
-const { styles } = useFixedHeader(headerRef);
 const { t } = useI18n()
 const localePath = useLocalePath()
+
+const isScrolled = ref(false)
+const isVisible = ref(true)
+const lastScrollY = ref(0)
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY
+  isScrolled.value = currentScrollY > 0
+
+  if (currentScrollY > lastScrollY.value && currentScrollY > 100) {
+    isVisible.value = false
+  } else {
+    isVisible.value = true
+  }
+
+  lastScrollY.value = currentScrollY
+}
+
+const headerStyles = computed(() => ({
+  transform: isVisible.value ? 'translateY(0)' : 'translateY(-100%)',
+  transition: 'transform 0.3s ease-in-out, backdrop-fitler 0.3s ease-in-out',
+  backgroundColor: isScrolled.value ? 'blur(12px)' : 'blur(0px)',
+}))
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 const items = computed(() => [
   { name: t('nav.home_title'), path: localePath('index'), icon: "solar:home-smile-outline" },
@@ -13,10 +41,18 @@ const items = computed(() => [
 </script>
 
 <template>
-  <div ref="headerRef" :style="styles" class="fixed top-0 w-full z-50">
+  <div
+    class="fixed top-0 w-full z-50"
+    :style="headerStyles"
+  >
     <nav class="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
       <ul
         class="flex items-center my-4 px-3 text-sm font-medium text-gray-800 rounded-full shadow-lg bg-white/90 shadow-gray-800/5 ring-1 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/20 ring-gray-900/5 border-2"
+        :class="[
+          isScrolled
+            ? 'bg-white/80 shadow-gray-800/10 ring-1 backdrop-blur-md dark:bg-gray-800/80 dark:ring-white/20 ring-gray-900/10 border-2'
+            : 'bg-white/90 shadow-gray-800/5 ring-1 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/20 ring-gray-900/5 border-2'
+        ]"
       >
         <li v-for="item in items" :key="item.path">
           <UTooltip
@@ -41,7 +77,7 @@ const items = computed(() => [
             </ULink>
           </UTooltip>
         </li>
-        <li class="flex-1"/>
+        <li class="flex-1" />
         <li>
           <AppLangChoice />
         </li>
