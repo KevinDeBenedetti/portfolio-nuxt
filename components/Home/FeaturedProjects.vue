@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { t, locale, locales } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
 // Utiliser Nuxt Content au lieu de Directus
