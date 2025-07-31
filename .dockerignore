@@ -16,3 +16,6 @@ npm-debug.log
 
 .gitignore
 README.md
+.DS_Store
+coverage
+.data
