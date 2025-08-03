@@ -5,6 +5,8 @@ import seoConfig from "./config/seo.config"
 
 export default defineNuxtConfig({
 
+  compatibilityDate: "2025-07-30",
+  
   devServer: {
     // host: '0.0.0.0',
     host: 'localhost',
@@ -18,7 +20,6 @@ export default defineNuxtConfig({
     timing: true // Affiche les temps d'exécution
   },
 
-  compatibilityDate: "2025-07-30",
 
   runtimeConfig: {
     public: {
