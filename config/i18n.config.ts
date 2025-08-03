@@ -2,7 +2,6 @@ import type { NuxtConfig } from 'nuxt/config'
 
 const i18nConfig: Partial<NuxtConfig> = {
   i18n: {
-    // FIXME : Hide a warning
     bundle: {
       optimizeTranslationDirective: false,
     },
