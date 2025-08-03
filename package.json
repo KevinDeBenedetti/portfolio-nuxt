@@ -1,6 +1,7 @@
 {
-  "name": "nuxt-app",
+  "name": "portfolio-nuxt",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -13,22 +14,29 @@
     "@directus/sdk": "^19.1.0",
     "@nuxt/content": "^3.6.3",
     "@nuxt/eslint": "^1.7.1",
+    "@nuxt/image": "1.11.0",
+    "@nuxt/scripts": "0.11.10",
+    "@nuxt/test-utils": "3.19.2",
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/ui": "^3.3.0",
+    "@unhead/vue": "^2.0.13",
     "@nuxtjs/i18n": "^9.5.6",
     "@nuxtjs/robots": "^5.4.0",
     "@nuxtjs/sitemap": "^7.4.3",
+    "eslint": "^9.32.0",
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.0.2",
-    "nuxt-gtag": "^3.0.3"
+    "nuxt-gtag": "^3.0.3",
+    "typescript": "^5.9.0",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "^9.0.9",
+    "@dargmuesli/nuxt-cookie-control": "^9.1.0",
     "@iconify-json/lucide": "1.2.39",
     "@nuxt/devtools": "2.4.0",
     "@nuxt/icon": "^1.15.0",
-    "@nuxt/image": "1.10.0",
     "tailwindcss": "^4.1.11"
   },
-  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }
