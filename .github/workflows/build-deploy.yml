@@ -62,14 +62,14 @@ jobs:
 
   deploy:
     name: Deploy on Dokploy
-    needs: build                                             # 1) attendre le build :contentReference[oaicite:2]{index=2}
+    needs: build
     runs-on: ubuntu-latest
-    if: needs.build.result == 'success'                     # 2) ne run que si build OK :contentReference[oaicite:3]{index=3}
+    if: needs.build.result == 'success'
 
     steps:
       - name: Determine Compose ID
         run: |
-          BR=${{ github.ref_name }}                          # push event always has github.ref_name :contentReference[oaicite:4]{index=4}
+          BR=${{ github.ref_name }}
           COMPOSE_ID=${{ secrets.DOKPLOY_COMPOSE_ID_PROD }}
           if [[ "$BR" == "dev" ]]; then
             COMPOSE_ID=${{ secrets.DOKPLOY_COMPOSE_ID_DEV }}
