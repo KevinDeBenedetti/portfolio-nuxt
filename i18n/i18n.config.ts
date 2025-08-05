@@ -1,4 +1,3 @@
-import Legals from "~/pages/legals.vue";
 
 export default defineI18nConfig(() => ({
     legacy: false,
