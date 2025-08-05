@@ -29,6 +29,42 @@ useSeoMeta({
   ogImage: '/images/projects.webp',
   twitterCard: 'summary_large_image',
 })
+
+const { onLoaded } = useScriptNpm({
+  packageName: 'js-confetti',
+  file: 'dist/js-confetti.browser.js',
+  version: '0.12.0',
+  scriptOptions: {
+    use() {
+      return { JSConfetti: window.JSConfetti }
+    },
+  },
+})
+
+onLoaded(({ JSConfetti }) => {
+  const confetti = new JSConfetti()
+  
+  // Mix développeur web moderne
+  confetti.addConfetti({ 
+    emojis: ['💻', '⚡', '🚀', '✨', '🔥', '💡', '🎯', '⚙️'] 
+  })
+  
+  // Ou alternativement, rotation aléatoire
+  const devEmojis = [
+    ['💻', '⚡', '🚀', '✨'], // Pack énergie
+    ['👨‍💻', '🔧', '⚙️', '💡'], // Pack outils
+    ['🎉', '🥳', '🏆', '✅'], // Pack célébration
+    ['📱', '💾', '🖥️', '⌨️'],  // Pack hardware
+    ['⚛️', '💻', '🔥', '✨'], // React
+    ['💚', '💻', '⚡', '🚀'], // Vue (votre cas avec Nuxt)
+    ['💚', '⚡', '🚀', '📦'], // Node.js
+    ['💚', '⚡', '🚀', '📦'], // Node.js
+    ['🐙', '📝', '🔄', '✅'], // Git/GitHub
+  ]
+  
+  const randomPack = devEmojis[Math.floor(Math.random() * devEmojis.length)]
+  confetti.addConfetti({ emojis: randomPack })
+})
 </script>
 
 <template>
