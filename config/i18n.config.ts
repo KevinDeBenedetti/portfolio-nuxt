@@ -7,9 +7,10 @@ const i18nConfig: Partial<NuxtConfig> = {
     },
     vueI18n: './i18n.config.ts',
     locales: [
-      { code: 'en', iso: 'en-US'},
-      { code: 'fr', iso: 'fr-FR' }
+      { code: 'en', name: 'English', iso: 'en-US'},
+      { code: 'fr', name: 'French', iso: 'fr-FR' }
     ],
+    strategy: 'prefix_except_default',
     defaultLocale: 'fr',
     customRoutes: 'config',
     detectBrowserLanguage: {

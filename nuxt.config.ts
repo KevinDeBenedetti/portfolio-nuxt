@@ -15,11 +15,10 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  nitro: {
-    logLevel: 5, // Maximum de logs
-    timing: true // Affiche les temps d'exécution
-  },
-
+  // nitro: {
+  //   logLevel: 5, // Maximum de logs
+  //   timing: true // Affiche les temps d'exécution
+  // },
 
   runtimeConfig: {
     public: {
