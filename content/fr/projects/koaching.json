@@ -1,0 +1,8 @@
+{
+  "name": "Koaching",
+  "url": "https://koaching.app/",
+  "description": "Application de coaching sportif - FastAPI | Nuxt",
+  "thumbnail": "/projects/koaching_40x40.webp",
+  "slug": "koaching",
+  "sort": 4
+}
