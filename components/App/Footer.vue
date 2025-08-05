@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { page } = await usePageContent('legals')
+const { t } = useI18n()
 const localePath = useLocalePath()
 const currentYear = computed(() => new Date().getFullYear())
 </script>
@@ -11,7 +11,7 @@ const currentYear = computed(() => new Date().getFullYear())
     <br>
     <p>© {{ currentYear }} Kevin De Benedetti</p>
 
-    <ULink :to="localePath('legals')" class="mt-2 text-xs hover:text-primary">{{ page.h1 }}</ULink>
+    <ULink :to="localePath('legals')" class="mt-2 text-xs hover:text-primary">{{ t('footer.legals') }}</ULink>
 
   </footer>
 </template>
