@@ -15,32 +15,14 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  // nitro: {
-  //   logLevel: 5, // Maximum de logs
-  //   timing: true // Affiche les temps d'exécution
-  // },
-
   runtimeConfig: {
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
-      directusUrl: process.env.NUXT_DIRECTUS_URL || "https://REDACTED_URL",
     }
   },
 
-  modules: [
-    "@nuxt/ui",
-    "@nuxt/icon",
-    // "@nuxtjs/fontaine",
-    "@nuxt/image",
-    '@nuxtjs/sitemap',
-    "@nuxtjs/robots",
-    "@nuxt/content",
-    "nuxt-gtag",
-    "@dargmuesli/nuxt-cookie-control",
-    "@nuxtjs/i18n",
-    "@nuxt/fonts",
-    "@nuxt/eslint",
-  ],
+  modules: ["@nuxt/ui", "@nuxt/icon", // "@nuxtjs/fontaine",
+  "@nuxt/image", '@nuxtjs/sitemap', "@nuxtjs/robots", "@nuxt/content", "nuxt-gtag", "@dargmuesli/nuxt-cookie-control", "@nuxtjs/i18n", "@nuxt/fonts", "@nuxt/eslint", "@nuxt/scripts"],
 
   content: {
     preview: {
