@@ -21,7 +21,7 @@ const handleScroll = () => {
 
 const headerStyles = computed(() => ({
   transform: isVisible.value ? 'translateY(0)' : 'translateY(-100%)',
-  transition: 'transform 0.3s ease-in-out, backdrop-fitler 0.3s ease-in-out',
+  transition: 'transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out',
   backgroundColor: isScrolled.value ? 'blur(12px)' : 'blur(0px)',
 }))
 
