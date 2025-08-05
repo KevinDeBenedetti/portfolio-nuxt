@@ -1,3 +1,5 @@
+import Legals from "~/pages/legals.vue";
+
 export default defineI18nConfig(() => ({
     legacy: false,
     locale: 'fr',
@@ -20,6 +22,9 @@ export default defineI18nConfig(() => ({
             error: {
                 title: 'Error',
                 projects: 'No projects found.',
+            },
+            footer: {
+                legals: 'Legal Notice',
             }
         },
         fr: {
@@ -40,6 +45,9 @@ export default defineI18nConfig(() => ({
             error: {
                 title: 'Erreur',
                 projects: 'Pas de projets trouvés.',
+            },
+            footer: {
+                legals: 'Mentions légales',
             }
         }
     }

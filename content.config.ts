@@ -20,23 +20,23 @@ const projectSchema = z.object({
 export default defineContentConfig({
   collections: {
 
-    content_en: defineCollection({
-      type: 'data',
-      source: {
-        include: 'en/**',
-        prefix: ''
-      },
-      schema: pageSchema
-    }),
+    // content_en: defineCollection({
+    //   type: 'data',
+    //   source: {
+    //     include: 'en/**',
+    //     prefix: ''
+    //   },
+    //   schema: pageSchema
+    // }),
 
-    content_fr: defineCollection({
-      type: 'data',
-      source: {
-        include: 'fr/**',
-        prefix: ''
-      },
-      schema: pageSchema
-    }),
+    // content_fr: defineCollection({
+    //   type: 'data',
+    //   source: {
+    //     include: 'fr/**',
+    //     prefix: ''
+    //   },
+    //   schema: pageSchema
+    // }),
 
     pages_fr: defineCollection({
       type: 'data',
