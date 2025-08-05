@@ -1,25 +1,19 @@
 <script lang="ts" setup>
-const { t, locale } = useI18n()
+import type { Collections } from '@nuxt/content'
 const localePath = useLocalePath()
+const { t, locale } = useI18n()
 
-// Utiliser Nuxt Content au lieu de Directus
-const { data: projects, error } = await useAsyncData(
-  `projects-home-${locale.value}`,
-  () => queryCollection('projects')
-    .where('lang', '=', locale.value)
+const { data: projects } = await useAsyncData(async () => {
+  const collection = ('projects_' + locale.value) as keyof Collections
+  const content = await queryCollection(collection)
+    .order('sort', 'DESC')
     .limit(3)
     .all()
-)
 
-const toast = useToast()
-
-if (error.value) {
-  toast.add({ 
-    title: t('error.title'),
-    description: t('error.projects'),
-    color: 'error'
-  })
-}
+  return content
+}, {
+  watch: [locale],
+})
 </script>
 
 <template>
@@ -37,7 +31,7 @@ if (error.value) {
         :label="t('home.projects_link')"
         :to="localePath('projects')"
         variant="link"
-        color="gray"
+        color="primary"
       />
     </div>
   </div>
