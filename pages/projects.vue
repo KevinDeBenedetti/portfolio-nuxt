@@ -1,34 +1,34 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
+import type { Collections, PagesFrCollectionItem, PagesEnCollectionItem } from '@nuxt/content'
+const { locale } = useI18n()
 
-const { page } = await usePageContent('projects')
-
-// Use Nuxt Content to fetch projects based on current locale
-const { data: projects, error } = await useAsyncData(
-  `projects-${locale.value}`,
-  () => queryCollection('projects')
-    .where('lang', '=', locale.value)
-    .all()
-)
-
-useSeoMeta({
-  title: page.title,
-  description: page.description,
-  ogTitle: page.title,
-  ogDescription: page.description,
-  ogImage: 'https://www.kevindb.dev/images/projects.webp',
-  twitterCard: 'summary_large_image',
+const { data: page } = await useAsyncData(async () => {
+  const collection = ('pages_' + locale.value) as keyof Collections
+  const content = await queryCollection(collection).where('stem', '=', `${locale.value}/pages/projects`).first()
+  return content as PagesFrCollectionItem | PagesEnCollectionItem
+}, {
+  watch: [locale],
 })
 
-const toast = useToast()
+const { data: projects } = await useAsyncData(async () => {
+  const collection = ('projects_' + locale.value) as keyof Collections
+  const content = await queryCollection(collection)
+    .order('sort', 'DESC')
+    .all()
 
-if (error.value) {
-  toast.add({ 
-    title: t('error.title'),
-    description: t('error.projects'),
-    color: 'error'
-  })
-}
+  return content
+}, {
+  watch: [locale],
+})
+
+useSeoMeta({
+  title: page.value?.title,
+  description: page.value?.description,
+  ogTitle: page.value?.title,
+  ogDescription: page.value?.description,
+  ogImage: '/images/projects.webp',
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
