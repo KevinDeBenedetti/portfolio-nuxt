@@ -4,30 +4,35 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-});
+})
 
 const config = useRuntimeConfig()
-const { $readFile, $directus } = useNuxtApp();
+const { $readFile, $directus } = useNuxtApp()
 const imageMeta = ref(null)
 
 // Check if this is a Directus project (has translations) or Nuxt Content project (direct fields)
 const isDirectusProject = !!props.project?.translations
-const projectTitle = isDirectusProject ? props.project?.translations[0]?.title : props.project?.name
-const projectDescription = isDirectusProject ? props.project?.translations[0]?.description : props.project?.description
-const projectThumbnail = isDirectusProject ? props.project?.image : props.project?.thumbnail
+const projectTitle = isDirectusProject
+  ? props.project?.translations[0]?.title
+  : props.project?.name
+const projectDescription = isDirectusProject
+  ? props.project?.translations[0]?.description
+  : props.project?.description
+const projectThumbnail = isDirectusProject
+  ? props.project?.image
+  : props.project?.thumbnail
 
 if (!projectThumbnail) {
-  imageMeta.value = null;
+  imageMeta.value = null
 } else if (isDirectusProject) {
   // Handle Directus image
-  const { data } = await useAsyncData(
-    `imageMeta-${props.project.id}`,
-    () => $directus.request($readFile(projectThumbnail))
-  );
-  imageMeta.value = data.value;
+  const { data } = await useAsyncData(`imageMeta-${props.project.id}`, () =>
+    $directus.request($readFile(projectThumbnail))
+  )
+  imageMeta.value = data.value
 } else {
   // Handle static image path for Nuxt Content
-  imageMeta.value = { filename_disk: projectThumbnail };
+  imageMeta.value = { filename_disk: projectThumbnail }
 }
 </script>
 <template>
@@ -47,7 +52,11 @@ if (!projectThumbnail) {
       class="flex-1 border-b border-dashed border-gray-300 dark:border-gray-800 group-hover:border-gray-700"
     />
     <UAvatar
-      :src="isDirectusProject ? (config.public.directusUrl + '/assets/' + imageMeta?.filename_disk) : imageMeta?.filename_disk"
+      :src="
+        isDirectusProject
+          ? config.public.directusUrl + '/assets/' + imageMeta?.filename_disk
+          : imageMeta?.filename_disk
+      "
       :ui="{ root: 'p-1', rounded: 'rounded z-10 relative' }"
       size="lg"
       :alt="projectTitle"

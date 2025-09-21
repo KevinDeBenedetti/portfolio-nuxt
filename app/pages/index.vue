@@ -3,18 +3,21 @@ import type { Collections } from '@nuxt/content'
 
 const { locale } = useI18n()
 
+const { data: page } = await useAsyncData(
+  async () => {
+    const collection = ('pages_' + locale.value) as keyof Collections
+    const content = await queryCollection(collection)
+      .where('stem', '=', `${locale.value}/pages/home`)
+      .first()
 
+    // Optional: fallback to default locale if content is missing
 
-const { data: page } = await useAsyncData(async () => {
-  const collection = ('pages_' + locale.value) as keyof Collections
-  const content = await queryCollection(collection).where('stem', '=', `${locale.value}/pages/home`).first()
-
-  // Optional: fallback to default locale if content is missing
-
-  return content
-}, {
-  watch: [locale],
-})
+    return content
+  },
+  {
+    watch: [locale],
+  }
+)
 
 useSeoMeta({
   title: page.value?.title,
@@ -23,7 +26,7 @@ useSeoMeta({
   ogDescription: page.value?.description,
   ogImage: 'https://www.kevindb.dev/images/home.webp',
   twitterCard: 'summary_large_image',
-});
+})
 </script>
 
 <template>

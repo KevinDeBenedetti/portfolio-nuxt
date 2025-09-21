@@ -7,8 +7,8 @@ const i18nConfig: Partial<NuxtConfig> = {
     },
     vueI18n: './i18n.config.ts',
     locales: [
-      { code: 'en', name: 'English', iso: 'en-US'},
-      { code: 'fr', name: 'French', iso: 'fr-FR' }
+      { code: 'en', name: 'English', iso: 'en-US' },
+      { code: 'fr', name: 'French', iso: 'fr-FR' },
     ],
     strategy: 'prefix_except_default',
     defaultLocale: 'fr',
@@ -20,25 +20,25 @@ const i18nConfig: Partial<NuxtConfig> = {
     pages: {
       index: {
         fr: '/',
-        en: '/'
+        en: '/',
       },
       projects: {
         fr: '/realisations',
-        en: '/projects'
+        en: '/projects',
       },
       articles: {
         fr: '/articles',
-        en: '/articles'
+        en: '/articles',
       },
       'articles-slug': {
         fr: '/articles/[slug]',
-        en: '/articles/[slug]'
+        en: '/articles/[slug]',
       },
       legals: {
         fr: '/mentions-legales',
-        en: '/legal-notice'
-      }
-    }
+        en: '/legal-notice',
+      },
+    },
   },
 }
 

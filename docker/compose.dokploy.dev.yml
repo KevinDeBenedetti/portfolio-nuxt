@@ -1,5 +1,4 @@
 services:
-
   nuxt:
     image: ghcr.io/kevindebenedetti/portfolio_nuxt:dev-latest
     pull_policy: always
