@@ -2,10 +2,7 @@ import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 const pageSchema = z.object({
   title: z.string(),
-  description: z.string(),
-  h1: z.string(),
-  first_p: z.string().optional(),
-  h2: z.string().optional(),
+  description: z.string()
 })
 
 const projectSchema = z.object({
@@ -19,23 +16,21 @@ const projectSchema = z.object({
 
 export default defineContentConfig({
   collections: {
-    // content_en: defineCollection({
-    //   type: 'data',
-    //   source: {
-    //     include: 'en/**',
-    //     prefix: ''
-    //   },
-    //   schema: pageSchema
-    // }),
+    content_en: defineCollection({
+      type: 'page',
+      source: {
+        include: 'en/**',
+        prefix: '',
+      },
+    }),
 
-    // content_fr: defineCollection({
-    //   type: 'data',
-    //   source: {
-    //     include: 'fr/**',
-    //     prefix: ''
-    //   },
-    //   schema: pageSchema
-    // }),
+    content_fr: defineCollection({
+      type: 'page',
+      source: {
+        include: 'fr/**',
+        prefix: '',
+      },
+    }),
 
     pages_fr: defineCollection({
       type: 'data',
@@ -60,51 +55,5 @@ export default defineContentConfig({
       source: 'en/projects/*.json',
       schema: projectSchema,
     }),
-
-    // pages: defineCollection({
-    //   type: 'data',
-    //   source: '**/pages/*.json',
-    //   schema: z.object({
-    //     title: z.string(),
-    //     description: z.string(),
-    //     h1: z.string(),
-    //     first_p: z.string().optional(),
-    //     h2: z.string().optional(),
-    //   })
-    // }),
-
-    // projects: defineCollection({
-    //   type: 'data',
-    //   source: '**/projects/*.json',
-    //   schema: z.object({
-    //     title: z.string(),
-    //     url: z.string(),
-    //     description: z.string(),
-    //     thumbnail: z.string(),
-    //     slug: z.string(),
-    //     sort: z.number(),
-    //   })
-    // }),
-
-    // legals: defineCollection({
-    //   type: 'page',
-    //   source: '**/legals/*.md'
-    // }),
-
-    // articles: defineCollection({
-    //   type: 'page',
-    //   source: '**/articles/*.md',
-    //   schema: z.object({
-    //     title: z.string(),
-    //     description: z.string(),
-    //     published: z.string(),
-    //     slug: z.string(),
-    //     lang: z.string(),
-    //     sitemap: z.object({
-    //       loc: z.string(),
-    //       lastmod: z.string()
-    //     })
-    //   })
-    // })
   },
 })
