@@ -1,16 +1,15 @@
 // import tailwindcss from "@tailwindcss/vite";
-import cookieConfig from "./config/cookie.config"
-import i18nConfig from "./config/i18n.config"
-import seoConfig from "./config/seo.config"
+import cookieConfig from './config/cookie.config'
+import i18nConfig from './config/i18n.config'
+import seoConfig from './config/seo.config'
 
 export default defineNuxtConfig({
+  compatibilityDate: '2025-07-30',
 
-  compatibilityDate: "2025-07-30",
-  
   devServer: {
     host: '0.0.0.0',
     // host: 'localhost',
-    port: 3000
+    port: 3000,
   },
 
   devtools: { enabled: true },
@@ -18,28 +17,28 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
-    }
+    },
   },
 
   modules: [
-    "@nuxt/ui",
-    "@nuxt/icon",
-    "@nuxt/image",
+    '@nuxt/ui',
+    '@nuxt/icon',
+    '@nuxt/image',
     '@nuxtjs/sitemap',
-    "@nuxtjs/robots",
-    "@nuxt/content",
-    "nuxt-gtag",
-    "@dargmuesli/nuxt-cookie-control",
-    "@nuxtjs/i18n",
-    "@nuxt/fonts",
-    "@nuxt/eslint", 
-    "@nuxt/scripts"
+    '@nuxtjs/robots',
+    '@nuxt/content',
+    'nuxt-gtag',
+    '@dargmuesli/nuxt-cookie-control',
+    '@nuxtjs/i18n',
+    '@nuxt/fonts',
+    '@nuxt/eslint',
+    '@nuxt/scripts',
   ],
 
   content: {
     preview: {
-      api: 'https://api.nuxt.studio'
-    }
+      api: 'https://api.nuxt.studio',
+    },
   },
 
   // documentDriven: true,
@@ -49,23 +48,21 @@ export default defineNuxtConfig({
   ...cookieConfig,
 
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: {
-        lang: "fr",
-        class: "h-full",
+        lang: 'fr',
+        class: 'h-full',
       },
       bodyAttrs: {
-        class: "antialiased bg-gray-50 dark:bg-black min-h-screen",
+        class: 'antialiased bg-gray-50 dark:bg-black min-h-screen',
       },
     },
   },
 
   fonts: {
     provider: 'google',
-    families: [
-      { name: 'Inter', provider: 'google' },
-    ]
+    families: [{ name: 'Inter', provider: 'google' }],
   },
 
   css: ['~/assets/css/main.css'],
@@ -73,6 +70,6 @@ export default defineNuxtConfig({
   gtag: {
     initMode: 'manual',
     id: process.env.NUXT_GTAG_ID,
-    enabled: process.env.NODE_ENV === 'production'
+    enabled: process.env.NODE_ENV === 'production',
   },
-});
+})

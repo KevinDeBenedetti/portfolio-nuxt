@@ -8,21 +8,13 @@ const seoConfig: Partial<NuxtConfig> = {
 
   robots: {
     allow: '/',
-    disallow: [
-      '/articles/',
-      '/icons/',
-      '/projects/',
-      '/images/',
-    ],
+    disallow: ['/articles/', '/icons/', '/projects/', '/images/'],
     blockNonSeoBots: true,
     credits: false,
   },
 
   sitemap: {
-    exclude: [
-      '/mentions-legales',
-      '/en/legal-notice',
-    ],
+    exclude: ['/mentions-legales', '/en/legal-notice'],
   },
 }
 

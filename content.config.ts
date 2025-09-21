@@ -19,7 +19,6 @@ const projectSchema = z.object({
 
 export default defineContentConfig({
   collections: {
-
     // content_en: defineCollection({
     //   type: 'data',
     //   source: {
@@ -41,26 +40,26 @@ export default defineContentConfig({
     pages_fr: defineCollection({
       type: 'data',
       source: 'fr/pages/*.json',
-      schema: pageSchema
+      schema: pageSchema,
     }),
 
     pages_en: defineCollection({
       type: 'data',
       source: 'en/pages/*.json',
-      schema: pageSchema
+      schema: pageSchema,
     }),
 
-    projects_fr: defineCollection({ 
+    projects_fr: defineCollection({
       type: 'data',
       source: 'fr/projects/*.json',
-      schema: projectSchema
+      schema: projectSchema,
     }),
 
-    projects_en: defineCollection({ 
+    projects_en: defineCollection({
       type: 'data',
       source: 'en/projects/*.json',
-      schema: projectSchema
-    })
+      schema: projectSchema,
+    }),
 
     // pages: defineCollection({
     //   type: 'data',
@@ -86,7 +85,7 @@ export default defineContentConfig({
     //     sort: z.number(),
     //   })
     // }),
-    
+
     // legals: defineCollection({
     //   type: 'page',
     //   source: '**/legals/*.md'
@@ -107,5 +106,5 @@ export default defineContentConfig({
     //     })
     //   })
     // })
-  }
+  },
 })

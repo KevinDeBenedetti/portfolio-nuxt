@@ -1,9 +1,9 @@
 ---
-title: "Déployer son projet Vue 3 avec GitHub Actions & Pages"
+title: 'Déployer son projet Vue 3 avec GitHub Actions & Pages'
 description: "Un tuto pour bien démarrer avec le déploiement d'un projet Vue 3 et GitHub"
 published: 2024/02/20
-slug: "deployer-app-vue-3-vite-github-actions-pages"
-lang: "fr"
+slug: 'deployer-app-vue-3-vite-github-actions-pages'
+lang: 'fr'
 sitemap:
   loc: /articles/deployer-app-vue-3-vite-github-actions-pages
   lastmod: 2024-02-20
@@ -25,13 +25,11 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/repo-name/',
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
 })
 ```

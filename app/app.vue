@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
-const { locale } = useI18n();
-const { cookiesEnabledIds } = useCookieControl();
-const { initialize, gtag } = useGtag();
-const config = useRuntimeConfig();
+import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types'
+const { locale } = useI18n()
+const { cookiesEnabledIds } = useCookieControl()
+const { initialize, gtag } = useGtag()
+const config = useRuntimeConfig()
 
 watch(
   () => cookiesEnabledIds.value,
@@ -13,12 +13,12 @@ watch(
       current?.includes('google-analytics')
     ) {
       // cookie with id `google-analytics` got added
-      initialize(config.public.gtagId);
-      gtag('config', config.public.gtagId);
-      window.location.reload();
+      initialize(config.public.gtagId)
+      gtag('config', config.public.gtagId)
+      window.location.reload()
     }
   },
-  { deep: true },
+  { deep: true }
 )
 </script>
 
@@ -26,13 +26,13 @@ watch(
   <UApp>
     <NuxtLoadingIndicator color="#14b8a6" />
     <AppNavbar />
-      <div class="h-32"/>
-        <UContainer>
-          <div class="">
-            <NuxtPage />
-          </div>
-        </UContainer>
-      <div class="h-32"/>
+    <div class="h-32" />
+    <UContainer>
+      <div class="">
+        <NuxtPage />
+      </div>
+    </UContainer>
+    <div class="h-32" />
     <AppFooter />
     <CookieControl :locale="locale as Locale" />
   </UApp>

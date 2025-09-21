@@ -13,7 +13,9 @@ const { data: articles } = await useAsyncData('articles-home', () =>
 
 <template>
   <div>
-    <h2 class="uppercase text-xs font-semibold text-gray-400 mb-6">{{ t('home.articles_featured') }}</h2>
+    <h2 class="uppercase text-xs font-semibold text-gray-400 mb-6">
+      {{ t('home.articles_featured') }}
+    </h2>
     <ul class="space-y-16">
       <li v-for="(article, id) in articles" :key="id">
         <AppArticleCard :article="article" />

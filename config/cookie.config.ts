@@ -34,16 +34,18 @@ const cookieConfig: Partial<NuxtConfig> = {
 
     localeTexts: {
       fr: {
-        bannerTitle: "Cookies",
-        bannerDescription: "Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser l’utilisation du site afin d'optimiser nos services. En continuant sur ce site, vous acceptez leur utilisation.",
-        save: "Enregistrer",
+        bannerTitle: 'Cookies',
+        bannerDescription:
+          "Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser l’utilisation du site afin d'optimiser nos services. En continuant sur ce site, vous acceptez leur utilisation.",
+        save: 'Enregistrer',
       },
       en: {
-        bannerTitle: "Cookies",
-        bannerDescription: "We use cookies to enhance your browsing experience and analyze site usage to optimize our services. By continuing on this site, you accept their use.",
+        bannerTitle: 'Cookies',
+        bannerDescription:
+          'We use cookies to enhance your browsing experience and analyze site usage to optimize our services. By continuing on this site, you accept their use.',
         save: 'Remember',
-      }
-    }
+      },
+    },
   },
 }
 
