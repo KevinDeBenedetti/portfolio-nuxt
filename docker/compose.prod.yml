@@ -1,6 +1,6 @@
 services:
-  nuxt-prod:
-    container_name: portfolio-nuxt-prod
+  portfolio-prod:
+    container_name: portfolio-prod
     platform: linux/amd64
     restart: always
     build:
