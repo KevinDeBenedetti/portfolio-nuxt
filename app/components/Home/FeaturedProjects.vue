@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 import type { Collections } from '@nuxt/content'
 const localePath = useLocalePath()
-const { t, locale } = useI18n()
+const { locale } = useI18n()
+
+const props = defineProps<{
+  featured: string
+  link: string
+}>()
 
 const { data: projects } = await useAsyncData(
   async () => {
@@ -22,7 +27,7 @@ const { data: projects } = await useAsyncData(
 <template>
   <div>
     <h2 class="uppercase text-xs font-semibold text-gray-400 mb-6">
-      {{ t('home.projects_featured') }}
+      {{ props.featured }}
     </h2>
     <div class="space-y-4">
       <AppProjectCard
@@ -33,7 +38,7 @@ const { data: projects } = await useAsyncData(
     </div>
     <div class="flex items-center justify-center mt-6 text-sm">
       <UButton
-        :label="t('home.projects_link')"
+        :label="props.link"
         :to="localePath('projects')"
         variant="link"
         color="primary"
