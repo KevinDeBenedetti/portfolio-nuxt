@@ -1,25 +1,37 @@
 <script setup lang="ts">
-import type { Collections, PagesFrCollectionItem, PagesEnCollectionItem } from '@nuxt/content'
+import type {
+  Collections,
+  PagesFrCollectionItem,
+  PagesEnCollectionItem,
+} from '@nuxt/content'
 const { locale } = useI18n()
 
-const { data: page } = await useAsyncData(async () => {
-  const collection = ('pages_' + locale.value) as keyof Collections
-  const content = await queryCollection(collection).where('stem', '=', `${locale.value}/pages/projects`).first()
-  return content as PagesFrCollectionItem | PagesEnCollectionItem
-}, {
-  watch: [locale],
-})
+const { data: page } = await useAsyncData(
+  async () => {
+    const collection = ('pages_' + locale.value) as keyof Collections
+    const content = await queryCollection(collection)
+      .where('stem', '=', `${locale.value}/pages/projects`)
+      .first()
+    return content as PagesFrCollectionItem | PagesEnCollectionItem
+  },
+  {
+    watch: [locale],
+  }
+)
 
-const { data: projects } = await useAsyncData(async () => {
-  const collection = ('projects_' + locale.value) as keyof Collections
-  const content = await queryCollection(collection)
-    .order('sort', 'DESC')
-    .all()
+const { data: projects } = await useAsyncData(
+  async () => {
+    const collection = ('projects_' + locale.value) as keyof Collections
+    const content = await queryCollection(collection)
+      .order('sort', 'DESC')
+      .all()
 
-  return content
-}, {
-  watch: [locale],
-})
+    return content
+  },
+  {
+    watch: [locale],
+  }
+)
 
 useSeoMeta({
   title: page.value?.title,
@@ -43,24 +55,24 @@ const { onLoaded } = useScriptNpm({
 
 onLoaded(({ JSConfetti }) => {
   const confetti = new JSConfetti()
-  
+
   // Mix développeur web moderne
-  confetti.addConfetti({ 
-    emojis: ['💻', '⚡', '🚀', '✨', '🔥', '💡', '🎯', '⚙️'] 
+  confetti.addConfetti({
+    emojis: ['💻', '⚡', '🚀', '✨', '🔥', '💡', '🎯', '⚙️'],
   })
-  
+
   // Ou alternativement, rotation aléatoire
   const devEmojis = [
     ['💻', '⚡', '🚀', '✨'], // Pack énergie
     ['👨‍💻', '🔧', '⚙️', '💡'], // Pack outils
     ['🎉', '🥳', '🏆', '✅'], // Pack célébration
-    ['📱', '💾', '🖥️', '⌨️'],  // Pack hardware
+    ['📱', '💾', '🖥️', '⌨️'], // Pack hardware
     ['⚛️', '💻', '🔥', '✨'], // React
     ['💚', '💻', '⚡', '🚀'], // Vue (votre cas avec Nuxt)
     ['💚', '⚡', '🚀', '📦'], // Node.js
     ['🐙', '📝', '🔄', '✅'], // Git/GitHub
   ]
-  
+
   const randomPack = devEmojis[Math.floor(Math.random() * devEmojis.length)]
   confetti.addConfetti({ emojis: randomPack })
 })
