@@ -27,10 +27,10 @@ Pursuant to Article 6 of Law n° 2004-575 of June 21, 2004, regarding trust in t
 
 - **Owner**: Kevin De Benedetti
 - **Publication Manager**: Kevin De Benedetti – contact@kevindb.dev  
-  The publication manager is either an individual or legal entity.  
-- **Webmaster**: Kevin De Benedetti – contact@kevindb.dev  
-- **Host**: PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60  
-- **Data Protection Officer**: Kevin De Benedetti – contact@kevindb.dev  
+  The publication manager is either an individual or legal entity.
+- **Webmaster**: Kevin De Benedetti – contact@kevindb.dev
+- **Host**: PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60
+- **Data Protection Officer**: Kevin De Benedetti – contact@kevindb.dev
 
 ---
 

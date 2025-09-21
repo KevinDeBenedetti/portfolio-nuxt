@@ -1,9 +1,9 @@
 ---
-title: "Deploying Your Vue 3 Project with GitHub Actions & Pages"
-description: "A tutorial to get started with deploying a Vue 3 project using GitHub"
+title: 'Deploying Your Vue 3 Project with GitHub Actions & Pages'
+description: 'A tutorial to get started with deploying a Vue 3 project using GitHub'
 published: 2024/02/20
-slug: "deployer-app-vue-3-vite-github-actions-pages"
-lang: "en"
+slug: 'deployer-app-vue-3-vite-github-actions-pages'
+lang: 'en'
 sitemap:
   loc: /en/articles/deployer-app-vue-3-vite-github-actions-pages
   lastmod: 2024-02-20
@@ -25,13 +25,11 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/repo-name/',
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
 })
 ```
