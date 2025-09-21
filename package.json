@@ -15,7 +15,6 @@
   "dependencies": {
     "@directus/sdk": "^20.1.0",
     "@nuxt/content": "^3.7.1",
-    "@nuxt/eslint": "^1.9.0",
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/image": "1.11.0",
     "@nuxt/scripts": "0.11.13",
@@ -26,7 +25,6 @@
     "@nuxtjs/sitemap": "^7.4.7",
     "@unhead/vue": "^2.0.17",
     "better-sqlite3": "^12.2.0",
-    "eslint": "^9.36.0",
     "nuxt": "^4.1.2",
     "nuxt-gtag": "^4.0.0",
     "typescript": "5.9.2",
@@ -37,7 +35,10 @@
     "@dargmuesli/nuxt-cookie-control": "^9.1.4",
     "@iconify-json/lucide": "1.2.68",
     "@nuxt/devtools": "2.6.5",
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/eslint-config": "^1.9.0",
     "@nuxt/icon": "^2.0.0",
+    "eslint": "^9.36.0",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.13"
   },
