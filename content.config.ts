@@ -2,7 +2,7 @@ import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 const pageSchema = z.object({
   title: z.string(),
-  description: z.string()
+  description: z.string(),
 })
 
 const projectSchema = z.object({
