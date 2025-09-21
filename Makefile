@@ -21,7 +21,7 @@ start: setup ## Start development environment
 # 	docker compose up -d
 
 lint: ## Lint the codebase
-	pnpm lint:fix
+	pnpm lint:fix && pnpm format
 
 upgrade: ## Upgrade dependencies
 	pnpm nuxt upgrade

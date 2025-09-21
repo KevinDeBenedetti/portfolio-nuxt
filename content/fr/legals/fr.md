@@ -7,7 +7,7 @@ description: Voici les mentions légales du site.
 
 ## Définitions
 
-**Client** : tout professionnel ou personne physique capable au sens des articles 1123 et suivants du Code civil, ou personne morale, qui visite le Site objet des présentes conditions générales.  
+**Client** : tout professionnel ou personne physique capable au sens des articles 1123 et suivants du Code civil, ou personne morale, qui visite le Site objet des présentes conditions générales.
 
 **Prestations et Services** : [https://www.kevindb.dev/](https://www.kevindb.dev/) met à disposition des Clients :
 
@@ -27,10 +27,10 @@ En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance
 
 - **Propriétaire** : Kevin De Benedetti
 - **Responsable publication** : Kevin De Benedetti – contact@kevindb.dev  
-  Le responsable publication est une personne physique ou une personne morale.  
-- **Webmaster** : Kevin De Benedetti – contact@kevindb.dev  
-- **Hébergeur** : PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60  
-- **Délégué à la protection des données** : Kevin De Benedetti – contact@kevindb.dev  
+  Le responsable publication est une personne physique ou une personne morale.
+- **Webmaster** : Kevin De Benedetti – contact@kevindb.dev
+- **Hébergeur** : PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60
+- **Délégué à la protection des données** : Kevin De Benedetti – contact@kevindb.dev
 
 ---
 
