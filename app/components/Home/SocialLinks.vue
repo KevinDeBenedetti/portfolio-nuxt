@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const { t } = useI18n()
+const props = defineProps<{
+  socials: string
+}>()
 
 const links = [
   {
@@ -18,7 +20,7 @@ const links = [
 <template>
   <div>
     <h2 class="uppercase text-xs font-semibold text-gray-400 mb-4">
-      {{ t('home.socials') }}
+      {{ props.socials }}
     </h2>
     <div class="space-y-5">
       <NuxtLink
