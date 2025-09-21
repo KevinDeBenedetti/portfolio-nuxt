@@ -2,10 +2,12 @@ name: CI – Linting
 
 on:
   pull_request:
-    branches: [main, dev]
+    branches:
+      - main
+      - dev
 
 jobs:
-  lint-client:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
