@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-30",
   
   devServer: {
-    // host: '0.0.0.0',
-    host: 'localhost',
+    host: '0.0.0.0',
+    // host: 'localhost',
     port: 3000
   },
 
@@ -21,8 +21,20 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ["@nuxt/ui", "@nuxt/icon", // "@nuxtjs/fontaine",
-  "@nuxt/image", '@nuxtjs/sitemap', "@nuxtjs/robots", "@nuxt/content", "nuxt-gtag", "@dargmuesli/nuxt-cookie-control", "@nuxtjs/i18n", "@nuxt/fonts", "@nuxt/eslint", "@nuxt/scripts"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/icon",
+    "@nuxt/image",
+    '@nuxtjs/sitemap',
+    "@nuxtjs/robots",
+    "@nuxt/content",
+    "nuxt-gtag",
+    "@dargmuesli/nuxt-cookie-control",
+    "@nuxtjs/i18n",
+    "@nuxt/fonts",
+    "@nuxt/eslint", 
+    "@nuxt/scripts"
+  ],
 
   content: {
     preview: {

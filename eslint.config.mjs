@@ -1,7 +1,7 @@
 import { createConfigForNuxt } from '@nuxt/eslint-config'
 
 export default createConfigForNuxt({
-  // options here
+  root: true,
   features: {
     tooling: true
   },
