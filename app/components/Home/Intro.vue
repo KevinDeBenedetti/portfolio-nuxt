@@ -1,29 +1,15 @@
 <script setup lang="ts">
-import type {
-  Collections,
-  PagesFrCollectionItem,
-  PagesEnCollectionItem,
-} from '@nuxt/content'
-const { locale } = useI18n()
+const props = defineProps<{
+  data: unknown
+}>()
 
-const { data: page } = await useAsyncData(
-  async () => {
-    const collection = ('pages_' + locale.value) as keyof Collections
-    const content = await queryCollection(collection)
-      .where('stem', '=', `${locale.value}/pages/home`)
-      .first()
-    return content as PagesFrCollectionItem | PagesEnCollectionItem
-  },
-  {
-    watch: [locale],
-  }
-)
+const { h1, h2, firstParagraph } = useContentParser(props.data || [])
 </script>
 
 <template>
   <div class="space-y-6">
     <h1 class="font-bold tracking-tight text-gray-800 dark:text-gray-100">
-      {{ page?.h1 }}
+      {{ h1 }}
     </h1>
     <img
       src="/images/favicon.png"
@@ -33,8 +19,8 @@ const { data: page } = await useAsyncData(
     <h2
       class="text-xl font-bold tracking-tight text-gray-800 dark:text-gray-100"
     >
-      {{ page?.h2 }}
+      {{ h2 }}
     </h2>
-    <p class="text-gray-900 dark:text-gray-400">{{ page?.first_p }}</p>
+    <p class="text-gray-900 dark:text-gray-400">{{ firstParagraph }}</p>
   </div>
 </template>
