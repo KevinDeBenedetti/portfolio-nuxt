@@ -1,17 +1,13 @@
 <script setup lang="ts">
-const { page, pageData, pending } = usePageContent()
-
-const body = computed(() => pageData.value.body || [])
-const socials = computed(() => pageData.value.meta?.socials || '')
-const projects_featured = computed(() => pageData.value.meta?.projects_featured || '')
-const projects_link = computed(() => pageData.value.meta?.projects_link || '')
+const { t } = useI18n()
+const { title, description, body, pending } = usePageContent()
 
 watchEffect(() => {
   useSeoMeta({
-    title: pageData.value.title,
-    description: pageData.value.description,
-    ogTitle: pageData.value.title,
-    ogDescription: pageData.value.description,
+    title: title.value,
+    description: description.value,
+    ogTitle: title.value,
+    ogDescription: description.value,
     ogImage: 'https://www.kevindb.dev/images/home.webp',
     twitterCard: 'summary_large_image',
   })
@@ -23,12 +19,12 @@ watchEffect(() => {
     <div v-if="pending" class="flex items-center justify-center">
       <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
     </div>
-    <div v-else-if="page && !pending" class="space-y-24">
+    <div v-else-if="body && !pending" class="space-y-24">
       <HomeIntro :data="body" />
-      <HomeSocialLinks :socials="socials" />
+      <HomeSocialLinks :socials="t('home.socials')" />
       <HomeFeaturedProjects
-        :featured="projects_featured"
-        :link="projects_link"
+        :featured="t('home.projects_featured')"
+        :link="t('home.projects_link')"
       />
 
       <!--
