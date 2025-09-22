@@ -1,16 +1,11 @@
 import { withLeadingSlash } from 'ufo'
 import type { Collections } from '@nuxt/content'
 
-export const usePageContent = (slug?: string | Ref<string>) => {
+export const usePageContent = () => {
   const route = useRoute()
   const { locale } = useI18n()
 
-  const pageSlug = computed(() => {
-    if (slug) {
-      return withLeadingSlash(String(unref(slug)))
-    }
-    return withLeadingSlash(String(route.params.slug || '/'))
-  })
+  const path = computed(() => withLeadingSlash(String(route.path)))
 
   const {
     data: page,
@@ -18,12 +13,10 @@ export const usePageContent = (slug?: string | Ref<string>) => {
     error,
     refresh,
   } = useAsyncData(
-    `page-${pageSlug.value}-${locale.value}`,
+    `page-${path.value}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
-      const content = await queryCollection(collection)
-        .path(pageSlug.value)
-        .first()
+      const content = await queryCollection(collection).path(path.value).first()
 
       //   if (!content && locale.value !== 'en') {
       //     const fallbackContent = await queryCollection('content_en').path(pageSlug.value).first()
@@ -33,7 +26,7 @@ export const usePageContent = (slug?: string | Ref<string>) => {
       return content
     },
     {
-      watch: [locale, pageSlug],
+      watch: [locale, path],
       default: () => null,
       server: true,
     }
