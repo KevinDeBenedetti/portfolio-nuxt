@@ -17,7 +17,7 @@ const { data: page } = await useAsyncData(
     // if (!content && locale.value !== 'en') {
     //   return await queryCollection('content_en').path(slug.value).first()
     // }
-    console.log('Fetched content:', content)
+
     return content
   },
   {
@@ -33,7 +33,6 @@ useSeoMeta({
   ogImage: 'https://www.kevindb.dev/images/home.webp',
   twitterCard: 'summary_large_image',
 })
-console.log('Page data:', page.value)
 </script>
 
 <template>
