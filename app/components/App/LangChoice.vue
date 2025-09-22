@@ -21,7 +21,9 @@ function toggleLocale() {
         :name="locale === 'fr' ? 'circle-flags:gb' : 'circle-flags:fx'"
         class="w-5 h-5"
       />
-      <span class="sr-only">{{ t('change_language') }}</span>
+      <span class="sr-only">
+        {{ t('change_language') }}
+      </span>
     </button>
   </UTooltip>
 </template>
