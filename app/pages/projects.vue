@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import type {
-  Collections,
-  PagesFrCollectionItem,
-  PagesEnCollectionItem,
-} from '@nuxt/content'
+import type { Collections } from '@nuxt/content'
 const { locale } = useI18n()
 
-const { data: page } = await useAsyncData(
-  async () => {
-    const collection = ('pages_' + locale.value) as keyof Collections
-    const content = await queryCollection(collection)
-      .where('stem', '=', `${locale.value}/pages/projects`)
-      .first()
-    return content as PagesFrCollectionItem | PagesEnCollectionItem
-  },
-  {
-    watch: [locale],
-  }
-)
+// const { data: page } = await useAsyncData(
+//   async () => {
+//     const collection = ('pages_' + locale.value) as keyof Collections
+//     const content = await queryCollection(collection)
+//       .where('stem', '=', `${locale.value}/pages/projects`)
+//       .first()
+//     return content as PagesFrCollectionItem | PagesEnCollectionItem
+//   },
+//   {
+//     watch: [locale],
+//   }
+// )
+
+const { title, description, body } = usePageContent()
+const { h1, firstParagraph } = useContentParser(body.value || [])
 
 const { data: projects } = await useAsyncData(
   async () => {
@@ -33,13 +32,15 @@ const { data: projects } = await useAsyncData(
   }
 )
 
-useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
-  ogTitle: page.value?.title,
-  ogDescription: page.value?.description,
-  ogImage: '/images/projects.webp',
-  twitterCard: 'summary_large_image',
+watchEffect(() => {
+  useSeoMeta({
+    title: title.value,
+    description: description.value,
+    ogTitle: title.value,
+    ogDescription: description.value,
+    ogImage: '/images/projects.webp',
+    twitterCard: 'summary_large_image',
+  })
 })
 
 const { onLoaded } = useScriptNpm({
@@ -80,7 +81,7 @@ onLoaded(({ JSConfetti }) => {
 
 <template>
   <main class="min-h-screen">
-    <AppHeader class="mb-12" :title="page?.h1" :description="page?.first_p" />
+    <AppHeader :title="h1" :description="firstParagraph" />
     <div class="space-y-4">
       <AppProjectCard
         v-for="(project, id) in projects"
