@@ -1,54 +1,43 @@
 <script setup lang="ts">
-import { withLeadingSlash } from 'ufo'
-import type { Collections } from '@nuxt/content'
+const { page, pageData, pending } = usePageContent()
 
-const route = useRoute()
-const { locale } = useI18n()
-const slug = computed(() => withLeadingSlash(String(route.params.slug || '/')))
+const body = computed(() => pageData.value.body || [])
+const socials = computed(() => pageData.value.meta?.socials || '')
+const projects_featured = computed(() => pageData.value.meta?.projects_featured || '')
+const projects_link = computed(() => pageData.value.meta?.projects_link || '')
 
-const { data: page } = await useAsyncData(
-  'page-' + locale.value,
-  async () => {
-    console.log('and path:', route.path)
-    const collection = ('content_' + locale.value) as keyof Collections
-    const content = await queryCollection(collection).path(slug.value).first()
-
-    // Optional: fallback to default locale if content is missing
-    // if (!content && locale.value !== 'en') {
-    //   return await queryCollection('content_en').path(slug.value).first()
-    // }
-
-    return content
-  },
-  {
-    watch: [locale],
-  }
-)
-
-useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
-  ogTitle: page.value?.title,
-  ogDescription: page.value?.description,
-  ogImage: 'https://www.kevindb.dev/images/home.webp',
-  twitterCard: 'summary_large_image',
+watchEffect(() => {
+  useSeoMeta({
+    title: pageData.value.title,
+    description: pageData.value.description,
+    ogTitle: pageData.value.title,
+    ogDescription: pageData.value.description,
+    ogImage: 'https://www.kevindb.dev/images/home.webp',
+    twitterCard: 'summary_large_image',
+  })
 })
 </script>
 
 <template>
   <main class="min-h-screen">
-    <div class="space-y-24">
-      <HomeIntro :data="page.body.value" />
-      <HomeSocialLinks :socials="page.meta.socials" />
+    <div v-if="pending" class="flex items-center justify-center">
+      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+    </div>
+    <div v-else-if="page && !pending" class="space-y-24">
+      <HomeIntro :data="body" />
+      <HomeSocialLinks :socials="socials" />
       <HomeFeaturedProjects
-        :featured="page.meta.projects_featured"
-        :link="page.meta.projects_link"
+        :featured="projects_featured"
+        :link="projects_link"
       />
 
       <!--
       <HomeFeaturedArticles />
       <HomeNewsletter />
       -->
+    </div>
+    <div v-else class="flex items-center justify-center">
+      <p>Contenu non disponible</p>
     </div>
   </main>
 </template>
