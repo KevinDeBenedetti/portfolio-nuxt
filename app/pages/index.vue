@@ -17,7 +17,9 @@ watchEffect(() => {
 <template>
   <main class="min-h-screen">
     <div v-if="pending" class="flex items-center justify-center">
-      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+      <div
+        class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"
+      />
     </div>
     <div v-else-if="body && !pending" class="space-y-24">
       <HomeIntro :data="body" />
