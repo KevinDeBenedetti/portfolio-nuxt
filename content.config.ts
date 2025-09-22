@@ -1,10 +1,5 @@
 import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
-const pageSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-})
-
 const projectSchema = z.object({
   title: z.string(),
   url: z.string(),
@@ -19,7 +14,7 @@ export default defineContentConfig({
     content_en: defineCollection({
       type: 'page',
       source: {
-        include: 'en/**',
+        include: 'en/**.md',
         prefix: '',
       },
     }),
@@ -27,21 +22,9 @@ export default defineContentConfig({
     content_fr: defineCollection({
       type: 'page',
       source: {
-        include: 'fr/**',
+        include: 'fr/**.md',
         prefix: '',
       },
-    }),
-
-    pages_fr: defineCollection({
-      type: 'data',
-      source: 'fr/pages/*.json',
-      schema: pageSchema,
-    }),
-
-    pages_en: defineCollection({
-      type: 'data',
-      source: 'en/pages/*.json',
-      schema: pageSchema,
     }),
 
     projects_fr: defineCollection({
