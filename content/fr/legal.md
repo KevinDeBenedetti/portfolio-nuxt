@@ -1,8 +1,9 @@
 ---
 title: 'Mentions légales | Kevin De Benedetti'
 description: 'Voici les mentions légales du site.'
-h1: 'Mentions légales'
 ---
+
+# Mentions légales
 
 ## Définitions
 
