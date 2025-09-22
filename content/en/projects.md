@@ -1,5 +1,5 @@
 ---
-title: Projects | Kevin De Benedetti
+title: 'Projects | Kevin De Benedetti'
 description: 'Explore my web development projects: a selection of works built with modern technologies and high-performance frameworks. Check out the source code, explore features, and contribute your ideas or suggestions to help enhance these projects. Whether you’re a developer or simply curious, get inspired by my portfolio and dive into the code !'
 ---
 
