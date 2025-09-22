@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { title, description, page, body, pending } = usePageContent('legal')
+const { title, description, page, pending } = usePageContent()
 
 watchEffect(() => {
   useSeoMeta({
@@ -16,7 +16,7 @@ watchEffect(() => {
     <div
       class="prose dark:prose-invert prose-blockquote:not-italic prose-pre:bg-gray-900 prose-img:ring-1 prose-img:ring-gray-200 dark:prose-img:ring-white/10 prose-img:rounded-lg"
     >
-      <template v-if="body && !pending">
+      <template v-if="page && !pending">
         <ContentRenderer :value="page" />
       </template>
       <div v-else class="flex items-center justify-center">
