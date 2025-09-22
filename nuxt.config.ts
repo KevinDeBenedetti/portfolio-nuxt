@@ -12,6 +12,8 @@ export default defineNuxtConfig({
     port: 3000,
   },
 
+  // debug: true,
+
   devtools: { enabled: true },
 
   runtimeConfig: {
