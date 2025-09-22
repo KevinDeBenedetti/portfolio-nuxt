@@ -45,10 +45,6 @@ export default defineNuxtConfig({
 
   // documentDriven: true,
 
-  ...i18nConfig,
-  ...seoConfig,
-  ...cookieConfig,
-
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -69,9 +65,18 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  colorMode: {
+    preference: 'system',
+    fallback: 'light',
+  },
+
   gtag: {
     initMode: 'manual',
     id: process.env.NUXT_GTAG_ID,
     enabled: process.env.NODE_ENV === 'production',
   },
+
+  ...i18nConfig,
+  ...seoConfig,
+  ...cookieConfig,
 })
