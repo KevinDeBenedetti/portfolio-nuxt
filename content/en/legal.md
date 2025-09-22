@@ -1,8 +1,7 @@
 ---
-title: Legal Notice
-description: Here is the legal notice for the website.
----
-
+title: 'Legal Notice | Kevin De Benedetti'
+description: 'Here are the legal notices for the site.'
+h1: 'Legal Notice'
 ---
 
 ## Definitions
