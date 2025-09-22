@@ -1,23 +1,23 @@
 {
-    "change_language": "French",
-    "toggle_theme": "Toggle theme",
-    "nav": {
-        "home_title": "Home",
-        "projects_title": "Projects",
-        "articles_title": "Articles"
-    },
-    "error": {
-        "title": "Error",
-        "projects": "No projects found."
-    },
-    "footer": {
-        "legals": "Legal Notice"
-    },
-    "home": {
-        "socials": "FIND ME ON",
-        "projects_featured": "Featured projects",
-        "projects_link": "All projects",
-        "articles_featured": "Recent articles",
-        "articles_link": "All articles"
-    }
+  "change_language": "French",
+  "toggle_theme": "Toggle theme",
+  "nav": {
+    "home_title": "Home",
+    "projects_title": "Projects",
+    "articles_title": "Articles"
+  },
+  "error": {
+    "title": "Error",
+    "projects": "No projects found."
+  },
+  "footer": {
+    "legals": "Legal Notice"
+  },
+  "home": {
+    "socials": "FIND ME ON",
+    "projects_featured": "Featured projects",
+    "projects_link": "All projects",
+    "articles_featured": "Recent articles",
+    "articles_link": "All articles"
+  }
 }
