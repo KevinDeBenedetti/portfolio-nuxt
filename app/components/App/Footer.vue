@@ -11,8 +11,8 @@ const currentYear = computed(() => new Date().getFullYear())
     <br />
     <p>© {{ currentYear }} Kevin De Benedetti</p>
 
-    <ULink :to="localePath('legals')" class="mt-2 text-xs hover:text-primary">{{
-      t('footer.legals')
+    <ULink :to="localePath('legal')" class="mt-2 text-xs hover:text-primary">{{
+      t('footer.legal')
     }}</ULink>
   </footer>
 </template>
