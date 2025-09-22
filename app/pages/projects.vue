@@ -2,19 +2,6 @@
 import type { Collections } from '@nuxt/content'
 const { locale } = useI18n()
 
-// const { data: page } = await useAsyncData(
-//   async () => {
-//     const collection = ('pages_' + locale.value) as keyof Collections
-//     const content = await queryCollection(collection)
-//       .where('stem', '=', `${locale.value}/pages/projects`)
-//       .first()
-//     return content as PagesFrCollectionItem | PagesEnCollectionItem
-//   },
-//   {
-//     watch: [locale],
-//   }
-// )
-
 const { title, description, body } = usePageContent()
 const { h1, firstParagraph } = useContentParser(body.value || [])
 
