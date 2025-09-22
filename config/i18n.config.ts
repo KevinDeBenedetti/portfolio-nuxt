@@ -2,17 +2,12 @@ import type { NuxtConfig } from 'nuxt/config'
 
 const i18nConfig: Partial<NuxtConfig> = {
   i18n: {
-    // FIXME :
-    // bundle: {
-    //   optimizeTranslationDirective: false,
-    // },
-    // vueI18n: './i18n.config.ts',
+    defaultLocale: 'fr',
     locales: [
-      { code: 'en', name: 'English', iso: 'en-US' },
-      { code: 'fr', name: 'French', iso: 'fr-FR' },
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'fr', name: 'French', file: 'fr.json' },
     ],
     strategy: 'prefix_except_default',
-    defaultLocale: 'fr',
     customRoutes: 'config',
     detectBrowserLanguage: {
       useCookie: false,
