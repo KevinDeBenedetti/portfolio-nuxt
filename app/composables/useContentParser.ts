@@ -1,4 +1,3 @@
-// composables/useContentParser.ts
 export const useContentParser = (body: unknown[]) => {
   const findElement = (tagName: string, index: number = 0) => {
     const elements =
