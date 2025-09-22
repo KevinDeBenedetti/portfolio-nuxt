@@ -32,22 +32,15 @@ export const usePageContent = (slug?: string | Ref<string>) => {
     }
   )
 
-  const pageData = computed(() => ({
-    title: page.value?.title || '',
-    description: page.value?.description || '',
-    body: page.value?.body?.value || [],
-    meta: {
-      socials: page.value?.meta?.socials || '',
-      projects_featured: page.value?.meta?.projects_featured || '',
-      projects_link: page.value?.meta?.projects_link || '',
-      articles_featured: page.value?.meta?.articles_featured || '',
-      articles_link: page.value?.meta?.articles_link || '',
-    }
-  }))
+  const title = computed(() => page.value?.title || '')
+  const description = computed(() => page.value?.description || '')
+  const body = computed(() => page.value?.body.value || [])
 
   return {
     page: readonly(page),
-    pageData: readonly(pageData),
+    title: readonly(title),
+    description: readonly(description),
+    body: readonly(body),
     pending: readonly(pending),
     error: readonly(error),
     refresh
