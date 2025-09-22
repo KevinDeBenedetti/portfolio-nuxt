@@ -20,7 +20,9 @@ watchEffect(() => {
         <ContentRenderer :value="page" />
       </template>
       <div v-else class="flex items-center justify-center">
-        <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+        <div
+          class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"
+        />
       </div>
     </div>
   </main>

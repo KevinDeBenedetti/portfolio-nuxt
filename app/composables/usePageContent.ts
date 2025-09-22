@@ -4,7 +4,7 @@ import type { Collections } from '@nuxt/content'
 export const usePageContent = (slug?: string | Ref<string>) => {
   const route = useRoute()
   const { locale } = useI18n()
-  
+
   const pageSlug = computed(() => {
     if (slug) {
       return withLeadingSlash(String(unref(slug)))
@@ -12,16 +12,23 @@ export const usePageContent = (slug?: string | Ref<string>) => {
     return withLeadingSlash(String(route.params.slug || '/'))
   })
 
-  const { data: page, pending, error, refresh } = useAsyncData(
+  const {
+    data: page,
+    pending,
+    error,
+    refresh,
+  } = useAsyncData(
     `page-${pageSlug.value}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
-      const content = await queryCollection(collection).path(pageSlug.value).first()
+      const content = await queryCollection(collection)
+        .path(pageSlug.value)
+        .first()
 
-    //   if (!content && locale.value !== 'en') {
-    //     const fallbackContent = await queryCollection('content_en').path(pageSlug.value).first()
-    //     return fallbackContent
-    //   }
+      //   if (!content && locale.value !== 'en') {
+      //     const fallbackContent = await queryCollection('content_en').path(pageSlug.value).first()
+      //     return fallbackContent
+      //   }
 
       return content
     },
@@ -43,6 +50,6 @@ export const usePageContent = (slug?: string | Ref<string>) => {
     body: readonly(body),
     pending: readonly(pending),
     error: readonly(error),
-    refresh
+    refresh,
   }
 }
