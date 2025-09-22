@@ -65,11 +65,6 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  colorMode: {
-    preference: 'system',
-    fallback: 'light',
-  },
-
   gtag: {
     initMode: 'manual',
     id: process.env.NUXT_GTAG_ID,
