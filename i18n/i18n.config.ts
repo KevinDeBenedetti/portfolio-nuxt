@@ -26,7 +26,6 @@ export default defineI18nConfig(() => ({
         projects_title: 'Réalisations',
         articles_title: 'Articles',
       },
-      home: {},
       error: {
         title: 'Erreur',
         projects: 'Pas de projets trouvés.',
