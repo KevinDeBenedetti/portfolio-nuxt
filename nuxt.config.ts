@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 
   content: {
     watch: {
-      enabled: true
+      enabled: true,
     },
     experimental: { sqliteConnector: 'native' },
     preview: {
