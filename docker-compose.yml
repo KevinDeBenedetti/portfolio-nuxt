@@ -1,17 +1,31 @@
 services:
-  nuxt:
-    container_name: portfolio-nuxt
+  # nuxt:
+  #   container_name: portfolio-nuxt
+  #   platform: linux/amd64
+  #   restart: always
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - ./:/app
+  #     - /app/node_modules
+  #     - /app/.data
+  production:
+    container_name: portfolio-prod
     platform: linux/amd64
-    restart: always
     build:
       context: .
       dockerfile: Dockerfile
-      target: dev
+      args:
+        - NODE_ENV=${NODE_ENV:-production}
+        - NUXT_GTAG_ID=${NUXT_GTAG_ID}
     env_file:
       - .env
     ports:
-      - '3000:3000'
-    volumes:
-      - ./:/app
-      - /app/node_modules
-      - /app/.data
+      - '80:80'
+    restart: always
