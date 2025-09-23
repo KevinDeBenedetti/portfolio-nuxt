@@ -14,11 +14,12 @@ clean: ## Clean the project
 	rm -rf .nuxt .output .pnpm-store node_modules .data pnpm-lock.yaml
 
 setup: clean ## Setup Nuxt
-	pnpm install && pnpm approve-builds && pnpm up --latest
+	pnpm install && pnpm up --latest
 
 start: setup ## Start development environment
+	docker compose up -d
+
 	pnpm run dev
-# 	docker compose up -d
 
 lint: ## Lint the codebase
 	pnpm lint:fix && pnpm format
