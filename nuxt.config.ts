@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   devServer: {
     host: '0.0.0.0',
     // host: 'localhost',
-    port: 3000,
+    // port: 3000,
   },
 
   // debug: true,
@@ -38,6 +38,10 @@ export default defineNuxtConfig({
   ],
 
   content: {
+    watch: {
+      enabled: true
+    },
+    experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
     },
