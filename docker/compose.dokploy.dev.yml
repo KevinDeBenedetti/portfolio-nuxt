@@ -1,6 +1,6 @@
 services:
   nuxt:
-    image: ghcr.io/kevindebenedetti/portfolio_nuxt:dev-latest
+    image: ghcr.io/kevindebenedetti/portfolio-nuxt:dev-latest
     pull_policy: always
     restart: always
     expose:
