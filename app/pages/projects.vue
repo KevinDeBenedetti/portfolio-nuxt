@@ -2,8 +2,18 @@
 import type { Collections } from '@nuxt/content'
 const { locale } = useI18n()
 
-const { title, description, body } = usePageContent()
-const { h1, firstParagraph } = useContentParser(body.value || [])
+const { data: page } = await useAsyncData(
+  'page-projects',
+  async () => {
+    const collection = ('content_' + locale.value) as keyof Collections
+    return await queryCollection(collection).path('/projects').first()
+  },
+  {
+    watch: [locale],
+  }
+)
+
+const { h1, firstParagraph } = useContentParser(page.value?.body.value || [])
 
 const { data: projects } = await useAsyncData(
   async () => {
@@ -21,10 +31,10 @@ const { data: projects } = await useAsyncData(
 
 watchEffect(() => {
   useSeoMeta({
-    title: title.value,
-    description: description.value,
-    ogTitle: title.value,
-    ogDescription: description.value,
+    title: page.value?.title,
+    description: page.value?.description,
+    ogTitle: page.value?.title,
+    ogDescription: page.value?.description,
     ogImage: '/images/projects.webp',
     twitterCard: 'summary_large_image',
   })
