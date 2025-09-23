@@ -22,7 +22,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.17.0
+          version: 10.17.1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -63,11 +63,3 @@ jobs:
           --build-arg NUXT_GTAG_ID="${{ secrets.NUXT_GTAG_ID }}" \
           --build-arg NODE_ENV="${{ secrets.NODE_ENV }}" \
           -t ghcr.io/${{ env.REPO_LOWER }}:${{ env.IMAGE_TAG }} .
-    
-    # Optionnel: push l'image de test
-    - name: Push test image
-      run: |
-        docker push ghcr.io/${{ env.REPO_LOWER }}:${{ env.IMAGE_TAG }}
-
-    - name: Logout
-      run: docker logout ghcr.io
