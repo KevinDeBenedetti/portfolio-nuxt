@@ -17,8 +17,6 @@ setup: clean ## Setup Nuxt
 	pnpm install && pnpm up --latest
 
 start: setup ## Start development environment
-	docker compose up -d
-
 	pnpm run dev
 
 lint: ## Lint the codebase
