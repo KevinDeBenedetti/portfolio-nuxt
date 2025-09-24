@@ -42,9 +42,9 @@ export default defineNuxtConfig({
   ],
 
   content: {
-    watch: {
-      enabled: true,
-    },
+    // watch: {
+    //   enabled: true,
+    // },
     experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
