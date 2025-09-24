@@ -17,7 +17,8 @@ setup: clean ## Setup Nuxt
 	pnpm install && pnpm up --latest
 
 start: setup ## Start development environment
-	pnpm run dev
+	docker compose up -d
+# 	pnpm run dev
 
 lint: ## Lint the codebase
 	pnpm lint:fix && pnpm format
