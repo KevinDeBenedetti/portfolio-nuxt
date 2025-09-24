@@ -39,9 +39,13 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxt/scripts',
+    '@nuxthq/studio',
   ],
 
   content: {
+    watch: {
+      enabled: true,
+    },
     experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
