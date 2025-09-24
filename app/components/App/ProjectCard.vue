@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   project: {
     type: Object,
@@ -6,35 +6,11 @@ const props = defineProps({
   },
 })
 
-const config = useRuntimeConfig()
-const { $readFile, $directus } = useNuxtApp()
-const imageMeta = ref(null)
-
-// Check if this is a Directus project (has translations) or Nuxt Content project (direct fields)
-const isDirectusProject = !!props.project?.translations
-const projectTitle = isDirectusProject
-  ? props.project?.translations[0]?.title
-  : props.project?.name
-const projectDescription = isDirectusProject
-  ? props.project?.translations[0]?.description
-  : props.project?.description
-const projectThumbnail = isDirectusProject
-  ? props.project?.image
-  : props.project?.thumbnail
-
-if (!projectThumbnail) {
-  imageMeta.value = null
-} else if (isDirectusProject) {
-  // Handle Directus image
-  const { data } = await useAsyncData(`imageMeta-${props.project.id}`, () =>
-    $directus.request($readFile(projectThumbnail))
-  )
-  imageMeta.value = data.value
-} else {
-  // Handle static image path for Nuxt Content
-  imageMeta.value = { filename_disk: projectThumbnail }
-}
+const title = computed(() => props.project?.title)
+const description = computed(() => props.project?.description)
+const thumbnail = computed(() => props.project?.thumbnail)
 </script>
+
 <template>
   <NuxtLink
     class="flex items-end gap-4 group p-2 max-m-2 rounded-lg"
@@ -44,22 +20,18 @@ if (!projectThumbnail) {
   >
     <div class="max-w-sm">
       <h3 class="text-sm font-medium group-hover:text-primary-600">
-        {{ projectTitle }}
+        {{ title }}
       </h3>
-      <p class="text-gray-400 text-sm">{{ projectDescription }}</p>
+      <p class="text-gray-400 text-sm">{{ description }}</p>
     </div>
     <div
       class="flex-1 border-b border-dashed border-gray-300 dark:border-gray-800 group-hover:border-gray-700"
     />
     <UAvatar
-      :src="
-        isDirectusProject
-          ? config.public.directusUrl + '/assets/' + imageMeta?.filename_disk
-          : imageMeta?.filename_disk
-      "
+      :src="thumbnail"
       :ui="{ root: 'p-1', rounded: 'rounded z-10 relative' }"
       size="lg"
-      :alt="projectTitle"
+      :alt="title"
     />
   </NuxtLink>
 </template>
