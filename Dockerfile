@@ -35,10 +35,10 @@ RUN pnpm i --frozen-lockfile
 # Copy the entire project
 COPY . ./
 
-ARG NUXT_GTAG_ID
-ARG NODE_ENV
-ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
-ENV NODE_ENV=$NODE_ENV
+# ARG NUXT_GTAG_ID
+# ARG NODE_ENV
+# ENV NUXT_GTAG_ID=$NUXT_GTAG_ID
+# ENV NODE_ENV=$NODE_ENV
 
 # Build the project
 RUN pnpm run build
