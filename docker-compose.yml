@@ -1,5 +1,4 @@
 services:
-
   # development:
   #   container_name: portfolio-nuxt
   #   # platform: linux/amd64
