@@ -42,16 +42,11 @@ export default defineNuxtConfig({
   ],
 
   content: {
-    // watch: {
-    //   enabled: true,
-    // },
     experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
     },
   },
-
-  // documentDriven: true,
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
