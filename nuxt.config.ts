@@ -39,7 +39,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxt/scripts',
-    '@nuxthq/studio',
   ],
 
   content: {
