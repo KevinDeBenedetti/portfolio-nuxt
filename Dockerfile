@@ -1,23 +1,23 @@
 ARG NODE_VERSION=22.17.1-alpine
 
 # Build Dev
-FROM node:${NODE_VERSION} AS dev
-WORKDIR /app
-RUN corepack enable
-COPY package.json pnpm-lock.yaml .npmrc pnpm-workspace.yaml ./
-RUN pnpm i
+# FROM node:${NODE_VERSION} AS dev
+# WORKDIR /app
+# RUN corepack enable
+# COPY package.json pnpm-lock.yaml .npmrc pnpm-workspace.yaml ./
+# RUN pnpm i
 
-# COPY . ./
-COPY ./app /app/
-COPY ./config /app/config/
-COPY ./content /app/content/
-COPY ./i18n /app/i18n/
-COPY ./public /app/public/
-COPY ./nuxt.config.ts tsconfig.json eslint.config.mjs .prettierrc .prettierignore content.config.ts /app/
+# # COPY . ./
+# COPY ./app /app/
+# COPY ./config /app/config/
+# COPY ./content /app/content/
+# COPY ./i18n /app/i18n/
+# COPY ./public /app/public/
+# COPY ./nuxt.config.ts tsconfig.json eslint.config.mjs .prettierrc .prettierignore content.config.ts /app/
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD [ "pnpm", "run", "dev" ]
+# CMD [ "pnpm", "run", "dev" ]
 
 # Build Stage 1
 
