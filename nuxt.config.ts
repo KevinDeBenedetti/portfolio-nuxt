@@ -1,9 +1,13 @@
-// import tailwindcss from "@tailwindcss/vite";
-import cookieConfig from './config/cookie.config'
-import i18nConfig from './config/i18n.config'
-import seoConfig from './config/seo.config'
+import cookie from './config/cookie.config'
+import i18n from './config/i18n.config'
+import seo from './config/seo.config'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+  ...i18n,
+  ...seo,
+  ...cookie,
+
   compatibilityDate: '2025-07-30',
 
   devServer: {
@@ -75,7 +79,9 @@ export default defineNuxtConfig({
     enabled: process.env.NODE_ENV === 'production',
   },
 
-  ...i18nConfig,
-  ...seoConfig,
-  ...cookieConfig,
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
 })
