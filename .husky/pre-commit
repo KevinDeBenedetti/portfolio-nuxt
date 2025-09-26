@@ -3,20 +3,4 @@ pnpm lint
 echo "✅ Linting terminés avec succès"
 echo "🎉 Pre-commit hook exécuté avec succès !"
 
-echo "🔍 Scanning for secrets before commit..."
-
-if ! gitleaks detect --verbose --source .; then
-    echo ""
-    echo "❌ Secrets detected! Commit blocked."
-    echo "🔧 Fix suggestions:"
-    echo "  • Replace hardcoded secrets with process.env.VARIABLE_NAME"
-    echo "  • Move secrets to .env files"
-    echo "  • Use Nuxt's runtimeConfig properly"
-    echo ""
-    echo "Example fix for nuxt.config.ts:"
-    echo "  secretApiKey: process.env.NUXT_SECRET_API_KEY"
-    echo ""
-    exit 1
-fi
-
-echo "✅ No secrets found - commit allowed"
+gitleaks protect --staged
