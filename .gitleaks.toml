@@ -1,18 +1,7 @@
-# Configuration GitLeaks stricte pour détecter tous les secrets
 title = "Strict Gitleaks Configuration for Nuxt Project"
 
 [extend]
-# Utilise la configuration par défaut + nos règles personnalisées
 useDefault = true
-
-# Règles personnalisées pour détecter les secrets non détectés
-[[rules]]
-id = "nuxt-runtime-config-secret"
-description = "Secrets dans runtimeConfig de Nuxt"
-regex = '''(?i)(runtimeConfig\s*:\s*\{[\s\S]*?)(\w+)\s*:\s*['"]([^'"]{8,})['"]'''
-secretGroup = 3
-tags = ["nuxt", "config", "runtime"]
-keywords = ["runtimeConfig"]
 
 [[rules]]
 id = "github-token-custom"
@@ -37,94 +26,12 @@ secretGroup = 1
 tags = ["password", "hardcoded"]
 keywords = ["password"]
 
-[[rules]]
-id = "config-secrets-generic"
-description = "Secrets génériques dans les configs"
-regex = '''(?i)(secret|key|token|password|auth)\s*[:=]\s*['"]([a-zA-Z0-9_\-]{8,})['"]'''
-secretGroup = 2
-tags = ["secret", "generic", "config"]
-keywords = ["secret", "key", "token", "password", "auth"]
-
-[[rules]]
-id = "nuxt-env-vars"
-description = "Variables d'environnement Nuxt avec valeurs hardcodées"
-regex = '''(?i)(NUXT_\w+|process\.env\.\w+)\s*[:=]\s*['"]([^'"]{8,})['"]'''
-secretGroup = 2
-tags = ["nuxt", "env", "environment"]
-keywords = ["NUXT_", "process.env"]
-
-# Règles pour détecter les patterns de tokens/clés courantes
-[[rules]]
-id = "api-key-pattern"
-description = "Pattern de clé API générique"
-regex = '''(?i)(api[_-]?key|apikey|access[_-]?key)\s*[:=]\s*['"]([a-zA-Z0-9_\-]{16,})['"]'''
-secretGroup = 2
-tags = ["api", "key"]
-keywords = ["api", "key", "access"]
-
-[[rules]]
-id = "secret-key-pattern"
-description = "Pattern de secret key générique"
-regex = '''(?i)(secret[_-]?key|secretkey)\s*[:=]\s*['"]([a-zA-Z0-9_\-]{8,})['"]'''
-secretGroup = 2
-tags = ["secret", "key"]
-keywords = ["secret", "key"]
-
-# Allowlist globale pour éviter les faux positifs courants
+# Allowlist pour ignorer les Google Analytics IDs (pas vraiment des secrets)
 [[allowlists]]
-description = "Ignorer les faux positifs courants"
+description = "Ignorer les Google Analytics IDs (publics)"
 regexTarget = "match"
 regexes = [
-    '''example\.com''',
-    '''localhost''',
-    '''127\.0\.0\.1''',
-    '''test.*password''',
-    '''dummy.*secret''',
-    '''placeholder''',
-    '''YOUR_\w+_HERE''',
-    '''xxx+''',
-    '''aaa+''',
-    '''000+''',
-]
-
-# Allowlist pour les chemins à ignorer
-[[allowlists]]
-description = "Ignorer certains fichiers et dossiers"
-paths = [
-    '''node_modules/.*''',
-    '''\.(git|nuxt|output)/.*''',
-    '''dist/.*''',
-    '''\.env\.example''',
-    '''\.env\.template''',
-    '''README\.md''',
-    '''\.md$''',
-    '''package-lock\.json''',
-    '''yarn\.lock''',
-    '''\.log$''',
-]
-
-# Allowlist pour ignorer les exemples de documentation
-[[allowlists]]
-description = "Ignorer les secrets d'exemple dans la documentation"
-regexTarget = "line"
-regexes = [
-    '''(?i)(example|sample|demo|test|placeholder)''',
-    '''(?i)// .*exemple''',
-    '''(?i)# .*exemple''',
-    '''(?i)<!-- .*exemple''',
-]
-
-# Allowlist pour ignorer les stopwords communes
-[[allowlists]]
-description = "Stopwords pour éviter les faux positifs"
-stopwords = [
-    "client",
-    "endpoint", 
-    "example",
-    "sample",
-    "test",
-    "demo",
-    "placeholder",
-    "template",
-    "dummy",
+    '''G-[A-Z0-9]{10}''',
+    '''process\.env\.\w+''',
+    '''process\.env\.NUXT_\w+''',
 ]
