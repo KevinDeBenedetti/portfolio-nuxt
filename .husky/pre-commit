@@ -2,3 +2,4 @@ echo "🔍 Pre-commit: Lancement des vérifications..."
 pnpm lint
 echo "✅ Linting terminés avec succès"
 echo "🎉 Pre-commit hook exécuté avec succès !"
+gitleaks detect --source . --verbose
