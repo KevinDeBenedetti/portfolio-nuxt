@@ -1,0 +1,8 @@
+{
+  "title": "Dataset Generator",
+  "url": "https://github.com/KevinDeBenedetti/dataset-generator",
+  "description": "Dataset generator with llm",
+  "thumbnail": "/projects/python-logo.png",
+  "slug": "dataset-generator",
+  "sort": 5
+}
