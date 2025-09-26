@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
+    secretApiKey: 'PLACEHOLDER_SECRET_KEY',
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
     },
