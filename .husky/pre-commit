@@ -3,4 +3,4 @@ pnpm lint
 echo "✅ Linting terminés avec succès"
 echo "🎉 Pre-commit hook exécuté avec succès !"
 
-gitleaks protect --staged
+gitleaks detect --verbose --source . --config .gitleaks.toml
