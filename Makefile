@@ -16,6 +16,9 @@ clean: ## Clean the project
 setup: clean ## Setup Nuxt
 	pnpm install && pnpm up --latest
 
+dev: setup
+	pnpm run dev
+
 start: setup ## Start development environment
 	docker compose up -d
 # 	pnpm run dev
