@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
-    secretApiKey: 'sk-1234567890abcdefghijklmnopqrstuvwxyz',
+    ghToken: 'ghp_1234567890abcdefghijklmnopqrstuvwxyzABCDEF',
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
     },
