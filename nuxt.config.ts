@@ -31,9 +31,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
-    ghToken: 'ghp_1234567890abcdefghijklmnopqrstuvwxyzABCDEF',
-    adminPassword: process.env.NUXT_ADMIN_PASSWORD,
-    userPassword: process.env.NUXT_USER_PASSWORD,
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
     },
