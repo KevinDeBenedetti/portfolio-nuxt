@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
+    secretApiKey: 'sk-1234567890abcdefghijklmnopqrstuvwxyz',
     public: {
       gtagId: process.env.NUXT_GTAG_ID,
     },
