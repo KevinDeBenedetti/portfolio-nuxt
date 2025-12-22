@@ -61,7 +61,7 @@ This project implements the following security measures:
 We regularly update dependencies to patch known vulnerabilities. You can check for vulnerabilities with:
 
 ```bash
-bun audit
+pnpm audit
 ```
 
 ## Thank You

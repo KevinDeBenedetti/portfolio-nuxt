@@ -6,16 +6,16 @@ on:
       node-version:
         description: 'Node.js version to use'
         value: ${{ jobs.version.outputs.node-version }}
-      bun-version:
-        description: 'Bun version to use'
-        value: ${{ jobs.version.outputs.bun-version }}
+      pnpm-version:
+        description: 'pnpm version to use'
+        value: ${{ jobs.version.outputs.pnpm-version }}
 
 jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
       node-version: ${{ steps.set.outputs.node-version }}
-      bun-version: ${{ steps.set.outputs.bun-version }}
+      pnpm-version: ${{ steps.set.outputs.pnpm-version }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,15 +26,15 @@ jobs:
       - name: Extract versions from package.json
         id: set
         run: |
-          # Extract bun version from packageManager field (format: "bun@x.x.x")
-          BUN_VERSION=$(jq -r '.packageManager // empty' package.json | sed 's/bun@//')
-          if [ -z "$BUN_VERSION" ]; then
-            BUN_VERSION="1.3.5"
+          # Extract pnpm version from packageManager field (format: "pnpm@x.x.x")
+          PNPM_VERSION=$(jq -r '.packageManager // empty' package.json | sed 's/pnpm@//')
+          if [ -z "$PNPM_VERSION" ]; then
+            PNPM_VERSION="10.11.0"
           fi
           echo "node-version=22.20.0" >> $GITHUB_OUTPUT
-          echo "bun-version=$BUN_VERSION" >> $GITHUB_OUTPUT
+          echo "pnpm-version=$PNPM_VERSION" >> $GITHUB_OUTPUT
 
       - name: Output versions
         run: |
           echo "Node: ${{ steps.set.outputs.node-version }}"
-          echo "Bun: ${{ steps.set.outputs.bun-version }}"
+          echo "pnpm: ${{ steps.set.outputs.pnpm-version }}"

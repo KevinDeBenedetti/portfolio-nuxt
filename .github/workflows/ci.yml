@@ -36,7 +36,7 @@ jobs:
     uses: ./.github/workflows/lint.yml
     with:
       node-version: ${{ needs.version.outputs.node-version }}
-      bun-version: ${{ needs.version.outputs.bun-version }}
+      pnpm-version: ${{ needs.version.outputs.pnpm-version }}
     secrets:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -46,7 +46,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       node-version: ${{ needs.version.outputs.node-version }}
-      bun-version: ${{ needs.version.outputs.bun-version }}
+      pnpm-version: ${{ needs.version.outputs.pnpm-version }}
     secrets:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
