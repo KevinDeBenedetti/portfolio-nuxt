@@ -23,7 +23,7 @@
   // Specific rules configuration
   "rules": {
     // Disable style rules (handled by formatter)
-    "no-console": "off", // Allow console.log in dev
+    "no-console": "warn", // Warn about console.log (remove before production)
     "no-debugger": "error", // Disallow debugger in production
 
     // TypeScript
