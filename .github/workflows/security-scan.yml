@@ -57,13 +57,25 @@ jobs:
         run: |
           echo "🔍 Checking target availability: ${{ inputs.target_url }}"
 
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -A "Mozilla/5.0 (compatible; GitHubActions/1.0)" "${{ inputs.target_url }}" || echo "000")
+          # Use browser-like headers to avoid bot detection
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
+            -H "Accept-Language: en-US,en;q=0.5" \
+            -H "Accept-Encoding: gzip, deflate, br" \
+            -H "Connection: keep-alive" \
+            "${{ inputs.target_url }}" || echo "000")
 
           echo "HTTP Status: $HTTP_STATUS"
 
           if [[ "$HTTP_STATUS" == "000" ]]; then
             echo "::error::❌ Target URL is unreachable (connection failed or timeout)"
             exit 1
+          elif [[ "$HTTP_STATUS" == "403" ]]; then
+            # 403 often means the site is up but blocking automated requests
+            # ZAP may still be able to scan it with different headers
+            echo "::warning::⚠️ Target returned 403 (Forbidden) - site may have bot protection"
+            echo "Proceeding with scan anyway - ZAP uses different request patterns"
           elif [[ "$HTTP_STATUS" -ge 400 && "$HTTP_STATUS" -lt 600 ]]; then
             echo "::error::❌ Target URL returned error status: $HTTP_STATUS"
             echo "The site may be down or misconfigured."
