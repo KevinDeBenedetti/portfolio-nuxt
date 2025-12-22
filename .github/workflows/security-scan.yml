@@ -1,0 +1,257 @@
+name: Security Scan (OWASP ZAP)
+
+on:
+  workflow_call:
+    inputs:
+      target_url:
+        description: 'URL to scan'
+        required: true
+        type: string
+      scan_type:
+        description: 'Type of scan: baseline, full, api'
+        required: false
+        type: string
+        default: 'baseline'
+    outputs:
+      alerts_count:
+        description: 'Number of security alerts found'
+        value: ${{ jobs.zap-scan.outputs.alerts_count }}
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'URL to scan'
+        required: true
+        type: string
+        default: 'https://REDACTED_URL'
+      scan_type:
+        description: 'Type of scan'
+        required: false
+        type: choice
+        options:
+          - baseline
+          - full
+          - api
+        default: 'baseline'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  zap-scan:
+    name: OWASP ZAP Security Scan
+    runs-on: ubuntu-latest
+    outputs:
+      alerts_count: ${{ steps.parse-results.outputs.alerts_count }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create working directory
+        run: mkdir -p zap-reports
+
+      - name: Run ZAP Baseline Scan
+        if: inputs.scan_type == 'baseline'
+        uses: zaproxy/action-baseline@v0.14.0
+        with:
+          target: ${{ inputs.target_url }}
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a -j'
+          allow_issue_writing: false
+
+      - name: Run ZAP Full Scan
+        if: inputs.scan_type == 'full'
+        uses: zaproxy/action-full-scan@v0.12.0
+        with:
+          target: ${{ inputs.target_url }}
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a -j'
+          allow_issue_writing: false
+
+      - name: Run ZAP API Scan
+        if: inputs.scan_type == 'api'
+        uses: zaproxy/action-api-scan@v0.9.0
+        with:
+          target: ${{ inputs.target_url }}
+          format: openapi
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a -j'
+          allow_issue_writing: false
+
+      - name: List generated files
+        run: |
+          echo "=== Files in workspace ==="
+          find . -name "*.html" -o -name "*.json" -o -name "*.md" 2>/dev/null | head -50
+          echo "=== ZAP report files ==="
+          ls -la report_* 2>/dev/null || echo "No report_* files found"
+          ls -la zap* 2>/dev/null || echo "No zap* files found"
+
+      - name: Parse ZAP results
+        id: parse-results
+        run: |
+          # ZAP actions generate report_json.json in the workspace root
+          REPORT_FILE=""
+          for f in report_json.json zap_report.json ./report_json.json; do
+            if [[ -f "$f" ]]; then
+              REPORT_FILE="$f"
+              break
+            fi
+          done
+
+          echo "Found report file: $REPORT_FILE"
+
+          if [[ -n "$REPORT_FILE" && -f "$REPORT_FILE" ]]; then
+            # Debug: show structure
+            echo "=== JSON structure ==="
+            jq 'keys' "$REPORT_FILE" 2>/dev/null || true
+
+            # ZAP JSON report structure: site[].alerts[]
+            ALERTS_COUNT=$(jq '[.site[]?.alerts[]?] | length' "$REPORT_FILE" 2>/dev/null || echo "0")
+            HIGH_COUNT=$(jq '[.site[]?.alerts[]? | select(.riskcode == "3")] | length' "$REPORT_FILE" 2>/dev/null || echo "0")
+            MEDIUM_COUNT=$(jq '[.site[]?.alerts[]? | select(.riskcode == "2")] | length' "$REPORT_FILE" 2>/dev/null || echo "0")
+            LOW_COUNT=$(jq '[.site[]?.alerts[]? | select(.riskcode == "1")] | length' "$REPORT_FILE" 2>/dev/null || echo "0")
+            INFO_COUNT=$(jq '[.site[]?.alerts[]? | select(.riskcode == "0")] | length' "$REPORT_FILE" 2>/dev/null || echo "0")
+          else
+            echo "No JSON report found, setting defaults"
+            ALERTS_COUNT=0
+            HIGH_COUNT=0
+            MEDIUM_COUNT=0
+            LOW_COUNT=0
+            INFO_COUNT=0
+          fi
+
+          echo "Results: Total=$ALERTS_COUNT High=$HIGH_COUNT Medium=$MEDIUM_COUNT Low=$LOW_COUNT Info=$INFO_COUNT"
+
+          echo "alerts_count=$ALERTS_COUNT" >> $GITHUB_OUTPUT
+          echo "high_count=$HIGH_COUNT" >> $GITHUB_OUTPUT
+          echo "medium_count=$MEDIUM_COUNT" >> $GITHUB_OUTPUT
+          echo "low_count=$LOW_COUNT" >> $GITHUB_OUTPUT
+          echo "info_count=$INFO_COUNT" >> $GITHUB_OUTPUT
+
+          # Save for summary
+          echo "ALERTS_COUNT=$ALERTS_COUNT" >> $GITHUB_ENV
+          echo "HIGH_COUNT=$HIGH_COUNT" >> $GITHUB_ENV
+          echo "MEDIUM_COUNT=$MEDIUM_COUNT" >> $GITHUB_ENV
+          echo "LOW_COUNT=$LOW_COUNT" >> $GITHUB_ENV
+          echo "INFO_COUNT=$INFO_COUNT" >> $GITHUB_ENV
+
+      - name: Generate scan summary
+        id: summary
+        run: |
+          SCAN_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          TARGET="${{ inputs.target_url }}"
+          SCAN_TYPE="${{ inputs.scan_type }}"
+
+          # Create summary markdown
+          cat << EOF > scan-summary.md
+          ## 🔒 OWASP ZAP Security Scan Report
+
+          | Property | Value |
+          |----------|-------|
+          | **Target URL** | \`$TARGET\` |
+          | **Scan Type** | $SCAN_TYPE |
+          | **Scan Date** | $SCAN_DATE |
+          | **Workflow Run** | [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
+
+          ### 📊 Results Summary
+
+          | Risk Level | Count | Status |
+          |------------|-------|--------|
+          | 🔴 **High** | $HIGH_COUNT | $([ "$HIGH_COUNT" -gt 0 ] && echo "⚠️ Action Required" || echo "✅ Clear") |
+          | 🟠 **Medium** | $MEDIUM_COUNT | $([ "$MEDIUM_COUNT" -gt 0 ] && echo "⚠️ Review Recommended" || echo "✅ Clear") |
+          | 🟡 **Low** | $LOW_COUNT | $([ "$LOW_COUNT" -gt 0 ] && echo "📝 Consider Fixing" || echo "✅ Clear") |
+          | 🔵 **Informational** | $INFO_COUNT | ℹ️ Info Only |
+          | **Total Alerts** | **$ALERTS_COUNT** | |
+
+          ### 📥 Download Reports
+
+          The full HTML and JSON reports are available as artifacts in the workflow run.
+
+          > **Note:** Click on the workflow run link above, then scroll down to "Artifacts" to download the complete reports.
+
+          ---
+          <details>
+          <summary>📖 About OWASP ZAP</summary>
+
+          [OWASP ZAP](https://www.zaproxy.org/) (Zed Attack Proxy) is a free, open-source security tool for finding vulnerabilities in web applications.
+
+          - **Baseline Scan**: Quick passive scan for common vulnerabilities
+          - **Full Scan**: Comprehensive active scan (takes longer)
+          - **API Scan**: Specialized scan for API endpoints
+
+          </details>
+          EOF
+
+          echo "SUMMARY_FILE=scan-summary.md" >> $GITHUB_ENV
+
+      - name: Add summary to workflow
+        run: cat scan-summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' || github.event.pull_request != null
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync('scan-summary.md', 'utf8');
+
+            // Find the PR number
+            let prNumber;
+            if (context.payload.pull_request) {
+              prNumber = context.payload.pull_request.number;
+            } else if (context.payload.workflow_run?.pull_requests?.[0]) {
+              prNumber = context.payload.workflow_run.pull_requests[0].number;
+            }
+
+            if (prNumber) {
+              // Find existing comment
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+              });
+
+              const botComment = comments.find(comment =>
+                comment.user.type === 'Bot' &&
+                comment.body.includes('OWASP ZAP Security Scan Report')
+              );
+
+              if (botComment) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: botComment.id,
+                  body: summary
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: summary
+                });
+              }
+            }
+
+      - name: Upload ZAP reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-security-report-${{ github.run_number }}
+          path: |
+            report_html.html
+            report_json.json
+            report_md.md
+            zap_report.*
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Check for critical vulnerabilities
+        if: env.HIGH_COUNT != '0'
+        run: |
+          echo "::warning::Found $HIGH_COUNT high-risk vulnerabilities!"
+          echo "Review the ZAP report artifacts for details."
+          # Uncomment the line below to fail the workflow on high-risk findings
+          # exit 1
