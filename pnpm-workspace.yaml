@@ -1,0 +1,8 @@
+onlyBuiltDependencies:
+  - '@j178/prek'
+  - '@parcel/watcher'
+  - better-sqlite3
+  - esbuild
+  - sharp
+  - unrs-resolver
+  - vue-demi

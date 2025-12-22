@@ -26,7 +26,7 @@ jobs:
 
   security-scan:
     name: Security Scan
-    needs: deploy
+    # needs: deploy
     if: always() && needs.deploy.result == 'success'
     uses: ./.github/workflows/security-scan.yml
     with:
