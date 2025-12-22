@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-26',
 
-  // Use Bun preset for production (optimized for Bun runtime)
+  // Use Bun preset for production (Vercel supports Bun runtime)
   nitro: {
     preset: 'bun',
     // Security headers for all routes
