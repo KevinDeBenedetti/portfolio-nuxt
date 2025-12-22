@@ -1,0 +1,32 @@
+# Gitleaks configuration
+# https://github.com/gitleaks/gitleaks
+
+title = "Portfolio Nuxt Gitleaks Config"
+
+[extend]
+useDefault = true
+
+# Allowlist for known placeholder/test values
+[allowlist]
+description = "Allowlist for placeholder values"
+regexTarget = "match"
+regexes = [
+  # Test/placeholder tokens (sequential patterns)
+  '''(?i)(sk-|ghp_|gho_|glpat-)1234567890''',
+  '''(?i)example|placeholder|test|dummy|fake|sample''',
+]
+
+paths = [
+  # Lock files
+  '''bun\.lock''',
+  '''package-lock\.json''',
+  '''yarn\.lock''',
+  '''pnpm-lock\.yaml''',
+  # Build outputs
+  '''\.output/''',
+  '''\.nuxt/''',
+  '''dist/''',
+  '''node_modules/''',
+  # ZAP reports (already in gitignore but just in case)
+  '''zap-reports/''',
+]
