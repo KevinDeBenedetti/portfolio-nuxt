@@ -38,28 +38,20 @@ repos:
   # Local hooks for your project-specific commands
   - repo: local
     hooks:
-      - id: format-check
-        name: 📝 Check code formatting
-        entry: bun format:check
+      - id: check-all
+        name: 🚀 Lint + Format + Typecheck (turbo cached)
+        entry: bun run check
         language: system
         always_run: true
         pass_filenames: false
-        priority: 0 # Run first
-
-      - id: lint
-        name: 🔍 Lint code
-        entry: bun lint
-        language: system
-        types: [file]
-        pass_filenames: false
-        priority: 1 # Run after format check
+        priority: 0
 
   # Pre-push hooks (more thorough checks)
   - repo: local
     hooks:
-      - id: type-check
-        name: 🔍 Type checking
-        entry: bun lint:type
+      - id: full-check
+        name: 🔍 Full check (lint:type)
+        entry: bun turbo run lint:type
         language: system
         stages: [pre-push]
         always_run: true

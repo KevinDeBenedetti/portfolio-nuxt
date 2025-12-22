@@ -1,7 +1,4 @@
-<script setup lang="ts">
-import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
-const { locale } = useI18n();
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <UApp>
@@ -15,7 +12,6 @@ const { locale } = useI18n();
     </UContainer>
     <div class="h-32" />
     <AppFooter />
-    <CookieControl :locale="locale as Locale" />
   </UApp>
 </template>
 
