@@ -70,8 +70,13 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    provider: 'google',
-    families: [{ name: 'Inter', provider: 'google' }],
+    provider: 'bunny',
+    families: [{ name: 'Inter', provider: 'bunny' }],
+    defaults: {
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['latin', 'latin-ext'],
+    },
   },
 
   css: ['~/assets/css/main.css'],
