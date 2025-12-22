@@ -38,7 +38,6 @@ permissions:
   issues: write
   pull-requests: write
   actions: read
-  security-events: write # Required for SARIF upload to GitHub Security tab
 
 jobs:
   zap-scan:
@@ -168,146 +167,6 @@ jobs:
           echo "LOW_COUNT=$LOW_COUNT" >> $GITHUB_ENV
           echo "INFO_COUNT=$INFO_COUNT" >> $GITHUB_ENV
 
-      - name: Convert ZAP report to SARIF
-        id: convert-sarif
-        run: |
-          # Install ZAP to SARIF converter
-          pip install --quiet sarif-om jschema-to-python
-
-          # Create SARIF conversion script
-          cat << 'PYTHON_SCRIPT' > convert_to_sarif.py
-          import json
-          import sys
-          from datetime import datetime
-
-          def convert_zap_to_sarif(zap_file, output_file):
-              """Convert ZAP JSON report to SARIF format for GitHub Security tab"""
-              try:
-                  with open(zap_file, 'r') as f:
-                      zap_data = json.load(f)
-              except (FileNotFoundError, json.JSONDecodeError) as e:
-                  print(f"Warning: Could not read ZAP report: {e}")
-                  # Create empty SARIF
-                  sarif = create_empty_sarif()
-                  with open(output_file, 'w') as f:
-                      json.dump(sarif, f, indent=2)
-                  return
-
-              sarif = {
-                  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
-                  "version": "2.1.0",
-                  "runs": [{
-                      "tool": {
-                          "driver": {
-                              "name": "OWASP ZAP",
-                              "informationUri": "https://www.zaproxy.org/",
-                              "version": zap_data.get("@version", "unknown"),
-                              "rules": []
-                          }
-                      },
-                      "results": []
-                  }]
-              }
-
-              rules = {}
-              results = []
-
-              # Map ZAP risk codes to SARIF levels
-              risk_map = {
-                  "0": "note",      # Informational
-                  "1": "warning",   # Low
-                  "2": "warning",   # Medium
-                  "3": "error"      # High
-              }
-
-              for site in zap_data.get("site", []):
-                  for alert in site.get("alerts", []):
-                      rule_id = f"ZAP-{alert.get('pluginid', 'unknown')}"
-
-                      # Add rule if not already present
-                      if rule_id not in rules:
-                          rules[rule_id] = {
-                              "id": rule_id,
-                              "name": alert.get("name", "Unknown Alert"),
-                              "shortDescription": {"text": alert.get("name", "Unknown Alert")},
-                              "fullDescription": {"text": alert.get("desc", "No description available")},
-                              "helpUri": alert.get("reference", ""),
-                              "defaultConfiguration": {
-                                  "level": risk_map.get(alert.get("riskcode", "0"), "note")
-                              }
-                          }
-
-                      # Add result for each instance
-                      for instance in alert.get("instances", [{"uri": site.get("@name", "")}]):
-                          result = {
-                              "ruleId": rule_id,
-                              "level": risk_map.get(alert.get("riskcode", "0"), "note"),
-                              "message": {"text": alert.get("solution", alert.get("desc", "Security issue detected"))},
-                              "locations": [{
-                                  "physicalLocation": {
-                                      "artifactLocation": {
-                                          "uri": instance.get("uri", site.get("@name", "unknown")),
-                                          "uriBaseId": "WEBROOT"
-                                      }
-                                  }
-                              }]
-                          }
-                          results.append(result)
-
-              sarif["runs"][0]["tool"]["driver"]["rules"] = list(rules.values())
-              sarif["runs"][0]["results"] = results
-
-              with open(output_file, 'w') as f:
-                  json.dump(sarif, f, indent=2)
-
-              print(f"Converted {len(results)} findings to SARIF format")
-
-          def create_empty_sarif():
-              return {
-                  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
-                  "version": "2.1.0",
-                  "runs": [{
-                      "tool": {
-                          "driver": {
-                              "name": "OWASP ZAP",
-                              "informationUri": "https://www.zaproxy.org/",
-                              "rules": []
-                          }
-                      },
-                      "results": []
-                  }]
-              }
-
-          if __name__ == "__main__":
-              zap_file = sys.argv[1] if len(sys.argv) > 1 else "report_json.json"
-              output_file = sys.argv[2] if len(sys.argv) > 2 else "zap-results.sarif"
-              convert_zap_to_sarif(zap_file, output_file)
-          PYTHON_SCRIPT
-
-          # Find and convert report
-          REPORT_FILE=""
-          for f in report_json.json zap_report.json; do
-            if [[ -f "$f" ]]; then
-              REPORT_FILE="$f"
-              break
-            fi
-          done
-
-          if [[ -n "$REPORT_FILE" ]]; then
-            python convert_to_sarif.py "$REPORT_FILE" zap-results.sarif
-            echo "sarif_created=true" >> $GITHUB_OUTPUT
-          else
-            echo "No ZAP report found for SARIF conversion"
-            echo "sarif_created=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Upload SARIF to GitHub Security
-        if: steps.convert-sarif.outputs.sarif_created == 'true'
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: zap-results.sarif
-          category: owasp-zap
-
       - name: Generate scan summary
         id: summary
         run: |
@@ -338,13 +197,96 @@ jobs:
 
           ### 📥 Reports Access
 
-          **🔐 Detailed vulnerability information is available in the [Security tab](/${{ github.repository }}/security/code-scanning)** (visible to repository collaborators only).
+          Detailed reports are available as artifacts in this workflow run (retention: 7 days).
 
-          Artifacts are available for collaborators in the workflow run (retention: 7 days).
+          EOF
 
-          > **Note:** For security reasons, detailed vulnerability information is not displayed in public logs.
+          # Add detailed vulnerability information if report exists
+          REPORT_FILE=""
+          for f in report_json.json zap_report.json; do
+            if [[ -f "$f" ]]; then
+              REPORT_FILE="$f"
+              break
+            fi
+          done
 
-          ---
+          if [[ -n "$REPORT_FILE" && -f "$REPORT_FILE" ]]; then
+            echo "" >> scan-summary.md
+            echo "### 🔍 Vulnerability Details" >> scan-summary.md
+            echo "" >> scan-summary.md
+
+            # Parse and display each alert
+            python3 << 'PYTHON_SCRIPT' >> scan-summary.md
+          import json
+          import html
+          import re
+
+          def strip_html(text):
+              """Remove HTML tags from text"""
+              if not text:
+                  return ""
+              clean = re.sub(r'<[^>]+>', '', text)
+              return html.unescape(clean).strip()
+
+          def truncate(text, max_len=500):
+              """Truncate text to max length"""
+              text = strip_html(text)
+              if len(text) > max_len:
+                  return text[:max_len] + "..."
+              return text
+
+          risk_icons = {
+              "3": "🔴 High",
+              "2": "🟠 Medium",
+              "1": "🟡 Low",
+              "0": "🔵 Info"
+          }
+
+          try:
+              with open("report_json.json", "r") as f:
+                  data = json.load(f)
+
+              alerts = []
+              for site in data.get("site", []):
+                  for alert in site.get("alerts", []):
+                      alerts.append(alert)
+
+              # Sort by risk (high to low)
+              alerts.sort(key=lambda x: int(x.get("riskcode", "0")), reverse=True)
+
+              for alert in alerts:
+                  risk = alert.get("riskcode", "0")
+                  risk_label = risk_icons.get(risk, "⚪ Unknown")
+                  name = alert.get("name", "Unknown")
+                  desc = truncate(alert.get("desc", "No description"), 300)
+                  solution = truncate(alert.get("solution", "No solution provided"), 300)
+                  instances = alert.get("instances", [])
+                  count = len(instances)
+
+                  print(f"<details>")
+                  print(f"<summary><strong>{risk_label}</strong>: {name} ({count} instance{'s' if count != 1 else ''})</summary>")
+                  print(f"")
+                  print(f"**Description:** {desc}")
+                  print(f"")
+                  print(f"**Solution:** {solution}")
+                  print(f"")
+                  if instances:
+                      print(f"**Affected URLs:**")
+                      for inst in instances[:5]:  # Limit to 5 instances
+                          uri = inst.get("uri", "N/A")
+                          print(f"- `{uri}`")
+                      if len(instances) > 5:
+                          print(f"- ... and {len(instances) - 5} more")
+                  print(f"")
+                  print(f"</details>")
+                  print(f"")
+
+          except Exception as e:
+              print(f"Error parsing report: {e}")
+          PYTHON_SCRIPT
+          fi
+
+          cat << 'EOF' >> scan-summary.md
           <details>
           <summary>📖 About OWASP ZAP</summary>
 
@@ -417,7 +359,6 @@ jobs:
             report_json.json
             report_md.md
             zap_report.*
-            zap-results.sarif
           retention-days: 7 # Shorter retention for security reports
           if-no-files-found: warn
 
