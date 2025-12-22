@@ -39,7 +39,6 @@ Ce portfolio présente mon travail en tant que développeur web fullstack, const
 
 - **Génération automatique du sitemap** avec `@nuxtjs/sitemap`
 - **Configuration robots.txt** avec `@nuxtjs/robots`
-- **Intégration Google Analytics** avec consentement cookies (`nuxt-gtag`)
 - **Meta tags structurés** avec `useSeoMeta`
 
 ### UI/UX
