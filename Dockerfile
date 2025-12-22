@@ -1,37 +1,17 @@
-ARG NODE_VERSION=22.17.1-alpine
-
-# Build Dev
-# FROM node:${NODE_VERSION} AS dev
-# WORKDIR /app
-# RUN corepack enable
-# COPY package.json pnpm-lock.yaml .npmrc pnpm-workspace.yaml ./
-# RUN pnpm i
-
-# # COPY . ./
-# COPY ./app /app/
-# COPY ./config /app/config/
-# COPY ./content /app/content/
-# COPY ./i18n /app/i18n/
-# COPY ./public /app/public/
-# COPY ./nuxt.config.ts tsconfig.json eslint.config.mjs .prettierrc .prettierignore content.config.ts /app/
-
-# EXPOSE 3000
-
-# CMD [ "pnpm", "run", "dev" ]
+ARG BUN_VERSION=1.2.15
+ARG NODE_VERSION=22.20.0-alpine
 
 # Build Stage 1
-FROM node:${NODE_VERSION} AS build
+FROM oven/bun:${BUN_VERSION}-alpine AS build
 WORKDIR /app
 
-RUN corepack enable
+COPY package.json bun.lock ./
 
-COPY package.json pnpm-lock.yaml .npmrc pnpm-workspace.yaml ./
-
-RUN pnpm i --frozen-lockfile
+RUN bun install --frozen-lockfile
 
 COPY . ./
 
-RUN pnpm run build
+RUN bun run build
 
 # Build Stage 2
 FROM node:${NODE_VERSION}
