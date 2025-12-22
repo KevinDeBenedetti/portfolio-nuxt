@@ -28,7 +28,7 @@ watchEffect(() => {
 <template>
   <main class="min-h-screen">
     <div class="space-y-24">
-      <HomeIntro :data="page.body.value" />
+      <HomeIntro :data="(page as { body?: { value: unknown[] } })?.body?.value" />
       <HomeSocialLinks :socials="t('home.socials')" />
       <HomeFeaturedProjects
         :featured="t('home.projects_featured')"

@@ -41,7 +41,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxt/content',
-    '@dargmuesli/nuxt-cookie-control',
     '@nuxtjs/i18n',
     '@nuxt/fonts',
     '@nuxt/eslint',
@@ -152,41 +151,6 @@ export default defineNuxtConfig({
     experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
-    },
-  },
-
-  cookieControl: {
-    barPosition: 'bottom-full',
-    locales: ['fr', 'en'],
-    cookieExpiryOffsetMs: 1000 * 60 * 60 * 24 * 365,
-    closeModalOnClickOutside: true,
-    colors: {
-      barBackground: '#11181C',
-      barButtonColor: '#000',
-      barButtonHoverBackground: 'teal',
-      checkboxActiveBackground: '#00A34A',
-    },
-    cookies: {
-      necessary: [],
-      optional: [],
-    },
-    // isControlButtonEnabled: true,
-    // isCssEnabled: true,
-    isAcceptNecessaryButtonEnabled: true,
-
-    localeTexts: {
-      fr: {
-        bannerTitle: 'Cookies',
-        bannerDescription:
-          "Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser l’utilisation du site afin d'optimiser nos services. En continuant sur ce site, vous acceptez leur utilisation.",
-        save: 'Enregistrer',
-      },
-      en: {
-        bannerTitle: 'Cookies',
-        bannerDescription:
-          'We use cookies to enhance your browsing experience and analyze site usage to optimize our services. By continuing on this site, you accept their use.',
-        save: 'Remember',
-      },
     },
   },
 });
