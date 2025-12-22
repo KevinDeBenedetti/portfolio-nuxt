@@ -23,7 +23,7 @@ jobs:
             node_modules
             .nuxt
             .output
-          key: bun-build-${{ runner.os }}-${{ hashFiles('bun.lockb', 'package.json') }}
+          key: bun-build-${{ runner.os }}-${{ hashFiles('bun.lock', 'package.json') }}
           restore-keys: |
             bun-build-${{ runner.os }}-
 
