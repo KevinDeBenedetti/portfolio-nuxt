@@ -7,24 +7,27 @@ services:
       - 3000
     env_file:
       - .env
-#     networks:
-#       - dokploy-network
-#     labels:
-#       - traefik.enable=true
+    networks:
+      - dokploy-network
+    labels:
+      - traefik.enable=true
 
-#       - traefik.http.routers.portfolio.rule=Host(`kevindb.dev`) || Host(`www.kevindb.dev`)
-#       - traefik.http.routers.portfolio.entrypoints=websecure
-#       - traefik.http.routers.portfolio.tls.certResolver=letsencrypt
-#       - traefik.http.services.portfolio.loadbalancer.server.port=3000
+      - traefik.http.routers.portfolio.rule=Host(`kevindb.dev`) || Host(`www.kevindb.dev`)
+      - traefik.http.routers.portfolio.entrypoints=websecure
+      - traefik.http.routers.portfolio.tls.certResolver=letsencrypt
+      - traefik.http.services.portfolio.loadbalancer.server.port=3000
 
-#       # Middleware pour rediriger www.kevindb.dev vers kevindb.dev
-#       - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https?://www.kevindb.dev/(.*)
-#       - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
-#       - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
+      # Middleware pour rediriger www.kevindb.dev vers kevindb.dev
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https?://www.kevindb.dev/(.*)
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://kevindb.dev/$${1}
+      - traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true
 
-#       # Associe explicitement le middleware de redirection au routeur
-#       - traefik.http.routers.portfolio.middlewares=redirect-to-non-www
+      # Security: Remove X-Powered-By header
+      - traefik.http.middlewares.remove-powered-by.headers.customresponseheaders.X-Powered-By=
 
-# networks:
-#   dokploy-network:
-#     external: true
+      # Apply middlewares
+      - traefik.http.routers.portfolio.middlewares=redirect-to-non-www,remove-powered-by
+
+networks:
+  dokploy-network:
+    external: true
