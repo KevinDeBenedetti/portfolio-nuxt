@@ -3,9 +3,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-26',
 
-  // Use Bun preset for production (Vercel supports Bun runtime)
+  // Use Node preset for production (default for Nuxt)
   nitro: {
-    preset: 'bun',
+    preset: 'node-server',
     // Security headers for all routes
     routeRules: {
       '/**': {
@@ -147,8 +147,8 @@ export default defineNuxtConfig({
     watch: {
       enabled: true,
     },
-    // Use native bun:sqlite connector (works with Bun runtime)
-    experimental: { sqliteConnector: 'native' },
+    // Use better-sqlite3 connector (works with Node.js runtime)
+    experimental: { sqliteConnector: 'better-sqlite3' },
     preview: {
       api: 'https://api.nuxt.studio',
     },

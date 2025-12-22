@@ -16,13 +16,13 @@ permissions:
   security-events: write
 
 jobs:
-  deploy:
-    name: Deploy to Dokploy
-    uses: ./.github/workflows/deploy.yml
-    secrets:
-      DOKPLOY_API_TOKEN: ${{ secrets.DOKPLOY_API_TOKEN }}
-      DOKPLOY_COMPOSE_ID_PROD: ${{ secrets.DOKPLOY_COMPOSE_ID_PROD }}
-      DOKPLOY_COMPOSE_ID_DEV: ${{ secrets.DOKPLOY_COMPOSE_ID_DEV }}
+  # deploy:
+  #   name: Deploy to Dokploy
+  #   uses: ./.github/workflows/deploy.yml
+  #   secrets:
+  #     DOKPLOY_API_TOKEN: ${{ secrets.DOKPLOY_API_TOKEN }}
+  #     DOKPLOY_COMPOSE_ID_PROD: ${{ secrets.DOKPLOY_COMPOSE_ID_PROD }}
+  #     DOKPLOY_COMPOSE_ID_DEV: ${{ secrets.DOKPLOY_COMPOSE_ID_DEV }}
 
   security-scan:
     name: Security Scan

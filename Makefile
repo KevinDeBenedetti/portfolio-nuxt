@@ -1,7 +1,7 @@
 PYTHONPATH = $(PWD)
 
-# Extract Bun version from package.json
-BUN_VERSION := $(shell jq -r '.packageManager // "bun@1.3.5"' package.json | sed 's/bun@//')
+# Extract pnpm version from package.json
+PNPM_VERSION := $(shell jq -r '.packageManager // "pnpm@10.11.0"' package.json | sed 's/pnpm@//')
 
 .PHONY: help setup start dev build clean clean-env
 .DEFAULT_GOAL := help
@@ -18,96 +18,96 @@ help: ## Display this help
 
 clean: ## Clean the project (stop containers, remove artifacts)
 	docker compose down --volumes --remove-orphans 2>/dev/null || true
-	rm -rf .nuxt .output .pnpm-store node_modules .data pnpm-lock.yaml bun.lock .turbo
+	rm -rf .nuxt .output .pnpm-store node_modules .data .turbo
 
-install: ## Install dependencies with Bun
-	bun install
+install: ## Install dependencies with pnpm
+	pnpm install
 
 ci-install: ## Install dependencies with frozen lockfile (CI)
-	bun ci
+	pnpm install --frozen-lockfile
 
 dev: install ## Start local development server
-	bun run dev
+	pnpm run dev
 
 preview: install ## Preview production build locally
-	bun run preview
+	pnpm run preview
 
 # ============================================
 # Build Commands
 # ============================================
 
 build: install ## Build for production
-	bun run build
+	pnpm run build
 
 generate: install ## Generate static site
-	bun run generate
+	pnpm run generate
 
 # ============================================
 # Linting & Formatting
 # ============================================
 
 lint: ## Lint the codebase (with turbo cache)
-	bun run lint
+	pnpm run lint
 
 lint-type: ## Run type-aware linting (with turbo cache)
-	bun run lint:type
+	pnpm run lint:type
 
 lint-fix: ## Lint and fix the codebase
-	bun run lint:fix
+	pnpm run lint:fix
 
 lint-fix-all: ## Lint and fix all issues (including dangerous fixes)
-	bun run lint:fix:all
+	pnpm run lint:fix:all
 
 format: ## Format the codebase
-	bun run format
+	pnpm run format
 
 format-check: ## Check code formatting (with turbo cache)
-	bun run format:check
+	pnpm run format:check
 
 typecheck: ## Run TypeScript type checking (with turbo cache)
-	bun run typecheck
+	pnpm run typecheck
 
 check: ## Run full check: lint + format + typecheck (with turbo cache)
-	bun run check
+	pnpm run check
 
 # ============================================
 # CI Commands (optimized for CI/CD with frozen lockfile)
 # ============================================
 
-ci-lint: install ## Run CI lint + format + typecheck (parallel, cached)
-	bun run check
+ci-lint: ci-install ## Run CI lint + format + typecheck (parallel, cached)
+	pnpm run check
 
-ci-build: install ## Run CI build (cached)
-	bun turbo run build
+ci-build: ci-install ## Run CI build (cached)
+	pnpm exec turbo run build
 
-ci-check: install ## Run full CI checks (lint + format + typecheck + build)
-	bun run check
-	bun turbo run build
+ci-check: ci-install ## Run full CI checks (lint + format + typecheck + build)
+	pnpm run check
+	pnpm exec turbo run build
 
 # ============================================
 # Turborepo Commands
 # ============================================
 
 turbo-dev: install ## Start dev server with Turborepo
-	bun turbo run dev
+	pnpm exec turbo run dev
 
 turbo-build: install ## Build with Turborepo (cached)
-	bun turbo run build
+	pnpm exec turbo run build
 
 turbo-generate: install ## Generate static site with Turborepo (cached)
-	bun turbo run generate
+	pnpm exec turbo run generate
 
 turbo-lint: ## Lint with Turborepo (cached)
-	bun turbo run lint
+	pnpm exec turbo run lint
 
 turbo-lint-type: ## Type-aware lint with Turborepo (cached)
-	bun turbo run lint:type
+	pnpm exec turbo run lint:type
 
 turbo-check: ## Full check with Turborepo (lint + format + typecheck, cached)
-	bun run check
+	pnpm run check
 
 turbo-format-check: ## Check formatting with Turborepo (cached)
-	bun turbo run format:check
+	pnpm exec turbo run format:check
 
 # ============================================
 # Docker Commands
@@ -132,10 +132,10 @@ docker-prod-down: ## Stop production container
 	docker compose down production
 
 docker-build: ## Build Docker image for production
-	docker build --build-arg BUN_VERSION=$(BUN_VERSION) -t portfolio-nuxt .
+	docker build --build-arg PNPM_VERSION=$(PNPM_VERSION) -t portfolio-nuxt .
 
 docker-build-dev: ## Build Docker image for development
-	docker build --build-arg BUN_VERSION=$(BUN_VERSION) --target dev -t portfolio-nuxt:dev .
+	docker build --build-arg PNPM_VERSION=$(PNPM_VERSION) --target dev -t portfolio-nuxt:dev .
 
 docker-logs: ## Show Docker container logs
 	docker compose logs -f
@@ -149,26 +149,26 @@ docker-clean: ## Stop all containers and remove images
 # ============================================
 
 hooks-install: ## Install git hooks
-	bun run hooks:install
+	pnpm run hooks:install
 
 hooks-uninstall: ## Uninstall git hooks
-	bun run hooks:uninstall
+	pnpm run hooks:uninstall
 
 hooks-run: ## Run hooks on all files
-	bun run hooks:run
+	pnpm run hooks:run
 
 hooks-list: ## List all configured hooks
-	bun run hooks:list
+	pnpm run hooks:list
 
 # ============================================
 # Dependencies
 # ============================================
 
 update: ## Update dependencies
-	bun update --latest
+	pnpm update --latest
 
 upgrade: ## Upgrade Nuxt
-	bunx nuxi upgrade
+	pnpm dlx nuxi upgrade
 
 # ============================================
 # Security Scanning (OWASP ZAP)
