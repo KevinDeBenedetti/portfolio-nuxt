@@ -1,0 +1,44 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "stream",
+  "globalDependencies": [".env", "nuxt.config.ts", "tsconfig.json"],
+  "globalPassThroughEnv": ["CI", "VERCEL", "NODE_ENV"],
+  "tasks": {
+    "build": {
+      "outputs": [".output/**", ".nuxt/**", "!.nuxt/cache/**"],
+      "cache": true
+    },
+    "generate": {
+      "outputs": [".output/**", ".nuxt/**", "!.nuxt/cache/**"],
+      "cache": true
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "lint:type": {
+      "cache": true
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "format": {
+      "cache": false
+    },
+    "format:check": {
+      "cache": true
+    },
+    "check": {
+      "dependsOn": ["lint", "lint:type"],
+      "cache": true
+    },
+    "preview": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
