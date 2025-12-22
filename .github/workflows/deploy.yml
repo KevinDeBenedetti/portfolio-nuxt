@@ -9,8 +9,6 @@ on:
         type: string
         default: 'production'
     secrets:
-      GITHUB_TOKEN:
-        required: true
       DOKPLOY_API_TOKEN:
         required: true
       DOKPLOY_COMPOSE_ID_PROD:
@@ -54,7 +52,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.token }}
 
       - name: Build Docker image
         run: |
