@@ -25,6 +25,9 @@ jobs:
     with:
       node-version: ${{ needs.version.outputs.node-version }}
       bun-version: ${{ needs.version.outputs.bun-version }}
+    secrets:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
   build:
     needs: version
@@ -32,6 +35,9 @@ jobs:
     with:
       node-version: ${{ needs.version.outputs.node-version }}
       bun-version: ${{ needs.version.outputs.bun-version }}
+    secrets:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
   # test:
   #   uses: ./.github/workflows/test.yml
