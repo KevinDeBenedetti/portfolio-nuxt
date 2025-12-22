@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import type { Collections } from '@nuxt/content'
-const { locale } = useI18n()
+import type { Collections } from '@nuxt/content';
+const { locale } = useI18n();
 
 const { data: page } = await useAsyncData(
   'page-legal',
   async () => {
-    const collection = ('content_' + locale.value) as keyof Collections
-    return await queryCollection(collection).path('/legal').first()
+    const collection = ('content_' + locale.value) as keyof Collections;
+    return await queryCollection(collection).path('/legal').first();
   },
   {
     watch: [locale],
   }
-)
+);
 watchEffect(() => {
   useSeoMeta({
     title: page.value?.title,
     ogTitle: page.value?.title,
     description: page.value?.description,
     ogDescription: page.value?.description,
-  })
-})
+  });
+});
 </script>
 
 <template>

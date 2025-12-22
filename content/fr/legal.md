@@ -16,7 +16,7 @@ description: 'Voici les mentions légales du site.'
 **Informations clients** : Ci-après dénommé « Information(s) » qui correspondent à l’ensemble des données personnelles susceptibles d’être détenues par [https://www.kevindb.dev/](https://www.kevindb.dev/) pour la gestion de votre compte, la gestion de la relation client et à des fins d’analyses et de statistiques.
 
 **Utilisateur** : Internaute se connectant, utilisant le site susnommé.
-**Informations personnelles** : « Les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).  
+**Informations personnelles** : « Les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).
 Les termes « données à caractère personnel », « personne concernée », « sous-traitant » et « données sensibles » ont le sens défini par le Règlement Général sur la Protection des Données (RGPD : n° 2016-679).
 
 ---
@@ -26,7 +26,7 @@ Les termes « données à caractère personnel », « personne concernée », «
 En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet [https://www.kevindb.dev/](https://www.kevindb.dev/) l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
 
 - **Propriétaire** : Kevin De Benedetti
-- **Responsable publication** : Kevin De Benedetti – contact@kevindb.dev  
+- **Responsable publication** : Kevin De Benedetti – contact@kevindb.dev
   Le responsable publication est une personne physique ou une personne morale.
 - **Webmaster** : Kevin De Benedetti – contact@kevindb.dev
 - **Hébergeur** : PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60
@@ -115,7 +115,7 @@ Conformément à la réglementation européenne en vigueur, les Utilisateurs de 
 - droit à la portabilité des données que les Utilisateurs auront fournies, lorsque ces données font l’objet de traitements automatisés fondés sur leur consentement ou sur un contrat (article 20 RGPD)
 - droit de définir le sort des données des Utilisateurs après leur mort et de choisir à qui [https://www.kevindb.dev/](https://www.kevindb.dev/) devra communiquer (ou non) ses données à un tiers qu’ils aura préalablement désigné.
 
-Si l’Utilisateur souhaite savoir comment [https://www.kevindb.dev/](https://www.kevindb.dev/) utilise ses Données Personnelles, demander à les rectifier ou s’opposer à leur traitement, l’Utilisateur peut contacter [https://www.kevindb.dev/](https://www.kevindb.dev/) par écrit à l’adresse suivante :  
+Si l’Utilisateur souhaite savoir comment [https://www.kevindb.dev/](https://www.kevindb.dev/) utilise ses Données Personnelles, demander à les rectifier ou s’opposer à leur traitement, l’Utilisateur peut contacter [https://www.kevindb.dev/](https://www.kevindb.dev/) par écrit à l’adresse suivante :
 Kevin De Benedetti – DPO, Kevin De Benedetti
 
 ---

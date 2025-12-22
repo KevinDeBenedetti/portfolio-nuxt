@@ -1,17 +1,14 @@
 <script setup>
-const { locale, setLocale, t } = useI18n()
+const { locale, setLocale, t } = useI18n();
 
 function toggleLocale() {
-  const newLocale = locale.value === 'fr' ? 'en' : 'fr'
-  setLocale(newLocale)
+  const newLocale = locale.value === 'fr' ? 'en' : 'fr';
+  setLocale(newLocale);
 }
 </script>
 
 <template>
-  <UTooltip
-    :text="t('change_language')"
-    :ui="{ popper: { strategy: 'absolute' } }"
-  >
+  <UTooltip :text="t('change_language')" :ui="{ popper: { strategy: 'absolute' } }">
     <button
       class="relative px-3 py-4 flex items-center justify-center cursor-pointer"
       @click="toggleLocale"
