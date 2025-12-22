@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.1...v1.0.2) (2025-12-22)
+
+
+### 🐛 Bug Fixes
+
+* **ci:** increase Node.js memory limit to 4GB for build ([166f6c5](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/166f6c5e73176ead98bd5620e68bdf9892c1b049))
+* delete .env.example ([cc6e366](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/cc6e366916553a6391b978581e1e17b9ffc65e44))
+* remove deploy dependency from security scan job and add pnpm workspace configuration ([db96a08](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/db96a08a276420bb7d1f21bba59ed76e9abb814d))
+* switch from bun to pnpm ([7161747](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/7161747c92a09138d3115b57ff63dfa5308921fe))
+* update nitro preset to Vercel for deployment ([cc17c4e](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/cc17c4e32c0d94a7f2be89f713871e11aadaeb99))
+
 ## [1.0.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.0...v1.0.1) (2025-12-22)
 
 ### 🐛 Bug Fixes
