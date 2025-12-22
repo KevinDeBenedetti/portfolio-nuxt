@@ -16,7 +16,8 @@ COPY package.json bunfig.toml ./
 FROM base AS dev
 
 # Install all dependencies including devDependencies
-RUN bun install
+# Use --ignore-scripts to skip better-sqlite3 compilation (Nuxt uses native bun:sqlite)
+RUN bun install --ignore-scripts
 
 # Expose dev server port
 ENV PORT=3000
