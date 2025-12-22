@@ -74,13 +74,13 @@ check: ## Run full check: lint + format + typecheck (with turbo cache)
 # CI Commands (optimized for CI/CD with frozen lockfile)
 # ============================================
 
-ci-lint: ci-install ## Run CI lint + format + typecheck (parallel, cached)
+ci-lint: install ## Run CI lint + format + typecheck (parallel, cached)
 	bun run check
 
-ci-build: ci-install ## Run CI build (cached)
+ci-build: install ## Run CI build (cached)
 	bun turbo run build
 
-ci-check: ci-install ## Run full CI checks (lint + format + typecheck + build)
+ci-check: install ## Run full CI checks (lint + format + typecheck + build)
 	bun run check
 	bun turbo run build
 
