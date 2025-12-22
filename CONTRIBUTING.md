@@ -12,8 +12,8 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) >= 1.3.5
-- [Node.js](https://nodejs.org/) >= 22.x (for compatibility)
+- [pnpm](https://pnpm.io/) >= 10.x
+- [Node.js](https://nodejs.org/) >= 22.x
 - [Docker](https://www.docker.com/) (optional, for container builds)
 
 ### Setup
@@ -24,13 +24,13 @@ git clone https://github.com/KevinDeBenedetti/portfolio-nuxt.git
 cd portfolio-nuxt
 
 # Install dependencies
-bun install
+pnpm install
 
 # Install git hooks
-bun hooks:install
+pnpm hooks:install
 
 # Start development server
-bun dev
+pnpm dev
 ```
 
 ## 📝 Code Standards
@@ -57,16 +57,16 @@ bun dev
 
 ```bash
 # Run linter
-bun lint
+pnpm lint
 
 # Run type-aware linting
-bun lint:type
+pnpm lint:type
 
 # Format code
-bun format
+pnpm format
 
 # Run all checks
-bun check
+pnpm check
 ```
 
 ## 📦 Commit Guidelines
@@ -118,17 +118,17 @@ docs: update installation instructions
 - [ ] Self-review of code performed
 - [ ] Comments added for complex logic
 - [ ] Documentation updated if needed
-- [ ] All checks pass (`bun check`)
+- [ ] All checks pass (`pnpm check`)
 - [ ] No new warnings introduced
 
 ## 🧪 Testing
 
 ```bash
 # Run type checking
-bun lint:type
+pnpm lint:type
 
 # Build to verify no errors
-bun build
+pnpm build
 ```
 
 ## 📁 Project Structure

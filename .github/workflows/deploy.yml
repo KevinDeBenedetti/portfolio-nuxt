@@ -32,15 +32,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Extract Bun version from package.json
+      - name: Extract pnpm version from package.json
         id: versions
         run: |
-          BUN_VERSION=$(jq -r '.packageManager // empty' package.json | sed 's/bun@//')
-          if [ -z "$BUN_VERSION" ]; then
-            BUN_VERSION="1.3.5"
+          PNPM_VERSION=$(jq -r '.packageManager // empty' package.json | sed 's/pnpm@//')
+          if [ -z "$PNPM_VERSION" ]; then
+            PNPM_VERSION="10.11.0"
           fi
-          echo "bun-version=$BUN_VERSION" >> $GITHUB_OUTPUT
-          echo "Using Bun version: $BUN_VERSION"
+          echo "pnpm-version=$PNPM_VERSION" >> $GITHUB_OUTPUT
+          echo "Using pnpm version: $PNPM_VERSION"
 
       - name: Set environment variables
         id: set-env
@@ -67,7 +67,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            --build-arg BUN_VERSION=${{ steps.versions.outputs.bun-version }} \
+            --build-arg PNPM_VERSION=${{ steps.versions.outputs.pnpm-version }} \
             -t ghcr.io/${{ env.REPO_LOWER }}:${{ env.IMAGE_TAG }} \
             -t ghcr.io/${{ env.REPO_LOWER }}:${{ env.LATEST_TAG }} .
 
