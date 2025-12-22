@@ -1,0 +1,97 @@
+{
+  // Official oxlint configuration for Nuxt/Vue project
+  // Documentation: https://oxc.rs/docs/guide/usage/linter/config
+
+  // Enabled rule categories
+  "categories": {
+    "correctness": "error", // Definitely wrong or useless code
+    "suspicious": "warn", // Probably wrong code
+    "pedantic": "off", // Very strict rules
+    "perf": "warn", // Performance optimizations
+    "style": "off" // Style (handled by formatter)
+  },
+
+  // Plugins enabled for Nuxt/Vue
+  "plugins": [
+    "unicorn", // JavaScript best practices
+    "typescript", // TypeScript support
+    "oxc", // oxc specific rules
+    "vue", // Vue.js support
+    "import" // Import validation
+  ],
+
+  // Specific rules configuration
+  "rules": {
+    // Disable style rules (handled by formatter)
+    "no-console": "off", // Allow console.log in dev
+    "no-debugger": "error", // Disallow debugger in production
+
+    // TypeScript
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-unused-vars": "error",
+
+    // Vue.js
+    "vue/no-unused-components": "warn",
+    "vue/require-v-for-key": "error",
+
+    // Import/Export
+    "import/no-unresolved": "off", // Handled by TypeScript resolver
+
+    // Unicorn (best practices)
+    "unicorn/prefer-node-protocol": "error",
+    "unicorn/no-array-for-each": "off"
+  },
+
+  // File patterns to ignore
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    ".nuxt",
+    ".output",
+    "coverage",
+    "public",
+    "*.min.js",
+    ".pnpm-store",
+    "pnpm-lock.yaml"
+  ],
+
+  // Environnements globaux
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+
+  // Variables globales
+  "globals": {
+    "$fetch": "readonly",
+    "useNuxtApp": "readonly",
+    "defineNuxtConfig": "readonly",
+    "definePageMeta": "readonly",
+    "navigateTo": "readonly"
+  },
+
+  // Configuration par type de fichier
+  "overrides": [
+    {
+      "files": ["**/*.vue"],
+      "plugins": ["vue"],
+      "rules": {
+        "vue/multi-word-component-names": "off"
+      }
+    },
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "plugins": ["typescript"],
+      "rules": {
+        "typescript/no-explicit-any": "warn"
+      }
+    },
+    {
+      "files": ["scripts/**/*", "*.config.*"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+name: CI – Linting
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: "Node.js version to use"
+        required: true
+        type: string
+
+jobs:
+  lint-next:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache bun
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun
+            node_modules
+          key: bun-cache-${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('apps/next/bun.lockb', 'apps/next/package.json') }}
+          restore-keys: |
+            bun-cache-${{ runner.os }}-node-
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint codebase
+        run: bun lint

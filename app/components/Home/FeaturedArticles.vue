@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-const { t, locale } = useI18n()
-const localePath = useLocalePath()
+const { t, locale } = useI18n();
+const localePath = useLocalePath();
 
 const { data: articles } = await useAsyncData('articles-home', () =>
   queryCollection('articles')
@@ -8,7 +8,7 @@ const { data: articles } = await useAsyncData('articles-home', () =>
     .order('published', 'DESC')
     .limit(3)
     .all()
-)
+);
 </script>
 
 <template>

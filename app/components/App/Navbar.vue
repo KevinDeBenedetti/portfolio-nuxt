@@ -1,37 +1,37 @@
 <script setup>
-const { t } = useI18n()
-const localePath = useLocalePath()
+const { t } = useI18n();
+const localePath = useLocalePath();
 
-const isScrolled = ref(false)
-const isVisible = ref(true)
-const lastScrollY = ref(0)
+const isScrolled = ref(false);
+const isVisible = ref(true);
+const lastScrollY = ref(0);
 
 const handleScroll = () => {
-  const currentScrollY = window.scrollY
-  isScrolled.value = currentScrollY > 0
+  const currentScrollY = window.scrollY;
+  isScrolled.value = currentScrollY > 0;
 
   if (currentScrollY > lastScrollY.value && currentScrollY > 100) {
-    isVisible.value = false
+    isVisible.value = false;
   } else {
-    isVisible.value = true
+    isVisible.value = true;
   }
 
-  lastScrollY.value = currentScrollY
-}
+  lastScrollY.value = currentScrollY;
+};
 
 const headerStyles = computed(() => ({
   transform: isVisible.value ? 'translateY(0)' : 'translateY(-100%)',
   transition: 'transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out',
   backgroundColor: isScrolled.value ? 'blur(12px)' : 'blur(0px)',
-}))
+}));
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-})
+  window.addEventListener('scroll', handleScroll, { passive: true });
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  window.removeEventListener('scroll', handleScroll);
+});
 
 const items = computed(() => [
   {
@@ -45,7 +45,7 @@ const items = computed(() => [
     icon: 'solar:folder-with-files-outline',
   },
   // { name: t('nav.articles_title'), path: localePath('articles'), icon: "solar:document-add-outline" }
-])
+]);
 </script>
 
 <template>
@@ -60,10 +60,7 @@ const items = computed(() => [
         ]"
       >
         <li v-for="item in items" :key="item.path">
-          <UTooltip
-            :text="item.name"
-            :ui="{ popper: { strategy: 'absolute' } }"
-          >
+          <UTooltip :text="item.name" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
               :to="item.path"
               class="relative px-3 py-4 flex items-center justify-center transition hover:text-primary-500 dark:hover:text-primary-400"
