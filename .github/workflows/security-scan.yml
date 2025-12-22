@@ -53,6 +53,27 @@ jobs:
       - name: Create working directory
         run: mkdir -p zap-reports
 
+      - name: Check target availability
+        run: |
+          echo "🔍 Checking target availability: ${{ inputs.target_url }}"
+
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${{ inputs.target_url }}" || echo "000")
+
+          echo "HTTP Status: $HTTP_STATUS"
+
+          if [[ "$HTTP_STATUS" == "000" ]]; then
+            echo "::error::❌ Target URL is unreachable (connection failed or timeout)"
+            exit 1
+          elif [[ "$HTTP_STATUS" -ge 400 && "$HTTP_STATUS" -lt 600 ]]; then
+            echo "::error::❌ Target URL returned error status: $HTTP_STATUS"
+            echo "The site may be down or misconfigured."
+            exit 1
+          elif [[ "$HTTP_STATUS" -ge 200 && "$HTTP_STATUS" -lt 400 ]]; then
+            echo "✅ Target is accessible (HTTP $HTTP_STATUS)"
+          else
+            echo "::warning::⚠️ Unexpected HTTP status: $HTTP_STATUS"
+          fi
+
       - name: Run ZAP Baseline Scan
         if: inputs.scan_type == 'baseline'
         uses: zaproxy/action-baseline@v0.14.0
