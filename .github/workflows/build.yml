@@ -38,5 +38,5 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Lint codebase
-        run: bun lint
+      - name: Build application
+        run: bun run build
