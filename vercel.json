@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "bun turbo run build",
+  "installCommand": "bun ci",
+  "outputDirectory": ".output",
+  "framework": "nuxtjs",
+  "bunVersion": "1.3.5"
+}

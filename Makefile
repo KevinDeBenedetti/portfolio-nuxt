@@ -23,6 +23,9 @@ clean: ## Clean the project (stop containers, remove artifacts)
 install: ## Install dependencies with Bun
 	bun install
 
+ci-install: ## Install dependencies with frozen lockfile (CI)
+	bun install --frozen-lockfile
+
 dev: install ## Start local development server
 	bun run dev
 
@@ -44,52 +47,55 @@ generate: install ## Generate static site
 # ============================================
 
 lint: ## Lint the codebase (with turbo cache)
-	bun turbo run lint
+	bun run lint
+
+lint-type: ## Run type-aware linting (with turbo cache)
+	bun run lint:type
 
 lint-fix: ## Lint and fix the codebase
-	bun lint:fix
+	bun run lint:fix
 
 lint-fix-all: ## Lint and fix all issues (including dangerous fixes)
-	bun lint:fix:all
+	bun run lint:fix:all
 
 format: ## Format the codebase
-	bun format
+	bun run format
 
 format-check: ## Check code formatting (with turbo cache)
-	bun turbo run format:check
+	bun run format:check
 
 typecheck: ## Run TypeScript type checking (with turbo cache)
-	bun turbo run typecheck
+	bun run typecheck
 
 check: ## Run full check: lint + format + typecheck (with turbo cache)
-	bun check
-
-# ============================================
-# CI Commands (optimized for CI/CD)
-# ============================================
-
-ci-lint: install ## Run CI lint + format + typecheck (parallel, cached)
 	bun run check
 
-ci-build: install ## Run CI build (cached)
+# ============================================
+# CI Commands (optimized for CI/CD with frozen lockfile)
+# ============================================
+
+ci-lint: ci-install ## Run CI lint + format + typecheck (parallel, cached)
+	bun run check
+
+ci-build: ci-install ## Run CI build (cached)
 	bun turbo run build
 
-ci-check: install ## Run full CI checks (lint + format + typecheck + build)
+ci-check: ci-install ## Run full CI checks (lint + format + typecheck + build)
 	bun run check
 	bun turbo run build
 
 # ============================================
-# Turborepo Commands (legacy aliases)
+# Turborepo Commands
 # ============================================
 
 turbo-dev: install ## Start dev server with Turborepo
 	bun turbo run dev
 
 turbo-build: install ## Build with Turborepo (cached)
-	bun build
+	bun turbo run build
 
 turbo-generate: install ## Generate static site with Turborepo (cached)
-	bun generate
+	bun turbo run generate
 
 turbo-lint: ## Lint with Turborepo (cached)
 	bun turbo run lint
@@ -98,7 +104,7 @@ turbo-lint-type: ## Type-aware lint with Turborepo (cached)
 	bun turbo run lint:type
 
 turbo-check: ## Full check with Turborepo (lint + format + typecheck, cached)
-	bun check
+	bun run check
 
 turbo-format-check: ## Check formatting with Turborepo (cached)
 	bun turbo run format:check
@@ -143,16 +149,16 @@ docker-clean: ## Stop all containers and remove images
 # ============================================
 
 hooks-install: ## Install git hooks
-	bun hooks:install
+	bun run hooks:install
 
 hooks-uninstall: ## Uninstall git hooks
-	bun hooks:uninstall
+	bun run hooks:uninstall
 
 hooks-run: ## Run hooks on all files
-	bun hooks:run
+	bun run hooks:run
 
 hooks-list: ## List all configured hooks
-	bun hooks:list
+	bun run hooks:list
 
 # ============================================
 # Dependencies
@@ -162,21 +168,7 @@ update: ## Update dependencies
 	bun update --latest
 
 upgrade: ## Upgrade Nuxt
-	bun nuxt upgrade
-
-# ============================================
-# CI/CD Testing
-# ============================================
-
-ci-lint: install ## Run CI lint checks
-	bun turbo run lint
-
-ci-build: install ## Run CI build
-	bun turbo run build
-
-ci-check: install ## Run full CI checks (lint + build)
-	bun turbo run check
-	bun turbo run build
+	bunx nuxi upgrade
 
 # ============================================
 # Security Scanning (OWASP ZAP)
