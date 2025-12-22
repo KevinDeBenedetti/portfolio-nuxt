@@ -1,4 +1,4 @@
-name: CI – Linting
+name: CI – Build
 
 on:
   workflow_call:
@@ -9,7 +9,7 @@ on:
         type: string
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,9 +21,11 @@ jobs:
           path: |
             ~/.bun
             node_modules
-          key: bun-cache-${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('bun.lockb', 'package.json') }}
+            .nuxt
+            .output
+          key: bun-build-${{ runner.os }}-${{ hashFiles('bun.lockb', 'package.json') }}
           restore-keys: |
-            bun-cache-${{ runner.os }}-node-
+            bun-build-${{ runner.os }}-
 
       - name: Install bun
         uses: oven-sh/setup-bun@v2

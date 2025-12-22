@@ -56,6 +56,5 @@
     "oxlint": "^1.35.0",
     "oxlint-tsgolint": "^0.10.0",
     "tailwindcss": "^4.1.18"
-  },
-  "packageManager": "pnpm@10.17.1"
+  }
 }
