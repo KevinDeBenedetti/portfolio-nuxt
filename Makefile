@@ -1,6 +1,6 @@
 PYTHONPATH = $(PWD)
 
-.PHONY: help setup apps start dev build clean clean-env
+.PHONY: help setup start dev build clean clean-env
 .DEFAULT_GOAL := help
 
 help: ## Display this help
@@ -11,20 +11,49 @@ help: ## Display this help
 
 clean: ## Clean the project
 	docker compose down --volumes --remove-orphans
-	rm -rf .nuxt .output .pnpm-store node_modules .data pnpm-lock.yaml
+	rm -rf .nuxt .output .pnpm-store node_modules .data pnpm-lock.yaml bun.lock
 
-setup: clean ## Setup Nuxt
-	pnpm install && pnpm up --latest
+install: clean ## Setup Nuxt
+	bun install
 
-dev: setup
-	pnpm run dev
+dev: install
+	bun run dev
 
-start: setup ## Start development environment
+start: install ## Start development environment
 	docker compose up -d
-# 	pnpm run dev
 
 lint: ## Lint the codebase
-	pnpm lint:fix && pnpm format
+	bun lint
 
-upgrade: ## Upgrade dependencies
-	pnpm nuxt upgrade
+lint-fix: ## Lint and fix the codebase
+	bun lint:fix
+
+lint-fix-all: ## Lint and fix all issues (including dangerous fixes)
+	bun lint:fix:all
+
+format: ## Format the codebase
+	bun format
+
+format-check: ## Check code formatting
+	bun format:check
+
+check: ## Run linting with type checking
+	bun check
+
+hooks-install: ## Install git hooks
+	bun hooks:install
+
+hooks-uninstall: ## Uninstall git hooks
+	bun hooks:uninstall
+
+hooks-run: ## Run hooks on all files
+	bun hooks:run
+
+hooks-list: ## List all configured hooks
+	bun hooks:list
+
+update: install ## Update dependencies
+	bun update --latest
+
+upgrade: install ## Upgrade dependencies
+	bun nuxt upgrade

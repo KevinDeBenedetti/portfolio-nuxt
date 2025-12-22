@@ -44,7 +44,7 @@ jobs:
       run: |
         docker build \
           -t ghcr.io/${{ env.REPO_LOWER }}:${{ env.IMAGE_TAG }} .
-  
+
     - name: Push Docker image (versioned tag)
       run: |
         docker push ghcr.io/${{ env.REPO_LOWER }}:${{ env.IMAGE_TAG }}

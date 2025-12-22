@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types'
-const { locale } = useI18n()
-const { cookiesEnabledIds } = useCookieControl()
-const { initialize, gtag } = useGtag()
-const config = useRuntimeConfig()
+import type { Locale } from '@dargmuesli/nuxt-cookie-control/runtime/types';
+const { locale } = useI18n();
+const { cookiesEnabledIds } = useCookieControl();
+const { initialize, gtag } = useGtag();
+const config = useRuntimeConfig();
 
 watch(
   () => cookiesEnabledIds.value,
   (current, previous) => {
-    if (
-      !previous?.includes('google-analytics') &&
-      current?.includes('google-analytics')
-    ) {
+    if (!previous?.includes('google-analytics') && current?.includes('google-analytics')) {
       // cookie with id `google-analytics` got added
-      initialize(config.public.gtagId)
-      gtag('config', config.public.gtagId)
-      window.location.reload()
+      initialize(config.public.gtagId);
+      gtag('config', config.public.gtagId);
+      window.location.reload();
     }
   },
   { deep: true }
-)
+);
 </script>
 
 <template>

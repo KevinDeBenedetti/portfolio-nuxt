@@ -1,23 +1,20 @@
 <script setup>
-const { t } = useI18n()
-const colorMode = useColorMode()
+const { t } = useI18n();
+const colorMode = useColorMode();
 
 const isDark = computed({
   get() {
-    return colorMode.value === 'dark'
+    return colorMode.value === 'dark';
   },
   set(_isDark) {
-    colorMode.preference = _isDark ? 'dark' : 'light'
+    colorMode.preference = _isDark ? 'dark' : 'light';
   },
-})
+});
 </script>
 
 <template>
   <ClientOnly v-if="!colorMode?.forced">
-    <UTooltip
-      :text="t('toggle_theme')"
-      :ui="{ popper: { strategy: 'absolute' } }"
-    >
+    <UTooltip :text="t('toggle_theme')" :ui="{ popper: { strategy: 'absolute' } }">
       <button
         class="relative px-3 py-4 flex items-center justify-center cursor-pointer transition hover:text-primary-500 dark:hover:text-primary-400"
         @click="isDark = !isDark"

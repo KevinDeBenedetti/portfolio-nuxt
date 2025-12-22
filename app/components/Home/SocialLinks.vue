@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const props = defineProps<{
-  socials: string
-}>()
+  socials: string;
+}>();
 
 const links = [
   {
@@ -14,7 +14,7 @@ const links = [
     url: 'https://www.linkedin.com/in/kevindebenedetti',
     icon: 'mdi:linkedin',
   },
-]
+];
 </script>
 
 <template>
