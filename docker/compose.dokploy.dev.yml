@@ -16,6 +16,8 @@ services:
       - traefik.http.routers.portfolio-dev.entrypoints=websecure
       - traefik.http.routers.portfolio-dev.tls.certResolver=letsencrypt
       - traefik.http.services.portfolio-dev.loadbalancer.server.port=80
+      - traefik.http.middlewares.remove-powered-by.headers.customresponseheaders.X-Powered-By=
+      - traefik.http.routers.portfolio-dev.middlewares=remove-powered-by
 
 networks:
   dokploy-network:

@@ -6,6 +6,32 @@ export default defineNuxtConfig({
   // Use Bun preset for production (optimized for Bun runtime)
   nitro: {
     preset: 'bun',
+    // Security headers for all routes
+    routeRules: {
+      '/**': {
+        headers: {
+          // Prevent clickjacking attacks
+          'X-Frame-Options': 'SAMEORIGIN',
+          // Prevent MIME type sniffing
+          'X-Content-Type-Options': 'nosniff',
+          // Enable XSS protection
+          'X-XSS-Protection': '1; mode=block',
+          // Referrer policy
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          // Permissions Policy (replaces Feature-Policy)
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          // Strict Transport Security (HSTS) - 1 year
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+          // Cross-Origin policies for Spectre mitigation
+          'Cross-Origin-Opener-Policy': 'same-origin',
+          'Cross-Origin-Embedder-Policy': 'credentialless',
+          'Cross-Origin-Resource-Policy': 'same-origin',
+          // Content Security Policy
+          'Content-Security-Policy':
+            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://api.nuxt.studio; frame-ancestors 'self'; base-uri 'self'; form-action 'self';",
+        },
+      },
+    },
   },
 
   modules: [
