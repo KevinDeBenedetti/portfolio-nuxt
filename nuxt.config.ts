@@ -3,9 +3,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-26',
 
-  // Use Node preset for production (default for Nuxt)
+  // Use Vercel preset for Vercel deployment
   nitro: {
-    preset: 'node-server',
+    preset: 'vercel',
     // Security headers for all routes
     routeRules: {
       '/**': {
