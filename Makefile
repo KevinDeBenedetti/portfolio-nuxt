@@ -24,7 +24,7 @@ install: ## Install dependencies with Bun
 	bun install
 
 ci-install: ## Install dependencies with frozen lockfile (CI)
-	bun install --frozen-lockfile
+	bun ci
 
 dev: install ## Start local development server
 	bun run dev
