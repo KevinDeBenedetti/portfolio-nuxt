@@ -19,6 +19,10 @@ jobs:
   version:
     uses: ./.github/workflows/version.yml
 
+  gitleaks:
+    name: Secret Scanning
+    uses: ./.github/workflows/gitleaks.yml
+
   lint:
     needs: version
     uses: ./.github/workflows/lint.yml
@@ -51,6 +55,7 @@ jobs:
     if: ${{ always() }}
     needs:
       - version
+      - gitleaks
       - lint
       - build
       # - test
