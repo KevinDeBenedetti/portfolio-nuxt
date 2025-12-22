@@ -17,9 +17,11 @@
       "persistent": true
     },
     "lint": {
+      "inputs": ["**/*.{ts,tsx,vue,js,jsx,mjs,cjs}"],
       "cache": true
     },
     "lint:type": {
+      "inputs": ["**/*.{ts,tsx,vue}"],
       "cache": true
     },
     "lint:fix": {
@@ -29,10 +31,12 @@
       "cache": false
     },
     "format:check": {
+      "inputs": ["**/*.{ts,tsx,vue,js,jsx,mjs,cjs,json,md,css}"],
       "cache": true
     },
-    "check": {
-      "dependsOn": ["lint", "lint:type"],
+    "typecheck": {
+      "inputs": ["**/*.{ts,tsx,vue}", "tsconfig.json", "nuxt.config.ts"],
+      "outputs": [],
       "cache": true
     },
     "preview": {
