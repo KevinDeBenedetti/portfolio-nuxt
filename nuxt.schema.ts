@@ -1,4 +1,4 @@
-import { group } from '@nuxt/content/preview'
+import { group } from '@nuxt/content/preview';
 
 export default defineNuxtSchema({
   appConfig: {
@@ -7,8 +7,7 @@ export default defineNuxtSchema({
         primary: 'teal',
       },
       button: {
-        rounded:
-          'rounded-md transition-transform active:scale-x-[0.98] active:scale-y-[0.99]',
+        rounded: 'rounded-md transition-transform active:scale-x-[0.98] active:scale-y-[0.99]',
       },
       modal: {
         overlay: {
@@ -17,11 +16,10 @@ export default defineNuxtSchema({
         padding: 'p-0',
         rounded: 'rounded-t-2xl sm:rounded-xl',
         transition: {
-          enterFrom:
-            'opacity-0 translate-y-full sm:translate-y-0 sm:scale-x-95',
+          enterFrom: 'opacity-0 translate-y-full sm:translate-y-0 sm:scale-x-95',
           leaveFrom: 'opacity-100 translate-y-0 sm:scale-x-100',
         },
       },
     }),
   },
-})
+});

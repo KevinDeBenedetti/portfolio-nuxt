@@ -15,8 +15,8 @@ description: 'Here are the legal notices for the site.'
 
 **Client Information**: Hereinafter referred to as "Information," which corresponds to all personal data that may be held by [https://www.kevindb.dev/](https://www.kevindb.dev/) for the management of your account, customer relationship, and for analysis and statistics purposes.
 
-**User**: Any Internet user connecting to and using the aforementioned site.  
-**Personal Information**: "Information that allows, in any form, directly or indirectly, the identification of the individuals to whom it applies" (article 4 of the law n° 78-17 of January 6, 1978).  
+**User**: Any Internet user connecting to and using the aforementioned site.
+**Personal Information**: "Information that allows, in any form, directly or indirectly, the identification of the individuals to whom it applies" (article 4 of the law n° 78-17 of January 6, 1978).
 The terms "personal data," "data subject," "processor," and "sensitive data" have the meanings defined by the General Data Protection Regulation (GDPR: n° 2016-679).
 
 ---
@@ -26,7 +26,7 @@ The terms "personal data," "data subject," "processor," and "sensitive data" hav
 Pursuant to Article 6 of Law n° 2004-575 of June 21, 2004, regarding trust in the digital economy, users of the site [https://www.kevindb.dev/](https://www.kevindb.dev/) are informed of the identities of the various parties involved in its creation and maintenance:
 
 - **Owner**: Kevin De Benedetti
-- **Publication Manager**: Kevin De Benedetti – contact@kevindb.dev  
+- **Publication Manager**: Kevin De Benedetti – contact@kevindb.dev
   The publication manager is either an individual or legal entity.
 - **Webmaster**: Kevin De Benedetti – contact@kevindb.dev
 - **Host**: PulseHeberg – 9, Boulevard de Strasbourg 83000 Toulon +33 (0) 4 22 14 13 60
@@ -113,7 +113,7 @@ In accordance with the European regulations in force, Users of [https://www.kevi
 - Right to data portability provided by Users when these data are processed automatically based on their consent or a contract (article 20 GDPR)
 - Right to define the fate of Users' data after their death and to choose to whom [https://www.kevindb.dev/](https://www.kevindb.dev/) should (or should not) communicate their data to a third party previously designated.
 
-If the User wishes to know how [https://www.kevindb.dev/](https://www.kevindb.dev/) uses their Personal Data, request to rectify it, or oppose its processing, the User can contact [https://www.kevindb.dev/](https://www.kevindb.dev/) in writing at the following address:  
+If the User wishes to know how [https://www.kevindb.dev/](https://www.kevindb.dev/) uses their Personal Data, request to rectify it, or oppose its processing, the User can contact [https://www.kevindb.dev/](https://www.kevindb.dev/) in writing at the following address:
 Kevin De Benedetti – DPO, Kevin De Benedetti
 
 ---

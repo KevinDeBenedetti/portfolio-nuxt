@@ -1,4 +1,5 @@
-import { createConfigForNuxt } from '@nuxt/eslint-config'
+import { createConfigForNuxt } from '@nuxt/eslint-config';
+import oxlint from 'eslint-plugin-oxlint';
 
 export default createConfigForNuxt({
   root: true,
@@ -6,4 +7,4 @@ export default createConfigForNuxt({
     tooling: true,
   },
   stylistic: true,
-})
+}).append(oxlint.configs['flat/recommended']);

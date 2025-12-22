@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { Collections } from '@nuxt/content'
-const { t, locale } = useI18n()
+import type { Collections } from '@nuxt/content';
+const { t, locale } = useI18n();
 
 const { data: page } = await useAsyncData(
   'page-home',
   async () => {
-    const collection = ('content_' + locale.value) as keyof Collections
-    return await queryCollection(collection).path('/').first()
+    const collection = ('content_' + locale.value) as keyof Collections;
+    return await queryCollection(collection).path('/').first();
   },
   {
     watch: [locale],
   }
-)
+);
 
 watchEffect(() => {
   useSeoMeta({
@@ -21,8 +21,8 @@ watchEffect(() => {
     ogDescription: page.value?.description,
     ogImage: 'https://www.kevindb.dev/images/home.webp',
     twitterCard: 'summary_large_image',
-  })
-})
+  });
+});
 </script>
 
 <template>
