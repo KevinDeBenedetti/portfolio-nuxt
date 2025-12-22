@@ -3,9 +3,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-26',
 
-  // Force Node.js preset for production (avoid bun: protocol errors when running with Node.js)
+  // Use Bun preset for production (optimized for Bun runtime)
   nitro: {
-    preset: 'node-server',
+    preset: 'bun',
   },
 
   modules: [
@@ -132,8 +132,8 @@ export default defineNuxtConfig({
     watch: {
       enabled: true,
     },
-    // Use better-sqlite3 for Node.js compatibility (native uses bun:sqlite which doesn't work with Node.js)
-    experimental: { sqliteConnector: 'better-sqlite3' },
+    // Use native bun:sqlite connector (works with Bun runtime)
+    experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
     },
