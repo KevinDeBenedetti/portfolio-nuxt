@@ -1,0 +1,19 @@
+# ZAP Baseline Scan Rules Configuration
+# Format: <rule_id>	<action>	<name>
+# Actions: IGNORE, WARN, FAIL
+# Tab-separated values (TSV)
+
+# Informational alerts - typically safe to ignore for static sites
+10015	IGNORE	Re-examine Cache-control Directives
+10027	IGNORE	Information Disclosure - Suspicious Comments
+10096	IGNORE	Timestamp Disclosure
+10109	IGNORE	Modern Web Application
+10049	IGNORE	Non-Storable Content
+
+# Common false positives for Nuxt/Vue static sites
+10038	WARN	Content Security Policy (CSP) Header Not Set
+10021	WARN	X-Content-Type-Options Header Missing
+10098	WARN	Cross-Domain Misconfiguration
+
+# Keep these as warnings for review
+90033	WARN	Loosely Scoped Cookie
