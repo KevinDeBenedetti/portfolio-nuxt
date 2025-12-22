@@ -11,16 +11,20 @@ help: ## Display this help
 
 clean: ## Clean the project
 	docker compose down --volumes --remove-orphans
-	rm -rf .nuxt .output .pnpm-store node_modules .data pnpm-lock.yaml bun.lock
+	rm -rf .nuxt .output .pnpm-store node_modules .data pnpm-lock.yaml bun.lock .turbo
 
 install: clean ## Setup Nuxt
 	bun install
 
-dev: install
+dev: install ## Start development server
 	bun run dev
 
 start: install ## Start development environment
 	docker compose up -d
+
+# ============================================
+# Linting & Formatting
+# ============================================
 
 lint: ## Lint the codebase
 	bun lint
@@ -40,6 +44,35 @@ format-check: ## Check code formatting
 check: ## Run linting with type checking
 	bun check
 
+# ============================================
+# Turborepo Commands
+# ============================================
+
+turbo-dev: install ## Start dev server with Turborepo
+	bun turbo run dev
+
+turbo-build: ## Build with Turborepo (cached)
+	bun turbo run build
+
+turbo-generate: ## Generate static site with Turborepo (cached)
+	bun turbo run generate
+
+turbo-lint: ## Lint with Turborepo (cached)
+	bun turbo run lint
+
+turbo-lint-type: ## Type-aware lint with Turborepo (cached)
+	bun turbo run lint:type
+
+turbo-check: ## Full check with Turborepo (lint + lint:type, cached)
+	bun turbo run check
+
+turbo-format-check: ## Check formatting with Turborepo (cached)
+	bun turbo run format:check
+
+# ============================================
+# Git Hooks
+# ============================================
+
 hooks-install: ## Install git hooks
 	bun hooks:install
 
@@ -51,6 +84,10 @@ hooks-run: ## Run hooks on all files
 
 hooks-list: ## List all configured hooks
 	bun hooks:list
+
+# ============================================
+# Dependencies
+# ============================================
 
 update: install ## Update dependencies
 	bun update --latest
