@@ -54,4 +54,4 @@ jobs:
         run: bun install
 
       - name: Build application
-        run: bun turbo run build
+        run: make ci-build
