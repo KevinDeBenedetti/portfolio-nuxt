@@ -159,7 +159,6 @@ Key modules:
 - `@nuxt/ui` - UI components
 - `@nuxtjs/i18n` - Internationalization
 - `@nuxt/image` - Image optimization
-- `nuxt-gtag` - Analytics
 
 ## 🎯 Code Philosophy
 

@@ -28,7 +28,7 @@ export default defineNuxtConfig({
           'Cross-Origin-Resource-Policy': 'same-origin',
           // Content Security Policy
           'Content-Security-Policy':
-            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://www.google-analytics.com https://api.nuxt.studio https://region1.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://api.nuxt.studio; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
         },
       },
     },
@@ -41,7 +41,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxt/content',
-    'nuxt-gtag',
     '@dargmuesli/nuxt-cookie-control',
     '@nuxtjs/i18n',
     '@nuxt/fonts',
@@ -66,9 +65,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     ghToken: 'PLACEHOLDER_GITHUB_TOKEN',
-    public: {
-      gtagId: process.env.NUXT_GTAG_ID,
-    },
   },
 
   app: {
@@ -111,12 +107,6 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
-
-  gtag: {
-    initMode: 'manual',
-    id: process.env.NUXT_GTAG_ID,
-    enabled: process.env.NODE_ENV === 'production',
-  },
 
   i18n: {
     defaultLocale: 'fr',
@@ -178,19 +168,7 @@ export default defineNuxtConfig({
     },
     cookies: {
       necessary: [],
-      optional: [
-        {
-          name: 'google-analytics',
-          id: 'google-analytics',
-          isPreselected: false,
-          description: {
-            fr: 'Google Analytics est utilisé pour analyser le trafic et les données du site.',
-            en: 'Google Analytics is used to track website traffic and analyze data.',
-          },
-          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_GTAG_ID}`,
-          targetCookieIds: ['_ga', '_gid', '_gat'],
-        },
-      ],
+      optional: [],
     },
     // isControlButtonEnabled: true,
     // isCssEnabled: true,
