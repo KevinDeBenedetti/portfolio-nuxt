@@ -1,8 +1,15 @@
 # GitHub Copilot Instructions - Portfolio Nuxt
 
+Always use context7 when I need code generation, setup or
+configuration steps, or library/API documentation. This means
+you should automatically use the Context7 MCP tools to resolve
+library id and get library docs without me having to
+explicitly ask.
+
 ## 🎯 Project Overview
 
 Personal portfolio built with modern web technologies:
+
 - **Nuxt 4.2+** with Vue 3.5+ and TypeScript
 - **Bun** as package manager
 - **Oxlint/Oxfmt** for ultra-fast linting and formatting (50-100x faster than ESLint)
@@ -12,6 +19,7 @@ Personal portfolio built with modern web technologies:
 - **i18n** for internationalization (fr/en) with `prefix_except_default` strategy
 
 **Key Features:**
+
 - Static site generation (SSG) optimized
 - Bilingual content organized by language (`content/en/`, `content/fr/`)
 - SEO optimized with sitemap and robots.txt
@@ -22,6 +30,7 @@ Personal portfolio built with modern web technologies:
 ## 💻 Code Conventions
 
 ### TypeScript
+
 - **Always use TypeScript** for new files
 - **Strict typing**: avoid `any`, prefer explicit types
 - **Type inference**: let TypeScript infer when obvious
@@ -35,10 +44,13 @@ interface ProjectData {
 }
 
 // ❌ BAD
-const project: any = { /* ... */ };
+const project: any = {
+  /* ... */
+};
 ```
 
 ### Vue 3 Composition API
+
 - **Always use** `<script setup lang="ts">`
 - **No Options API**: use Composition API exclusively
 - **Typed props** with interfaces
@@ -60,18 +72,21 @@ const title = computed(() => props.project?.title);
 ```
 
 ### Components & Composables
+
 - **Naming**: PascalCase for components, `use` prefix for composables
 - **Props**: always type, define required/defaults
 - **Single File Components**: one component per file
 - **Return objects** from composables for clarity
 
 ### Nuxt Content
+
 - **Typed collections** in `content.config.ts` with Zod schemas
 - **i18n separation**: content organized by language
 - **MDC syntax** for Vue components in Markdown: `::component-name{prop="value"}`
 - Global components in `components/content/` directory
 
 ### Styling
+
 - **Tailwind utility-first**: prefer utility classes
 - **Dark mode**: use `dark:` prefix
 - **Responsive**: use Tailwind breakpoints
@@ -90,6 +105,7 @@ const title = computed(() => props.project?.title);
 ## 🔧 Development Tools
 
 ### Oxlint/Oxfmt
+
 Ultra-fast linting and formatting (50-100x faster than ESLint):
 
 ```bash
@@ -101,9 +117,11 @@ bun check          # Complete check (lint + types)
 ```
 
 ### Makefile
+
 Use Makefile commands for common tasks. Check `Makefile` for available targets.
 
 ### Git Hooks (prek)
+
 ```bash
 bun hooks:install  # Install git hooks
 bun hooks:run      # Run on all files
@@ -112,17 +130,20 @@ bun hooks:run      # Run on all files
 ## 📝 Best Practices
 
 ### Performance
+
 - Use `<NuxtImg>` for images
 - Lazy load with `LazyComponent`
 - Use `useAsyncData` for queries
 - Favor SSG when possible
 
 ### SEO
+
 - Use `useSeoMeta` for meta tags
 - Sitemap auto-configured
 - Robots.txt configured
 
 ### Accessibility
+
 - Add ARIA attributes when needed
 - Always use `alt` for images
 - Use semantic HTML5
@@ -133,6 +154,7 @@ bun hooks:run      # Run on all files
 For official documentation on dependencies, use **Context7** with the `@mcp_context7` tools to get up-to-date documentation.
 
 Key modules:
+
 - `@nuxt/content` - Content management
 - `@nuxt/ui` - UI components
 - `@nuxtjs/i18n` - Internationalization
