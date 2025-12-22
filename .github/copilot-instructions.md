@@ -11,7 +11,7 @@ explicitly ask.
 Personal portfolio built with modern web technologies:
 
 - **Nuxt 4.2+** with Vue 3.5+ and TypeScript
-- **Bun** as package manager
+- **pnpm** as package manager
 - **Oxlint/Oxfmt** for ultra-fast linting and formatting (50-100x faster than ESLint)
 - **Nuxt Content** for Markdown/JSON content management with Zod schemas
 - **Nuxt UI** for UI components
@@ -109,11 +109,11 @@ const title = computed(() => props.project?.title);
 Ultra-fast linting and formatting (50-100x faster than ESLint):
 
 ```bash
-bun lint           # Standard lint
-bun lint:type      # Type-aware lint
-bun lint:fix       # Safe auto-fix
-bun format         # Format code
-bun check          # Complete check (lint + types)
+pnpm lint           # Standard lint
+pnpm lint:type      # Type-aware lint
+pnpm lint:fix       # Safe auto-fix
+pnpm format         # Format code
+pnpm check          # Complete check (lint + types)
 ```
 
 ### Makefile
@@ -123,8 +123,8 @@ Use Makefile commands for common tasks. Check `Makefile` for available targets.
 ### Git Hooks (prek)
 
 ```bash
-bun hooks:install  # Install git hooks
-bun hooks:run      # Run on all files
+pnpm hooks:install  # Install git hooks
+pnpm hooks:run      # Run on all files
 ```
 
 ## 📝 Best Practices

@@ -7,8 +7,8 @@ on:
         description: 'Node.js version to use'
         required: true
         type: string
-      bun-version:
-        description: 'Bun version to use'
+      pnpm-version:
+        description: 'pnpm version to use'
         required: true
         type: string
     secrets:
@@ -35,23 +35,21 @@ jobs:
         uses: actions/cache@v5
         with:
           path: .turbo
-          key: turbo-build-${{ runner.os }}-${{ hashFiles('bun.lock') }}-${{ github.sha }}
+          key: turbo-build-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
           restore-keys: |
-            turbo-build-${{ runner.os }}-${{ hashFiles('bun.lock') }}-
+            turbo-build-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-
             turbo-build-${{ runner.os }}-
 
-      - name: Install bun
-        uses: oven-sh/setup-bun@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          bun-version: ${{ inputs.bun-version }}
+          version: ${{ inputs.pnpm-version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-
-      - name: Install dependencies
-        run: bun install
+          cache: 'pnpm'
 
       - name: Build application
         run: make ci-build

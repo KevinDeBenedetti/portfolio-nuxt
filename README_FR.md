@@ -57,7 +57,7 @@ Ce portfolio présente mon travail en tant que développeur web fullstack, const
 | Styling   | Tailwind CSS 4, Nuxt UI 4 |
 | Contenu   | Nuxt Content 3, MDC       |
 | i18n      | @nuxtjs/i18n              |
-| Build     | Bun, Turborepo            |
+| Build     | pnpm, Turborepo           |
 | Linting   | Oxlint, Oxfmt             |
 | Hooks     | prek                      |
 
@@ -82,16 +82,16 @@ i18n/locales/       # Fichiers de traduction
 
 ```bash
 # Installer les dépendances
-bun install
+pnpm install
 
 # Démarrer le serveur de développement
-bun dev
+pnpm dev
 
 # Build pour la production
-bun generate
+pnpm generate
 
 # Lint & format
-bun check
+pnpm check
 ```
 
 ## 🙏 Remerciements
@@ -106,7 +106,7 @@ Ce projet est construit grâce à d'incroyables projets open-source :
 ### Build & Outillage
 
 - **[Turborepo](https://turbo.build)** - Système de build haute performance pour les monorepos JavaScript/TypeScript
-- **[Bun](https://bun.sh)** - Runtime JavaScript et gestionnaire de paquets incroyablement rapide
+- **[pnpm](https://pnpm.io)** - Gestionnaire de paquets rapide et économe en espace disque
 
 ### Qualité de Code
 

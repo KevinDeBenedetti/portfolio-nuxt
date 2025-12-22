@@ -2,13 +2,12 @@
 
 ## [1.0.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.0...v1.0.1) (2025-12-22)
 
-
 ### 🐛 Bug Fixes
 
-* configure vercel bun runtime, release-please workflow and makefile commands ([c079055](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/c07905527c24ffc5a193b29a3a2c994447f426b9))
-* remove schema reference from release-please manifest and update install command in vercel config ([75799d5](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/75799d59ab02e4772d268ed846764ec608216030))
-* update CI commands to use 'install' instead of 'ci-install' for consistency ([b3d8329](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/b3d8329691e302408c75ee030a8e0d5ba8446513))
-* update ci-install command to use 'bun ci' for consistency ([7ca8a3c](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/7ca8a3cc0953a81a2de8876a03c341766915faf1))
+- configure vercel bun runtime, release-please workflow and makefile commands ([c079055](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/c07905527c24ffc5a193b29a3a2c994447f426b9))
+- remove schema reference from release-please manifest and update install command in vercel config ([75799d5](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/75799d59ab02e4772d268ed846764ec608216030))
+- update CI commands to use 'install' instead of 'ci-install' for consistency ([b3d8329](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/b3d8329691e302408c75ee030a8e0d5ba8446513))
+- update ci-install command to use 'bun ci' for consistency ([7ca8a3c](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/7ca8a3cc0953a81a2de8876a03c341766915faf1))
 
 ## 1.0.0 (2025-12-22)
 
