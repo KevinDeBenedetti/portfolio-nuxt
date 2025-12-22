@@ -21,7 +21,7 @@ jobs:
           path: |
             ~/.bun
             node_modules
-          key: bun-cache-${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('bun.lockb', 'package.json') }}
+          key: bun-cache-${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('bun.lock', 'package.json') }}
           restore-keys: |
             bun-cache-${{ runner.os }}-node-
 
