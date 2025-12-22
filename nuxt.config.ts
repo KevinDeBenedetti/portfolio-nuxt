@@ -3,6 +3,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-26',
 
+  // Force Node.js preset for production (avoid bun: protocol errors when running with Node.js)
+  nitro: {
+    preset: 'node-server',
+  },
+
   modules: [
     '@nuxt/ui',
     '@nuxt/icon',
