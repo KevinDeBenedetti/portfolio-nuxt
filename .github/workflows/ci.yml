@@ -15,6 +15,10 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   version:
     uses: ./.github/workflows/version.yml
@@ -22,6 +26,9 @@ jobs:
   gitleaks:
     name: Secret Scanning
     uses: ./.github/workflows/gitleaks.yml
+    permissions:
+      contents: read
+      security-events: write
 
   lint:
     needs: version

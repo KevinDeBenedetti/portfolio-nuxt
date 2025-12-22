@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  data: unknown;
+  data: unknown[] | null | undefined;
 }>();
 
 const { h1, h2, firstParagraph } = useContentParser(props.data || []);

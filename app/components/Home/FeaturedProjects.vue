@@ -11,9 +11,13 @@ const props = defineProps<{
 const { data: projects } = await useAsyncData(
   async () => {
     const collection = ('projects_' + locale.value) as keyof Collections;
-    const content = await queryCollection(collection).order('sort', 'DESC').limit(3).all();
-
-    return content;
+    const content = await queryCollection(collection).all();
+    // Sort by 'sort' field descending
+    return content
+      .toSorted(
+        (a, b) => ((b as { sort?: number }).sort ?? 0) - ((a as { sort?: number }).sort ?? 0)
+      )
+      .slice(0, 3);
   },
   {
     watch: [locale],

@@ -27,11 +27,6 @@ const thumbnail = computed(() => props.project?.thumbnail);
     <div
       class="flex-1 border-b border-dashed border-gray-300 dark:border-gray-800 group-hover:border-gray-700"
     />
-    <UAvatar
-      :src="thumbnail"
-      :ui="{ root: 'p-1', rounded: 'rounded z-10 relative' }"
-      size="lg"
-      :alt="title"
-    />
+    <UAvatar :src="thumbnail" :ui="{ root: 'p-1' }" size="lg" :alt="title" />
   </NuxtLink>
 </template>
