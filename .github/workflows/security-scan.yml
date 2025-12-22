@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "🔍 Checking target availability: ${{ inputs.target_url }}"
 
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${{ inputs.target_url }}" || echo "000")
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -A "Mozilla/5.0 (compatible; GitHubActions/1.0)" "${{ inputs.target_url }}" || echo "000")
 
           echo "HTTP Status: $HTTP_STATUS"
 
