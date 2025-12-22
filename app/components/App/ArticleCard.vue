@@ -1,22 +1,22 @@
 <script setup lang="ts">
 const props = defineProps<{
-  article: Article
-}>()
+  article: Article;
+}>();
 
-const { locale } = useI18n()
-const localePath = useLocalePath()
+const { locale } = useI18n();
+const localePath = useLocalePath();
 const articleLink = computed(() =>
   localePath({ name: 'articles-slug', params: { slug: props.article.slug } })
-)
+);
 
 const getReadableDate = (dateString: string | Date | undefined) => {
-  const date = new Date(dateString ?? new Date())
+  const date = new Date(dateString ?? new Date());
   return date.toLocaleDateString(locale.value, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  })
-}
+  });
+};
 </script>
 
 <template>
@@ -25,9 +25,7 @@ const getReadableDate = (dateString: string | Date | undefined) => {
       <time
         class="relative z-10 order-first mb-3 flex items-center text-sm text-gray-400 dark:text-gray-500 pl-3.5"
         datetime="2022-09-05"
-        ><span
-          class="absolute inset-y-0 left-0 flex items-center"
-          aria-hidden="true"
+        ><span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true"
           ><span class="h-4 w-0.5 rounded-full bg-gray-200 dark:bg-gray-500"
         /></span>
         {{ getReadableDate(article.published) }}

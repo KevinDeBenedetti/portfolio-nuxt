@@ -17,5 +17,5 @@ defineProps({
     type: String,
     default: '',
   },
-})
+});
 </script>

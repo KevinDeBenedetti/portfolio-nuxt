@@ -4,11 +4,11 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-})
+});
 
-const title = computed(() => props.project?.title)
-const description = computed(() => props.project?.description)
-const thumbnail = computed(() => props.project?.thumbnail)
+const title = computed(() => props.project?.title);
+const description = computed(() => props.project?.description);
+const thumbnail = computed(() => props.project?.thumbnail);
 </script>
 
 <template>

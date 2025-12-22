@@ -1,27 +1,24 @@
 <script lang="ts" setup>
-import type { Collections } from '@nuxt/content'
-const localePath = useLocalePath()
-const { locale } = useI18n()
+import type { Collections } from '@nuxt/content';
+const localePath = useLocalePath();
+const { locale } = useI18n();
 
 const props = defineProps<{
-  featured: string
-  link: string
-}>()
+  featured: string;
+  link: string;
+}>();
 
 const { data: projects } = await useAsyncData(
   async () => {
-    const collection = ('projects_' + locale.value) as keyof Collections
-    const content = await queryCollection(collection)
-      .order('sort', 'DESC')
-      .limit(3)
-      .all()
+    const collection = ('projects_' + locale.value) as keyof Collections;
+    const content = await queryCollection(collection).order('sort', 'DESC').limit(3).all();
 
-    return content
+    return content;
   },
   {
     watch: [locale],
   }
-)
+);
 </script>
 
 <template>
@@ -30,19 +27,10 @@ const { data: projects } = await useAsyncData(
       {{ props.featured }}
     </h2>
     <div class="space-y-4">
-      <AppProjectCard
-        v-for="(project, id) in projects"
-        :key="id"
-        :project="project"
-      />
+      <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
     </div>
     <div class="flex items-center justify-center mt-6 text-sm">
-      <UButton
-        :label="props.link"
-        :to="localePath('projects')"
-        variant="link"
-        color="primary"
-      />
+      <UButton :label="props.link" :to="localePath('projects')" variant="link" color="primary" />
     </div>
   </div>
 </template>

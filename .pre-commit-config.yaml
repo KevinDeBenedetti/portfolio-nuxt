@@ -1,0 +1,90 @@
+# Pre-commit configuration for prek
+# Documentation: https://prek.j178.dev/
+# Hooks reference: https://pre-commit.com/hooks.html
+
+default_stages: [pre-commit]
+fail_fast: false
+
+repos:
+  # Built-in hooks for common checks
+  - repo: builtin
+    hooks:
+      - id: check-added-large-files
+        args: [--maxkb=500]
+        name: 🔍 Check for large files
+
+      - id: check-case-conflict
+        name: 🔍 Check for case conflicts
+
+      - id: check-merge-conflict
+        name: 🔍 Check for merge conflicts
+
+      - id: check-toml
+        name: 🔍 Check TOML syntax
+
+      - id: check-yaml
+        name: 🔍 Check YAML syntax
+
+      - id: check-json
+        name: 🔍 Check JSON syntax
+        exclude: ^(.oxlintrc\.json|.oxfmtrc\.json|tsconfig\.json)$
+
+      - id: end-of-file-fixer
+        name: 📝 Fix end of files
+
+      - id: trailing-whitespace
+        name: 📝 Trim trailing whitespace
+
+  # Local hooks for your project-specific commands
+  - repo: local
+    hooks:
+      - id: format-check
+        name: 📝 Check code formatting
+        entry: pnpm format:check
+        language: system
+        always_run: true
+        pass_filenames: false
+        priority: 0 # Run first
+
+      - id: lint
+        name: 🔍 Lint code
+        entry: pnpm lint
+        language: system
+        types: [file]
+        pass_filenames: false
+        priority: 1 # Run after format check
+
+  # Pre-push hooks (more thorough checks)
+  - repo: local
+    hooks:
+      - id: type-check
+        name: 🔍 Type checking
+        entry: pnpm lint:type
+        language: system
+        stages: [pre-push]
+        always_run: true
+        pass_filenames: false
+
+  # Commit message validation
+  - repo: local
+    hooks:
+      - id: commit-msg-format
+        name: 📝 Validate commit message format
+        entry: bash
+        args:
+          - -c
+          - |
+            msg=$(cat "$@")
+            if echo "$msg" | grep -qE "^(Merge|Revert)"; then
+              exit 0
+            fi
+            if ! echo "$msg" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .{3,}"; then
+              echo "❌ Format de commit invalide!"
+              echo "Utilisez: type(scope): description"
+              echo "Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore"
+              exit 1
+            fi
+          - --
+        language: system
+        stages: [commit-msg]
+        always_run: true
