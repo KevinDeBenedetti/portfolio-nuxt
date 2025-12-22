@@ -15,7 +15,9 @@
     rgba(102 109 128/0.08) 0px 1.2672px 1.2672px, rgba(102 109 128/0.08) 0px 5.0688px 10.1376px;
   --shadow-zoopdark:
     rgba(10 10 10/0.2) 0px 1.2672px 1.2672px, rgba(10 10 10/0.2) 0px 5.0688px 10.1376px;
+}
 
+:root {
   --ui-container: var(--container-2xl);
 }
 
