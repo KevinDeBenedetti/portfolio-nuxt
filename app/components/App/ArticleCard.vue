@@ -1,4 +1,11 @@
 <script setup lang="ts">
+interface Article {
+  slug: string;
+  title: string;
+  description: string;
+  published?: string | Date;
+}
+
 const props = defineProps<{
   article: Article;
 }>();

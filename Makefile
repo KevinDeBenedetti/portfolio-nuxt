@@ -43,8 +43,8 @@ generate: install ## Generate static site
 # Linting & Formatting
 # ============================================
 
-lint: ## Lint the codebase
-	bun lint
+lint: ## Lint the codebase (with turbo cache)
+	bun turbo run lint
 
 lint-fix: ## Lint and fix the codebase
 	bun lint:fix
@@ -55,24 +55,41 @@ lint-fix-all: ## Lint and fix all issues (including dangerous fixes)
 format: ## Format the codebase
 	bun format
 
-format-check: ## Check code formatting
-	bun format:check
+format-check: ## Check code formatting (with turbo cache)
+	bun turbo run format:check
 
-check: ## Run linting with type checking
+typecheck: ## Run TypeScript type checking (with turbo cache)
+	bun turbo run typecheck
+
+check: ## Run full check: lint + format + typecheck (with turbo cache)
 	bun check
 
 # ============================================
-# Turborepo Commands
+# CI Commands (optimized for CI/CD)
+# ============================================
+
+ci-lint: install ## Run CI lint + format + typecheck (parallel, cached)
+	bun run check
+
+ci-build: install ## Run CI build (cached)
+	bun turbo run build
+
+ci-check: install ## Run full CI checks (lint + format + typecheck + build)
+	bun run check
+	bun turbo run build
+
+# ============================================
+# Turborepo Commands (legacy aliases)
 # ============================================
 
 turbo-dev: install ## Start dev server with Turborepo
 	bun turbo run dev
 
 turbo-build: install ## Build with Turborepo (cached)
-	bun turbo run build
+	bun build
 
 turbo-generate: install ## Generate static site with Turborepo (cached)
-	bun turbo run generate
+	bun generate
 
 turbo-lint: ## Lint with Turborepo (cached)
 	bun turbo run lint
@@ -80,8 +97,8 @@ turbo-lint: ## Lint with Turborepo (cached)
 turbo-lint-type: ## Type-aware lint with Turborepo (cached)
 	bun turbo run lint:type
 
-turbo-check: ## Full check with Turborepo (lint + lint:type, cached)
-	bun turbo run check
+turbo-check: ## Full check with Turborepo (lint + format + typecheck, cached)
+	bun check
 
 turbo-format-check: ## Check formatting with Turborepo (cached)
 	bun turbo run format:check

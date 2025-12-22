@@ -1,14 +1,24 @@
 <script lang="ts" setup>
+import type { Collections } from '@nuxt/content';
+
+interface Article {
+  slug: string;
+  title: string;
+  description: string;
+  published?: string | Date;
+}
+
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
-const { data: articles } = await useAsyncData('articles-home', () =>
-  queryCollection('articles')
-    .where('lang', '=', locale.value)
-    .order('published', 'DESC')
-    .limit(3)
-    .all()
-);
+// Note: Articles collection needs to be defined in content.config.ts
+// For now, this component is disabled in index.vue
+const { data: articles } = await useAsyncData('articles-home', async () => {
+  // TODO: Create articles collection in content.config.ts
+  // const collection = ('articles_' + locale.value) as keyof Collections;
+  // return await queryCollection(collection).limit(3).all();
+  return [] as unknown[];
+});
 </script>
 
 <template>
@@ -17,7 +27,7 @@ const { data: articles } = await useAsyncData('articles-home', () =>
       {{ t('home.articles_featured') }}
     </h2>
     <ul class="space-y-16">
-      <li v-for="(article, id) in articles" :key="id">
+      <li v-for="(article, id) in articles as Article[]" :key="id">
         <AppArticleCard :article="article" />
       </li>
     </ul>
@@ -26,7 +36,7 @@ const { data: articles } = await useAsyncData('articles-home', () =>
         :label="t('home.articles_link')"
         :to="localePath('articles')"
         variant="link"
-        color="gray"
+        color="neutral"
       />
     </div>
   </div>

@@ -1,5 +1,14 @@
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content';
+
+declare global {
+  interface Window {
+    JSConfetti: new () => {
+      addConfetti: (options: { emojis: string[] }) => void;
+    };
+  }
+}
+
 const { locale } = useI18n();
 
 const { data: page } = await useAsyncData(
@@ -13,14 +22,18 @@ const { data: page } = await useAsyncData(
   }
 );
 
-const { h1, firstParagraph } = useContentParser(page.value?.body.value || []);
+const { h1, firstParagraph } = useContentParser(
+  (page.value as { body?: { value: unknown[] } })?.body?.value || []
+);
 
 const { data: projects } = await useAsyncData(
   async () => {
     const collection = ('projects_' + locale.value) as keyof Collections;
-    const content = await queryCollection(collection).order('sort', 'DESC').all();
-
-    return content;
+    const content = await queryCollection(collection).all();
+    // Sort by 'sort' field descending
+    return content.toSorted(
+      (a, b) => ((b as { sort?: number }).sort ?? 0) - ((a as { sort?: number }).sort ?? 0)
+    );
   },
   {
     watch: [locale],
@@ -77,7 +90,7 @@ onLoaded(({ JSConfetti }) => {
 
 <template>
   <main class="min-h-screen">
-    <AppHeader :title="h1" :description="firstParagraph" />
+    <AppHeader :title="String(h1)" :description="String(firstParagraph)" />
     <div class="space-y-4">
       <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
     </div>
