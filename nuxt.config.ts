@@ -28,7 +28,7 @@ export default defineNuxtConfig({
           'Cross-Origin-Resource-Policy': 'same-origin',
           // Content Security Policy
           'Content-Security-Policy':
-            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://api.nuxt.studio; frame-ancestors 'self'; base-uri 'self'; form-action 'self';",
+            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://www.google-analytics.com https://api.nuxt.studio https://region1.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
         },
       },
     },
