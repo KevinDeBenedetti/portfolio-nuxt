@@ -132,7 +132,8 @@ export default defineNuxtConfig({
     watch: {
       enabled: true,
     },
-    experimental: { sqliteConnector: 'native' },
+    // Use better-sqlite3 for Node.js compatibility (native uses bun:sqlite which doesn't work with Node.js)
+    experimental: { sqliteConnector: 'better-sqlite3' },
     preview: {
       api: 'https://api.nuxt.studio',
     },
