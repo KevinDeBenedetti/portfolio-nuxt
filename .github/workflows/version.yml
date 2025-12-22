@@ -2,6 +2,13 @@ name: Versions
 
 on:
   workflow_call:
+    outputs:
+      node-version:
+        description: 'Node.js version to use'
+        value: ${{ jobs.version.outputs.node-version }}
+      bun-version:
+        description: 'Bun version to use'
+        value: ${{ jobs.version.outputs.bun-version }}
 
 jobs:
   version:
@@ -10,11 +17,23 @@ jobs:
       node-version: ${{ steps.set.outputs.node-version }}
       bun-version: ${{ steps.set.outputs.bun-version }}
     steps:
-      - name: Set versions
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: package.json
+          sparse-checkout-cone-mode: false
+
+      - name: Extract versions from package.json
         id: set
         run: |
+          # Extract bun version from packageManager field (format: "bun@x.x.x")
+          BUN_VERSION=$(jq -r '.packageManager // empty' package.json | sed 's/bun@//')
+          if [ -z "$BUN_VERSION" ]; then
+            BUN_VERSION="1.3.5"
+          fi
           echo "node-version=22.20.0" >> $GITHUB_OUTPUT
-          echo "bun-version=1.2.15" >> $GITHUB_OUTPUT
+          echo "bun-version=$BUN_VERSION" >> $GITHUB_OUTPUT
+
       - name: Output versions
         run: |
           echo "Node: ${{ steps.set.outputs.node-version }}"
