@@ -8,7 +8,7 @@ on:
       - synchronize
       - ready_for_review
     branches:
-      - "**"
+      - '**'
   workflow_dispatch:
 
 concurrency:
@@ -23,7 +23,13 @@ jobs:
     needs: version
     uses: ./.github/workflows/lint.yml
     with:
-      node-version: ${{ needs.versions.outputs.node-version }}
+      node-version: ${{ needs.version.outputs.node-version }}
+
+  build:
+    needs: version
+    uses: ./.github/workflows/build.yml
+    with:
+      node-version: ${{ needs.version.outputs.node-version }}
 
   # test:
   #   uses: ./.github/workflows/test.yml
@@ -38,6 +44,7 @@ jobs:
     needs:
       - version
       - lint
+      - build
       # - test
     steps:
       - name: Check status of all required jobs
