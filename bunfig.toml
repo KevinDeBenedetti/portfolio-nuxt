@@ -1,0 +1,6 @@
+# Bun configuration
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Install peer dependencies automatically
+peer = true
