@@ -43,6 +43,7 @@ const { onLoaded } = useScriptNpm({
   file: 'dist/js-confetti.browser.js',
   version: '0.12.0',
   scriptOptions: {
+    bundle: true, // Bundle with app to eliminate external script security issues
     use() {
       return { JSConfetti: window.JSConfetti };
     },
