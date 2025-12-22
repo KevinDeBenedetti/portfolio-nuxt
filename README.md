@@ -39,7 +39,6 @@ This portfolio showcases my work as a fullstack web developer, built with a focu
 
 - **Automatic sitemap** generation with `@nuxtjs/sitemap`
 - **Robots.txt** configuration with `@nuxtjs/robots`
-- **Google Analytics** integration with cookie consent (`nuxt-gtag`)
 - **Structured meta tags** with `useSeoMeta`
 
 ### UI/UX
