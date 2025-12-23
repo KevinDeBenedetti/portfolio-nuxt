@@ -12,7 +12,7 @@ declare global {
 const { locale } = useI18n();
 
 const { data: page } = await useAsyncData(
-  'page-projects',
+  `page-projects-${locale.value}`,
   async () => {
     const collection = ('content_' + locale.value) as keyof Collections;
     return await queryCollection(collection).path('/projects').first();
@@ -27,6 +27,7 @@ const { h1, firstParagraph } = useContentParser(
 );
 
 const { data: projects } = await useAsyncData(
+  `all-projects-${locale.value}`,
   async () => {
     const collection = ('projects_' + locale.value) as keyof Collections;
     const content = await queryCollection(collection).all();

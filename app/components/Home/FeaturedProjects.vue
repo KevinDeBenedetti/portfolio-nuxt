@@ -9,6 +9,7 @@ const props = defineProps<{
 }>();
 
 const { data: projects } = await useAsyncData(
+  `featured-projects-${locale.value}`,
   async () => {
     const collection = ('projects_' + locale.value) as keyof Collections;
     const content = await queryCollection(collection).all();
