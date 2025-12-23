@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.2...v1.0.3) (2025-12-23)
+
+
+### 🐛 Bug Fixes
+
+* update async data keys to include locale for better data handling ([7781556](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/7781556ce33771904ac736ea04527a6127d6bef5))
+
 ## [1.0.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.1...v1.0.2) (2025-12-22)
 
 
