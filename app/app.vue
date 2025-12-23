@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Analytics } from '@vercel/analytics/nuxt';
+import { SpeedInsights } from '@vercel/speed-insights/vue';
+</script>
 
 <template>
   <UApp>
@@ -13,6 +16,8 @@
     <div class="h-32" />
     <AppFooter />
   </UApp>
+  <Analytics />
+  <SpeedInsights />
 </template>
 
 <style>
