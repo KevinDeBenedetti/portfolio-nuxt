@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.3...v1.0.4) (2025-12-23)
+
+
+### 🐛 Bug Fixes
+
+* update Makefile to remove .vercel directory and change SQLite connector to libsql for Vercel compatibility ([493ba5d](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/493ba5d541095a3dfc1ba2b6b65613532f7f1be9))
+
 ## [1.0.3](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.2...v1.0.3) (2025-12-23)
 
 
