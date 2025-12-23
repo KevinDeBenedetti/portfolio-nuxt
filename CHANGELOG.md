@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.5...v1.1.0) (2025-12-23)
+
+
+### ✨ Features
+
+* add Analytics & SpeedInsights to vercel ([93e3441](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/93e34410e54248f2cf9f81865adf00cf9cc8fe9f))
+
 ## [1.0.5](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.4...v1.0.5) (2025-12-23)
 
 
