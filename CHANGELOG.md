@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.1.1...v1.1.2) (2025-12-23)
+
+
+### 🐛 Bug Fixes
+
+* **security:** improve cache-control and CORS headers for ZAP compliance ([0156736](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/01567366e935dbc3d1b6ea34938dcdddb66f1d28))
+
 ## [1.1.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.1.0...v1.1.1) (2025-12-23)
 
 
