@@ -31,15 +31,31 @@ export default defineNuxtConfig({
             'Cross-Origin-Embedder-Policy': 'credentialless',
             // Allow cross-origin for static assets (needed for fonts, images from CDN)
             'Cross-Origin-Resource-Policy': 'cross-origin',
+            // Cache control for HTML pages
+            'Cache-Control': 'public, max-age=0, must-revalidate',
             // Content Security Policy - Note: 'unsafe-eval' is required for Vue.js reactivity in production
             'Content-Security-Policy':
               "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: blob: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://api.nuxt.studio https://cloudflareinsights.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
           },
         },
-        // Cache control for static assets
+        // Cache control for static assets (immutable, 1 year)
         '/_nuxt/**': {
           headers: {
             'Cache-Control': 'public, max-age=31536000, immutable',
+            'Access-Control-Allow-Origin': '*',
+          },
+        },
+        // Cache control for Vercel image optimization
+        '/_vercel/image/**': {
+          headers: {
+            'Cache-Control': 'public, max-age=31536000, immutable',
+            'Access-Control-Allow-Origin': '*',
+          },
+        },
+        // Sitemap caching
+        '/__sitemap__/**': {
+          headers: {
+            'Cache-Control': 'public, max-age=3600, s-maxage=86400',
           },
         },
       },
