@@ -10,7 +10,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
-const { data: articles } = await useAsyncData('all-articles', () =>
+const { data: articles } = await useAsyncData(`all-articles-${locale.value}`, () =>
   queryCollection('articles').where('lang', '=', locale.value).order('published', 'DESC').all()
 );
 </script>
