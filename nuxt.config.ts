@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-09-26',
+  compatibilityDate: '2025-12-23',
 
   // Use Vercel preset for Vercel deployment
   nitro: {
