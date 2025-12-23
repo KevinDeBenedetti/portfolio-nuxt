@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.1.0...v1.1.1) (2025-12-23)
+
+
+### 🐛 Bug Fixes
+
+* update security headers and adjust ZAP target URL ([2b2e59d](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/2b2e59d5e42984daf74a55affd9cca389a74c66a))
+
 ## [1.1.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.5...v1.1.0) (2025-12-23)
 
 
