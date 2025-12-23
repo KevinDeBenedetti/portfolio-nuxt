@@ -27,7 +27,7 @@ jobs:
   security-scan:
     name: Security Scan
     # needs: deploy
-    if: always() && needs.deploy.result == 'success'
+    # if: always() && needs.deploy.result == 'success'
     uses: ./.github/workflows/security-scan.yml
     with:
       target_url: ${{ github.ref_name == 'main' && 'https://kevindb.dev' || 'https://REDACTED_URL' }}
