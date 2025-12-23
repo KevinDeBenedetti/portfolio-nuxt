@@ -175,7 +175,8 @@ upgrade: ## Upgrade Nuxt
 # ============================================
 
 # Default target URL for security scans
-ZAP_TARGET ?= http://host.docker.internal:3000
+# ZAP_TARGET ?= http://host.docker.internal:3000
+ZAP_TARGET ?= https://kevindb.dev
 ZAP_REPORTS_DIR := $(PWD)/zap-reports
 
 zap-setup: ## Create ZAP reports directory
