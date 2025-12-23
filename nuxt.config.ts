@@ -6,29 +6,34 @@ export default defineNuxtConfig({
   // Use Vercel preset for Vercel deployment
   nitro: {
     preset: 'vercel',
-    // Security headers for all routes
-    routeRules: {
-      '/**': {
-        headers: {
-          // Prevent clickjacking attacks
-          'X-Frame-Options': 'SAMEORIGIN',
-          // Prevent MIME type sniffing
-          'X-Content-Type-Options': 'nosniff',
-          // Enable XSS protection
-          'X-XSS-Protection': '1; mode=block',
-          // Referrer policy
-          'Referrer-Policy': 'strict-origin-when-cross-origin',
-          // Permissions Policy (replaces Feature-Policy)
-          'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-          // Strict Transport Security (HSTS) - 1 year
-          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
-          // Cross-Origin policies for Spectre mitigation
-          'Cross-Origin-Opener-Policy': 'same-origin',
-          'Cross-Origin-Embedder-Policy': 'credentialless',
-          'Cross-Origin-Resource-Policy': 'same-origin',
-          // Content Security Policy
-          'Content-Security-Policy':
-            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://api.nuxt.studio; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+  },
+
+  // Security headers only for production (upgrade-insecure-requests breaks local dev)
+  $production: {
+    nitro: {
+      routeRules: {
+        '/**': {
+          headers: {
+            // Prevent clickjacking attacks
+            'X-Frame-Options': 'SAMEORIGIN',
+            // Prevent MIME type sniffing
+            'X-Content-Type-Options': 'nosniff',
+            // Enable XSS protection
+            'X-XSS-Protection': '1; mode=block',
+            // Referrer policy
+            'Referrer-Policy': 'strict-origin-when-cross-origin',
+            // Permissions Policy (replaces Feature-Policy)
+            'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+            // Strict Transport Security (HSTS) - 1 year
+            'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+            // Cross-Origin policies for Spectre mitigation
+            'Cross-Origin-Opener-Policy': 'same-origin',
+            'Cross-Origin-Embedder-Policy': 'credentialless',
+            'Cross-Origin-Resource-Policy': 'same-origin',
+            // Content Security Policy
+            'Content-Security-Policy':
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://api.nuxt.studio; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+          },
         },
       },
     },
@@ -144,11 +149,15 @@ export default defineNuxtConfig({
   },
 
   content: {
+    database: {
+      type: 'sqlite',
+      filename: '/tmp/contents.sqlite',
+    },
     watch: {
       enabled: true,
     },
-    // Use better-sqlite3 connector (works with Node.js runtime)
-    experimental: { sqliteConnector: 'better-sqlite3' },
+    // Use native SQLite connector (compatible with Node.js v22.5.0+)
+    experimental: { sqliteConnector: 'native' },
     preview: {
       api: 'https://api.nuxt.studio',
     },

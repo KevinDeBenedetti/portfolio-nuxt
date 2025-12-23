@@ -18,7 +18,7 @@ help: ## Display this help
 
 clean: ## Clean the project (stop containers, remove artifacts)
 	docker compose down --volumes --remove-orphans 2>/dev/null || true
-	rm -rf .nuxt .output .pnpm-store node_modules .data .turbo
+	rm -rf .nuxt .output .pnpm-store node_modules .data .turbo .vercel
 
 install: ## Install dependencies with pnpm
 	pnpm install
