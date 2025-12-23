@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.4...v1.0.5) (2025-12-23)
+
+
+### 🐛 Bug Fixes
+
+* update compatibility date for Nuxt configuration and comment out deploy condition in CD workflow ([2917c2b](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/2917c2b0724680428dc06e1ae9eb85058e2bfd72))
+
 ## [1.0.4](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.0.3...v1.0.4) (2025-12-23)
 
 
