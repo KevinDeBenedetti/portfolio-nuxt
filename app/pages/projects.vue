@@ -92,7 +92,7 @@ onLoaded(({ JSConfetti }) => {
 <template>
   <main class="min-h-screen">
     <AppHeader :title="String(h1)" :description="String(firstParagraph)" />
-    <div class="space-y-4">
+    <div class="space-y-4 mt-10">
       <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
     </div>
   </main>
