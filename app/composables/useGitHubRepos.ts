@@ -1,17 +1,4 @@
-export interface GitHubRepoFormatted {
-  id: number;
-  name: string;
-  title: string;
-  description: string | null;
-  url: string;
-  homepage: string | null;
-  language: string | null;
-  stars: number;
-  forks: number;
-  topics: string[];
-  updatedAt: string;
-  pushedAt: string;
-}
+import type { GitHubRepoFormatted } from '~~/shared/types/github';
 
 export function useGitHubRepos() {
   const {

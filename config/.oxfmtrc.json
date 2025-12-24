@@ -1,8 +1,4 @@
 {
-  // oxfmt configuration - Prettier compatible
-  // Documentation: https://oxc.rs/docs/guide/usage/formatter/config-file-reference
-
-  // Base options
   "printWidth": 100,
   "tabWidth": 2,
   "useTabs": false,
@@ -14,15 +10,9 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-
-  // Experimental options
   "experimentalSortImports": {},
   "experimentalSortPackageJson": true,
-
-  // Embedded code formatting
   "embeddedLanguageFormatting": "auto",
-
-  // File type specific configuration
   "overrides": [
     {
       "files": "*.json",

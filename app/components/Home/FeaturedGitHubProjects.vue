@@ -19,7 +19,7 @@ const latestRepos = computed(() => repos.value?.slice(0, 3) ?? []);
     </div>
 
     <div v-else-if="latestRepos.length" class="space-y-4">
-      <AppGitHubRepoCard v-for="repo in latestRepos" :key="repo.id" :repo="repo" />
+      <FeatureGitHubRepoCard v-for="repo in latestRepos" :key="repo.id" :repo="repo" />
     </div>
 
     <div class="flex items-center justify-center mt-6 text-sm">

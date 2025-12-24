@@ -28,3 +28,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_NOTIFY_USER_LIST: '@KevinDeBenedetti'
+          GITLEAKS_CONFIG: config/.gitleaks.toml
