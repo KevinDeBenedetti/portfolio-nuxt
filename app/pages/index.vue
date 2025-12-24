@@ -30,10 +30,7 @@ watchEffect(() => {
     <div class="space-y-24">
       <HomeIntro :data="(page as { body?: { value: unknown[] } })?.body?.value" />
       <HomeSocialLinks :socials="t('home.socials')" />
-      <HomeFeaturedProjects
-        :featured="t('home.projects_featured')"
-        :link="t('home.projects_link')"
-      />
+      <HomeFeaturedGitHubProjects />
 
       <!--
       <HomeFeaturedArticles />

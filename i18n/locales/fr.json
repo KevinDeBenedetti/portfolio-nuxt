@@ -15,9 +15,15 @@
   },
   "home": {
     "socials": "RÉSEAUX",
+    "github_projects": "Projets GitHub récents",
     "projects_featured": "Rélisations récentes",
     "projects_link": "Toutes les réalisations",
     "articles_featured": "Articles récents",
     "articles_link": "Tous les articles"
+  },
+  "projects": {
+    "featured": "Projets vedettes",
+    "github": "Projets GitHub",
+    "noGithubRepos": "Aucun dépôt GitHub trouvé."
   }
 }

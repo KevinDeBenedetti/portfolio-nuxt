@@ -35,7 +35,7 @@ export default defineNuxtConfig({
             'Cache-Control': 'public, max-age=0, must-revalidate',
             // Content Security Policy - Note: 'unsafe-eval' is required for Vue.js reactivity in production
             'Content-Security-Policy':
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: blob: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com; connect-src 'self' https://api.nuxt.studio https://cloudflareinsights.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: blob: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com https://avatars.githubusercontent.com; connect-src 'self' https://api.nuxt.studio https://cloudflareinsights.com https://api.github.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
           },
         },
         // Cache control for static assets (immutable, 1 year)
@@ -91,7 +91,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
-    ghToken: 'PLACEHOLDER_GITHUB_TOKEN',
+    githubToken: '',
+    public: {
+      githubUsername: 'KevinDeBenedetti',
+    },
   },
 
   app: {
