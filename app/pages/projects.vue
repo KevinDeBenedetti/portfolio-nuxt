@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 const { data: page } = await useAsyncData(
   `page-projects-${locale.value}`,
@@ -40,6 +40,9 @@ const { data: projects } = await useAsyncData(
     watch: [locale],
   }
 );
+
+// Fetch GitHub repos
+const { repos: githubRepos, isLoading: isLoadingGitHub } = useGitHubRepos();
 
 watchEffect(() => {
   useSeoMeta({
@@ -92,8 +95,34 @@ onLoaded(({ JSConfetti }) => {
 <template>
   <main class="min-h-screen">
     <AppHeader :title="String(h1)" :description="String(firstParagraph)" />
-    <div class="space-y-4 mt-10">
-      <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
-    </div>
+
+    <!-- Featured Projects Section
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold mb-4">{{ t('projects.featured') }}</h2>
+      <div class="space-y-4">
+        <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
+      </div>
+    </section>
+    -->
+
+    <!-- GitHub Projects Section -->
+    <section class="mt-12">
+      <div class="flex items-center gap-2 mb-4">
+        <UIcon name="i-simple-icons-github" class="w-5 h-5" />
+        <h2 class="text-lg font-semibold">{{ t('projects.github') }}</h2>
+      </div>
+
+      <div v-if="isLoadingGitHub" class="flex items-center justify-center py-8">
+        <UIcon name="i-heroicons-arrow-path" class="w-6 h-6 animate-spin text-gray-400" />
+      </div>
+
+      <div v-else-if="githubRepos?.length" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <AppGitHubRepoCard v-for="repo in githubRepos" :key="repo.id" :repo="repo" />
+      </div>
+
+      <p v-else class="text-gray-500 dark:text-gray-400 text-sm">
+        {{ t('projects.noGithubRepos') }}
+      </p>
+    </section>
   </main>
 </template>
