@@ -1,0 +1,66 @@
+{
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "pedantic": "off",
+    "perf": "warn",
+    "style": "off"
+  },
+  "plugins": ["unicorn", "typescript", "oxc", "vue", "import"],
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "error",
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-unused-vars": "error",
+    "vue/no-unused-components": "warn",
+    "vue/require-v-for-key": "error",
+    "import/no-unresolved": "off",
+    "unicorn/prefer-node-protocol": "error",
+    "unicorn/no-array-for-each": "off"
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    ".nuxt",
+    ".output",
+    "coverage",
+    "public",
+    "*.min.js",
+    ".pnpm-store",
+    "pnpm-lock.yaml"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "globals": {
+    "$fetch": "readonly",
+    "useNuxtApp": "readonly",
+    "defineNuxtConfig": "readonly",
+    "definePageMeta": "readonly",
+    "navigateTo": "readonly"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.vue"],
+      "plugins": ["vue"],
+      "rules": {
+        "vue/multi-word-component-names": "off"
+      }
+    },
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "plugins": ["typescript"],
+      "rules": {
+        "typescript/no-explicit-any": "warn"
+      }
+    },
+    {
+      "files": ["scripts/**/*", "*.config.*"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

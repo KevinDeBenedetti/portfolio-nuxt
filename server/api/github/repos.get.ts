@@ -1,22 +1,7 @@
 import type { H3Event } from 'h3';
+import type { GitHubRepo } from '~~/shared/types/github';
 
-export interface GitHubRepo {
-  id: number;
-  name: string;
-  full_name: string;
-  description: string | null;
-  html_url: string;
-  homepage: string | null;
-  language: string | null;
-  stargazers_count: number;
-  forks_count: number;
-  topics: string[];
-  created_at: string;
-  updated_at: string;
-  pushed_at: string;
-  fork: boolean;
-  archived: boolean;
-}
+import { EXCLUDED_REPOS, formatRepoName } from '~~/server/utils/github';
 
 export default defineEventHandler(async (event: H3Event) => {
   const config = useRuntimeConfig(event);
@@ -43,9 +28,9 @@ export default defineEventHandler(async (event: H3Event) => {
       },
     });
 
-    // Filter out forks and archived repos, and format the response
+    // Filter out forks, archived repos, and excluded repos, then format the response
     const filteredRepos = repos
-      .filter((repo) => !repo.fork && !repo.archived)
+      .filter((repo) => !repo.fork && !repo.archived && !EXCLUDED_REPOS.includes(repo.name))
       .map((repo) => ({
         id: repo.id,
         name: repo.name,
@@ -69,8 +54,3 @@ export default defineEventHandler(async (event: H3Event) => {
     });
   }
 });
-
-// Helper to format repo name (e.g., "my-repo-name" -> "My Repo Name")
-function formatRepoName(name: string): string {
-  return name.replace(/[-_]/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-}

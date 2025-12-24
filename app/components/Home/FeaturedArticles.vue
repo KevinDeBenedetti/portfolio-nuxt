@@ -28,7 +28,7 @@ const { data: articles } = await useAsyncData('articles-home', async () => {
     </h2>
     <ul class="space-y-16">
       <li v-for="(article, id) in articles as Article[]" :key="id">
-        <AppArticleCard :article="article" />
+        <FeatureArticleCard :article="article" />
       </li>
     </ul>
     <div class="flex items-center justify-center mt-6 text-sm">
