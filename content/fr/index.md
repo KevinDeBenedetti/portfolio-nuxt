@@ -1,10 +1,14 @@
 ---
 title: Portfolio | Kevin De Benedetti
-description: Développeur fullstack passionné et expérimenté, spécialisé en Python, PHP, JavaScript et TypeScript, j’utilise des frameworks frontend modernes comme Nuxt, Vue, React et Astro, ainsi que des frameworks backend puissants tels que FastAPI, Django, Symfony et Adonis pour concevoir des applications web performantes et évolutives. Fort d’une expertise en DevOps et en CI/CD, j’intègre des outils d’automatisation pour assurer des déploiements rapides et fiables. Découvrez mon portfolio pour explorer mes compétences en développement web, mes projets récents et ma quête continue d’optimisation technologique.
+description: Kevin De Benedetti — Développeur fullstack spécialisé en Python, JavaScript et solutions d’IA. Expert en intégration de modèles de langage (LLM), automatisation DevOps et applications web évolutives. Basé à Paris, compétent avec FastAPI, React/Vue, pipelines et CI/CD.
+navigation:
+  title: Accueil
+seo:
+  title: Portfolio | Kevin De Benedetti
 ---
 
-# Développeur Web Fullstack
+# Créer des solutions web évolutives avec l'IA
 
-Développeur fullstack passionné, j’utilise principalement PHP, Python, et JavaScript pour créer des applications performantes et évolutives. Fasciné par le web et les nouvelles technologies, je suis toujours en quête de nouvelles façons d’améliorer mes compétences et d’optimiser mes projets. J’attache une grande importance à l’automatisation avec des outils comme GitHub Actions, Docker, et des pipelines CI/CD, garantissant des déploiements rapides et fiables pour chaque projet.
+Développeur fullstack transformant des idées en applications web performantes grâce à Python, JavaScript et l'IA. J'architecte des solutions évolutives — des outils d'automatisation propulsés par des LLM aux plateformes modernes — tout en maintenant l'excellence DevOps via Docker, Kubernetes et les tests automatisés. Mon expertise couvre le développement d'API backend, les frameworks frontend, l'intégration d'IA et l'ingénierie des données. Chaque projet met l'accent sur l'automatisation, la performance et la maintenabilité pour un succès durable.
 
 ## Bienvenue sur mon portfolio !
