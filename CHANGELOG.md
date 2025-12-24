@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.1.2...v1.2.0) (2025-12-24)
+
+
+### ✨ Features
+
+* add GitHub repository display components and API integration ([0d35428](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/0d3542886b06c5b65070c448b95505f0a4de28fb))
+
+
+### 🐛 Bug Fixes
+
+* delete obsolete files ([c156381](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/c156381265a4ce7337ac5a96919873359c03aedc))
+* improve homepage content ([1ec72a4](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/1ec72a4621538d700e2960bc046bec5101eaa5e9))
+
 ## [1.1.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.1.1...v1.1.2) (2025-12-23)
 
 
