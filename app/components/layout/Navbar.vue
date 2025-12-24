@@ -81,10 +81,10 @@ const items = computed(() => [
         </li>
         <li class="flex-1" />
         <li>
-          <AppLangChoice />
+          <LayoutLangChoice />
         </li>
         <li>
-          <AppThemeToggle />
+          <LayoutThemeToggle />
         </li>
       </ul>
     </nav>

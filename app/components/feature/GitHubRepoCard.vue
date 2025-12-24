@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { GitHubRepoFormatted } from '~/composables/useGitHubRepos';
+import type { GitHubRepoFormatted } from '~~/shared/types/github';
 
 interface Props {
   repo: GitHubRepoFormatted;
 }
 
 const props = defineProps<Props>();
+const { locale } = useI18n();
 
 const languageColors: Record<string, string> = {
   TypeScript: '#3178c6',
@@ -37,7 +38,7 @@ const languageColor = computed(() => {
 
 const formattedDate = computed(() => {
   const date = new Date(props.repo.pushedAt);
-  return date.toLocaleDateString(undefined, {
+  return date.toLocaleDateString(locale.value, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',

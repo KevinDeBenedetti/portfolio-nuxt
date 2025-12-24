@@ -94,13 +94,13 @@ onLoaded(({ JSConfetti }) => {
 
 <template>
   <main class="min-h-screen">
-    <AppHeader :title="String(h1)" :description="String(firstParagraph)" />
+    <FeaturePageHeader :title="String(h1)" :description="String(firstParagraph)" />
 
     <!-- Featured Projects Section
     <section class="mt-10">
       <h2 class="text-lg font-semibold mb-4">{{ t('projects.featured') }}</h2>
       <div class="space-y-4">
-        <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
+        <FeatureProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
       </div>
     </section>
     -->
@@ -117,7 +117,7 @@ onLoaded(({ JSConfetti }) => {
       </div>
 
       <div v-else-if="githubRepos?.length" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <AppGitHubRepoCard v-for="repo in githubRepos" :key="repo.id" :repo="repo" />
+        <FeatureGitHubRepoCard v-for="repo in githubRepos" :key="repo.id" :repo="repo" />
       </div>
 
       <p v-else class="text-gray-500 dark:text-gray-400 text-sm">

@@ -1,23 +1,9 @@
-<script setup lang="ts">
-import { Analytics } from '@vercel/analytics/nuxt';
-import { SpeedInsights } from '@vercel/speed-insights/vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <UApp>
-    <NuxtLoadingIndicator color="#14b8a6" />
-    <AppNavbar />
-    <div class="h-32" />
-    <UContainer>
-      <div class="">
-        <NuxtPage />
-      </div>
-    </UContainer>
-    <div class="h-32" />
-    <AppFooter />
-  </UApp>
-  <Analytics />
-  <SpeedInsights />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style>
