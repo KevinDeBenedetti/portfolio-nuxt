@@ -15,9 +15,15 @@
   },
   "home": {
     "socials": "FIND ME ON",
+    "github_projects": "Recent GitHub Projects",
     "projects_featured": "Featured projects",
     "projects_link": "All projects",
     "articles_featured": "Recent articles",
     "articles_link": "All articles"
+  },
+  "projects": {
+    "featured": "Featured Projects",
+    "github": "GitHub Projects",
+    "noGithubRepos": "No GitHub repositories found."
   }
 }
