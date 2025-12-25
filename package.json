@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@iconify-json/circle-flags": "^1.2.10",
+    "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/solar": "^1.2.5",
     "@j178/prek": "^0.2.23",
