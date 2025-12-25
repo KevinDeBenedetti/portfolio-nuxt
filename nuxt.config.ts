@@ -18,19 +18,23 @@ export default defineNuxtConfig({
             'X-Frame-Options': 'SAMEORIGIN',
             // Prevent MIME type sniffing
             'X-Content-Type-Options': 'nosniff',
-            // Enable XSS protection
+            // Enable XSS protection (legacy but useful for older browsers)
             'X-XSS-Protection': '1; mode=block',
             // Referrer policy
             'Referrer-Policy': 'strict-origin-when-cross-origin',
             // Permissions Policy (replaces Feature-Policy)
             'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-            // Strict Transport Security (HSTS) - 1 year
-            'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+            // Strict Transport Security (HSTS) - 2 years for HSTS preload eligibility
+            'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
             // Cross-Origin policies for Spectre mitigation
             'Cross-Origin-Opener-Policy': 'same-origin',
             'Cross-Origin-Embedder-Policy': 'credentialless',
             // Allow cross-origin for static assets (needed for fonts, images from CDN)
             'Cross-Origin-Resource-Policy': 'cross-origin',
+            // Additional security headers
+            'X-DNS-Prefetch-Control': 'on',
+            'X-Download-Options': 'noopen',
+            'X-Permitted-Cross-Domain-Policies': 'none',
             // Cache control for HTML pages
             'Cache-Control': 'public, max-age=0, must-revalidate',
             // Content Security Policy - Note: 'unsafe-eval' is required for Vue.js reactivity in production
