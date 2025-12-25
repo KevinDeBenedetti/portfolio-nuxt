@@ -31,11 +31,6 @@ watchEffect(() => {
       <HomeIntro :data="(page as { body?: { value: unknown[] } })?.body?.value" />
       <HomeSocialLinks :socials="t('home.socials')" />
       <HomeFeaturedGitHubProjects />
-
-      <!--
-      <HomeFeaturedArticles />
-      <HomeNewsletter />
-      -->
     </div>
   </main>
 </template>
