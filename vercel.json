@@ -25,7 +25,11 @@
         { "key": "X-DNS-Prefetch-Control", "value": "on" },
         { "key": "X-Download-Options", "value": "noopen" },
         { "key": "X-Permitted-Cross-Domain-Policies", "value": "none" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: blob: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com https://avatars.githubusercontent.com; connect-src 'self' https://api.nuxt.studio https://cloudflareinsights.com https://api.github.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;"
+        }
       ]
     },
     {
@@ -75,6 +79,88 @@
         { "key": "Cache-Control", "value": "public, max-age=3600" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/.env:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/.git/:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/.svn/:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/.htaccess",
+      "destination": "/404"
+    },
+    {
+      "source": "/.htpasswd",
+      "destination": "/404"
+    },
+    {
+      "source": "/.DS_Store",
+      "destination": "/404"
+    },
+    {
+      "source": "/.gitignore",
+      "destination": "/404"
+    },
+    {
+      "source": "/wp-:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/admin:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/phpmyadmin:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/config.php",
+      "destination": "/404"
+    },
+    {
+      "source": "/config.yml",
+      "destination": "/404"
+    },
+    {
+      "source": "/config.json",
+      "destination": "/404"
+    },
+    {
+      "source": "/package.json",
+      "destination": "/404"
+    },
+    {
+      "source": "/package-lock.json",
+      "destination": "/404"
+    },
+    {
+      "source": "/swagger:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/phpinfo:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/xmlrpc:path*",
+      "destination": "/404"
+    },
+    {
+      "source": "/server-status",
+      "destination": "/404"
+    },
+    {
+      "source": "/server-info",
+      "destination": "/404"
     }
   ]
 }
