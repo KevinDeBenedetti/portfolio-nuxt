@@ -24,6 +24,8 @@ export default defineNitroPlugin((nitroApp) => {
   const productionHeaders: Record<string, string> = {
     // Strict Transport Security (HSTS) - 2 years with preload
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+    // Expect-CT header for Certificate Transparency
+    'Expect-CT': 'max-age=86400, enforce',
   };
 
   // Hook into render response to set headers just before sending
