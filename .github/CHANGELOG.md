@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.2.0...v1.3.0) (2025-12-25)
+
+
+### ✨ Features
+
+* Refactor application structure and components ([559e586](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/559e586ed5d6aba83119a03768d927f9d156b16b))
+
+
+### 🐛 Bug Fixes
+
+* clean code by removing articles section and related files ([cebb44d](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/cebb44dd27b1d25bb0c2b91243e184f0c021528d))
+* **security:** enhance security headers and add security.txt ([bea3a26](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/bea3a26a05bb3fb8529ccc97cb34522d9dbe3555))
+
 ## [1.2.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.1.2...v1.2.0) (2025-12-24)
 
 
