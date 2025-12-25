@@ -8,64 +8,6 @@ export default defineNuxtConfig({
     preset: 'vercel',
   },
 
-  // Security headers only for production (upgrade-insecure-requests breaks local dev)
-  $production: {
-    nitro: {
-      routeRules: {
-        '/**': {
-          headers: {
-            // Prevent clickjacking attacks
-            'X-Frame-Options': 'SAMEORIGIN',
-            // Prevent MIME type sniffing
-            'X-Content-Type-Options': 'nosniff',
-            // Enable XSS protection (legacy but useful for older browsers)
-            'X-XSS-Protection': '1; mode=block',
-            // Referrer policy
-            'Referrer-Policy': 'strict-origin-when-cross-origin',
-            // Permissions Policy (replaces Feature-Policy)
-            'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-            // Strict Transport Security (HSTS) - 2 years for HSTS preload eligibility
-            'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
-            // Cross-Origin policies for Spectre mitigation
-            'Cross-Origin-Opener-Policy': 'same-origin',
-            'Cross-Origin-Embedder-Policy': 'credentialless',
-            // Allow cross-origin for static assets (needed for fonts, images from CDN)
-            'Cross-Origin-Resource-Policy': 'cross-origin',
-            // Additional security headers
-            'X-DNS-Prefetch-Control': 'on',
-            'X-Download-Options': 'noopen',
-            'X-Permitted-Cross-Domain-Policies': 'none',
-            // Cache control for HTML pages
-            'Cache-Control': 'public, max-age=0, must-revalidate',
-            // Content Security Policy - Note: 'unsafe-eval' is required for Vue.js reactivity in production
-            'Content-Security-Policy':
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: blob: https://images.unsplash.com https://*.githubusercontent.com https://*.cloudinary.com https://avatars.githubusercontent.com; connect-src 'self' https://api.nuxt.studio https://cloudflareinsights.com https://api.github.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
-          },
-        },
-        // Cache control for static assets (immutable, 1 year)
-        '/_nuxt/**': {
-          headers: {
-            'Cache-Control': 'public, max-age=31536000, immutable',
-            'Access-Control-Allow-Origin': '*',
-          },
-        },
-        // Cache control for Vercel image optimization
-        '/_vercel/image/**': {
-          headers: {
-            'Cache-Control': 'public, max-age=31536000, immutable',
-            'Access-Control-Allow-Origin': '*',
-          },
-        },
-        // Sitemap caching
-        '/__sitemap__/**': {
-          headers: {
-            'Cache-Control': 'public, max-age=3600, s-maxage=86400',
-          },
-        },
-      },
-    },
-  },
-
   modules: [
     '@nuxt/ui',
     '@nuxt/icon',
@@ -76,7 +18,118 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/fonts',
     '@nuxt/scripts',
+    'nuxt-security',
   ],
+
+  // Security configuration using nuxt-security module
+  security: {
+    headers: {
+      // Prevent clickjacking attacks
+      xFrameOptions: 'SAMEORIGIN',
+      // Prevent MIME type sniffing
+      xContentTypeOptions: 'nosniff',
+      // XSS Protection (legacy but useful for older browsers)
+      xXSSProtection: '1; mode=block',
+      // Referrer policy
+      referrerPolicy: 'strict-origin-when-cross-origin',
+      // Permissions Policy (replaces Feature-Policy)
+      permissionsPolicy: {
+        camera: [],
+        microphone: [],
+        geolocation: [],
+      },
+      // Strict Transport Security (HSTS) - 2 years for HSTS preload eligibility
+      strictTransportSecurity: {
+        maxAge: 63072000,
+        includeSubdomains: true,
+        preload: true,
+      },
+      // Cross-Origin policies for Spectre mitigation
+      crossOriginOpenerPolicy: 'same-origin',
+      crossOriginEmbedderPolicy: 'credentialless',
+      // Allow cross-origin for static assets (needed for fonts, images from CDN)
+      crossOriginResourcePolicy: 'cross-origin',
+      // Content Security Policy
+      contentSecurityPolicy: {
+        'default-src': ["'self'"],
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+          'https://static.cloudflareinsights.com',
+        ],
+        'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.bunny.net'],
+        'font-src': ["'self'", 'https://fonts.bunny.net', 'data:'],
+        'img-src': [
+          "'self'",
+          'data:',
+          'blob:',
+          'https://images.unsplash.com',
+          'https://*.githubusercontent.com',
+          'https://*.cloudinary.com',
+          'https://avatars.githubusercontent.com',
+        ],
+        'connect-src': [
+          "'self'",
+          'https://api.nuxt.studio',
+          'https://cloudflareinsights.com',
+          'https://api.github.com',
+        ],
+        'frame-ancestors': ["'self'"],
+        'base-uri': ["'self'"],
+        'form-action': ["'self'"],
+        'object-src': ["'none'"],
+        'upgrade-insecure-requests': true,
+      },
+      // X-Download-Options to prevent IE from executing downloads
+      xDownloadOptions: 'noopen',
+      // X-Permitted-Cross-Domain-Policies
+      xPermittedCrossDomainPolicies: 'none',
+      // X-DNS-Prefetch-Control
+      xDNSPrefetchControl: 'on',
+    },
+    // Rate limiting for API routes
+    rateLimiter: {
+      tokensPerInterval: 150,
+      interval: 300000, // 5 minutes
+    },
+    // Request size limit
+    requestSizeLimiter: {
+      maxRequestSizeInBytes: 2000000, // 2MB
+      maxUploadFileRequestInBytes: 8000000, // 8MB
+    },
+    // Enable SSG support
+    ssg: {
+      meta: true,
+      hashScripts: false, // Disabled because we use 'unsafe-inline'
+      hashStyles: false,
+      exportToPresets: true,
+    },
+  },
+
+  // Route rules for caching (non-security headers)
+  routeRules: {
+    // Cache control for static assets (immutable, 1 year)
+    '/_nuxt/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+    // Cache control for Vercel image optimization
+    '/_vercel/image/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+    // Sitemap caching
+    '/__sitemap__/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+      },
+    },
+  },
 
   vite: {
     plugins: [tailwindcss()],
