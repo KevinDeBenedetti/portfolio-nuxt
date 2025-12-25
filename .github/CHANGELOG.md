@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.0...v1.4.1) (2025-12-25)
+
+
+### 🐛 Bug Fixes
+
+* update nuxt.config for production security settings and add heroicons dependency ([be937fd](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/be937fdda95b2f9bde9b83c880110f8ac853a596))
+* update readme & public changes ([bba259d](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/bba259d6819c0fd20f6e5561345f153e433b772c))
+
 ## [1.4.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.3.2...v1.4.0) (2025-12-25)
 
 
