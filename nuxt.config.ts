@@ -116,7 +116,7 @@ export default defineNuxtConfig({
 
   robots: {
     allow: '/',
-    disallow: ['/articles/', '/icons/', '/projects/', '/images/'],
+    disallow: ['/icons/', '/projects/', '/images/'],
     blockNonSeoBots: true,
     credits: false,
   },
@@ -157,14 +157,6 @@ export default defineNuxtConfig({
       projects: {
         fr: '/realisations',
         en: '/projects',
-      },
-      articles: {
-        fr: '/articles',
-        en: '/articles',
-      },
-      'articles-slug': {
-        fr: '/articles/[slug]',
-        en: '/articles/[slug]',
       },
       legals: {
         fr: '/mentions-legales',

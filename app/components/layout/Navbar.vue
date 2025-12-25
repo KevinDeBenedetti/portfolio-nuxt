@@ -44,7 +44,6 @@ const items = computed(() => [
     path: localePath('projects'),
     icon: 'solar:folder-with-files-outline',
   },
-  // { name: t('nav.articles_title'), path: localePath('articles'), icon: "solar:document-add-outline" }
 ]);
 </script>
 

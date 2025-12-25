@@ -3,8 +3,7 @@
   "toggle_theme": "Changer de thème",
   "nav": {
     "home_title": "Accueil",
-    "projects_title": "Réalisations",
-    "articles_title": "Articles"
+    "projects_title": "Réalisations"
   },
   "error": {
     "title": "Erreur",
@@ -17,9 +16,7 @@
     "socials": "RÉSEAUX",
     "github_projects": "Projets GitHub récents",
     "projects_featured": "Rélisations récentes",
-    "projects_link": "Toutes les réalisations",
-    "articles_featured": "Articles récents",
-    "articles_link": "Tous les articles"
+    "projects_link": "Toutes les réalisations"
   },
   "projects": {
     "featured": "Projets vedettes",
