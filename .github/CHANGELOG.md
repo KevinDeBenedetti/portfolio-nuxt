@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.3.0...v1.3.1) (2025-12-25)
+
+
+### 🐛 Bug Fixes
+
+* update security.txt and add Content-Security-Policy headers ([b29a38c](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/b29a38c9ae2de064dc431bb33a00bbe1caa243f3))
+
 ## [1.3.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.2.0...v1.3.0) (2025-12-25)
 
 
