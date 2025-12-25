@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.3.1...v1.3.2) (2025-12-25)
+
+
+### 🐛 Bug Fixes
+
+* add Expect-CT header and integrate nuxt-security module ([e18c7d9](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/e18c7d91f18629df798e351fe0fa981b09c7f286))
+
 ## [1.3.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.3.0...v1.3.1) (2025-12-25)
 
 
