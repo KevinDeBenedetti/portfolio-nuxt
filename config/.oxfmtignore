@@ -1,0 +1,13 @@
+# Generated files
+CHANGELOG.md
+.github/CHANGELOG.md
+
+# Build outputs
+.nuxt
+.vercel
+.turbo
+.output
+node_modules
+
+# IDE
+.vscode
