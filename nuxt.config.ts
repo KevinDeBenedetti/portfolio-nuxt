@@ -33,22 +33,29 @@ export default defineNuxtConfig({
       // Referrer policy
       referrerPolicy: 'strict-origin-when-cross-origin',
       // Permissions Policy (replaces Feature-Policy)
+      // Note: 'interest-cohort' removed as FLoC is deprecated
       permissionsPolicy: {
         camera: [],
         microphone: [],
         geolocation: [],
       },
       // Strict Transport Security (HSTS) - 2 years for HSTS preload eligibility
-      strictTransportSecurity: {
-        maxAge: 63072000,
-        includeSubdomains: true,
-        preload: true,
-      },
+      // Only enabled in production to avoid dev issues
+      strictTransportSecurity: !import.meta.dev
+        ? {
+            maxAge: 63072000,
+            includeSubdomains: true,
+            preload: true,
+          }
+        : false,
       // Cross-Origin policies for Spectre mitigation
-      crossOriginOpenerPolicy: 'same-origin',
-      crossOriginEmbedderPolicy: 'credentialless',
+      // Disabled in dev as localhost/0.0.0.0 is not a trusted origin
+      crossOriginOpenerPolicy: !import.meta.dev ? 'same-origin' : false,
+      crossOriginEmbedderPolicy: !import.meta.dev ? 'credentialless' : 'unsafe-none',
       // Allow cross-origin for static assets (needed for fonts, images from CDN)
       crossOriginResourcePolicy: 'cross-origin',
+      // Origin-Agent-Cluster - disabled in dev
+      originAgentCluster: !import.meta.dev ? '?1' : false,
       // Content Security Policy
       contentSecurityPolicy: {
         'default-src': ["'self'"],
@@ -79,7 +86,8 @@ export default defineNuxtConfig({
         'base-uri': ["'self'"],
         'form-action': ["'self'"],
         'object-src': ["'none'"],
-        'upgrade-insecure-requests': true,
+        // Disable upgrade-insecure-requests in dev (causes HTTPS redirects)
+        'upgrade-insecure-requests': !import.meta.dev,
       },
       // X-Download-Options to prevent IE from executing downloads
       xDownloadOptions: 'noopen',
@@ -136,11 +144,27 @@ export default defineNuxtConfig({
     build: {
       sourcemap: false,
     },
+    // Suppress @nuxtjs/mdc internal dependency warnings
+    // These are internal dependencies that don't need client-side optimization
+    optimizeDeps: {
+      exclude: [
+        '@nuxtjs/mdc',
+        'remark-gfm',
+        'remark-emoji',
+        'remark-mdc',
+        'remark-rehype',
+        'rehype-raw',
+        'parse5',
+        'unist-util-visit',
+        'unified',
+      ],
+    },
   },
 
   devServer: {
-    host: '0.0.0.0',
-    // host: 'localhost',
+    // Use localhost for dev to avoid Cross-Origin security warnings
+    // Use 0.0.0.0 only when testing on other devices on the network
+    host: 'localhost',
     // port: 3000,
   },
 
