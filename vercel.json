@@ -20,6 +20,10 @@
           "key": "Strict-Transport-Security",
           "value": "max-age=63072000; includeSubDomains; preload"
         },
+        {
+          "key": "Expect-CT",
+          "value": "max-age=86400, enforce"
+        },
         { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
         { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" },
         { "key": "X-DNS-Prefetch-Control", "value": "on" },
@@ -35,15 +39,29 @@
     {
       "source": "/.well-known/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Expect-CT", "value": "max-age=86400, enforce" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
     {
       "source": "/_nuxt/(.*)",
       "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Expect-CT", "value": "max-age=86400, enforce" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
         { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }
@@ -52,7 +70,14 @@
     {
       "source": "/_vercel/image(.*)",
       "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Expect-CT", "value": "max-age=86400, enforce" },
         { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
@@ -61,7 +86,14 @@
     {
       "source": "/(.*)\\.(js|css|woff2?|ttf|eot|svg|png|jpg|jpeg|gif|webp|ico)",
       "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Expect-CT", "value": "max-age=86400, enforce" },
         { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
@@ -69,15 +101,29 @@
     {
       "source": "/__sitemap__/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Expect-CT", "value": "max-age=86400, enforce" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Expect-CT", "value": "max-age=86400, enforce" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ],
