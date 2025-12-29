@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.1...v1.4.2) (2025-12-29)
+
+
+### 🔧 CI/CD
+
+* **deps:** bump actions/checkout from 4 to 6 ([346414a](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/346414a6e7c2f79ce3178e8c6a24f2e0a836174c))
+* **deps:** bump actions/setup-node from 4 to 6 ([3fd6568](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/3fd6568d10d52b5fc5923cacfd94cc08573b1652))
+
 ## [1.4.1](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.0...v1.4.1) (2025-12-25)
 
 
