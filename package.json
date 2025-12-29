@@ -46,7 +46,7 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/solar": "^1.2.5",
-    "@j178/prek": "^0.2.23",
+    "@j178/prek": "^0.2.25",
     "@nuxt/devtools": "3.1.1",
     "@nuxt/icon": "^2.1.1",
     "@tailwindcss/vite": "^4.1.18",
@@ -54,7 +54,7 @@
     "oxlint": "^1.35.0",
     "oxlint-tsgolint": "^0.10.0",
     "tailwindcss": "^4.1.18",
-    "turbo": "^2.7.1",
+    "turbo": "^2.7.2",
     "vue-tsc": "^3.2.1"
   },
   "packageManager": "pnpm@10.26.2"
