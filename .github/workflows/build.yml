@@ -1,5 +1,8 @@
 name: CI – Build
 
+permissions:
+  contents: read
+
 on:
   workflow_call:
     inputs:
