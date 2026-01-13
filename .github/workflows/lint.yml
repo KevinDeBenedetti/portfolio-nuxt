@@ -19,6 +19,9 @@ on:
         description: 'Turbo team name'
         required: false
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest
