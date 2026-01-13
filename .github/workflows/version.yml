@@ -13,6 +13,8 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       node-version: ${{ steps.set.outputs.node-version }}
       pnpm-version: ${{ steps.set.outputs.pnpm-version }}
