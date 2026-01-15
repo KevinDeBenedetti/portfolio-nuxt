@@ -54,5 +54,8 @@ jobs:
           node-version: ${{ inputs.node-version }}
           cache: 'pnpm'
 
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Run lint, format check & typecheck (parallel)
-        run: make ci-lint
+        run: pnpm run check
