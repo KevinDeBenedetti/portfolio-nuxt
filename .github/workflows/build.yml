@@ -55,5 +55,8 @@ jobs:
           node-version: ${{ inputs.node-version }}
           cache: 'pnpm'
 
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Build application
-        run: make ci-build
+        run: pnpm run build
