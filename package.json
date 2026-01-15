@@ -20,7 +20,8 @@
     "hooks:install": "prek install --hook-type pre-commit --hook-type pre-push --hook-type commit-msg",
     "hooks:uninstall": "prek uninstall",
     "hooks:run": "prek run --all-files",
-    "hooks:list": "prek list"
+    "hooks:list": "prek list",
+    "clean": "rm -rf .nuxt .output .pnpm-store node_modules .data .turbo .vercel"
   },
   "dependencies": {
     "@nuxt/content": "^3.10.0",
@@ -46,16 +47,16 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/solar": "^1.2.5",
-    "@j178/prek": "^0.2.25",
+    "@j178/prek": "^0.2.28",
     "@nuxt/devtools": "3.1.1",
-    "@nuxt/icon": "^2.1.1",
+    "@nuxt/icon": "^2.2.0",
     "@tailwindcss/vite": "^4.1.18",
-    "oxfmt": "^0.21.0",
-    "oxlint": "^1.36.0",
-    "oxlint-tsgolint": "^0.10.1",
+    "oxfmt": "^0.24.0",
+    "oxlint": "^1.39.0",
+    "oxlint-tsgolint": "^0.11.1",
     "tailwindcss": "^4.1.18",
-    "turbo": "^2.7.2",
-    "vue-tsc": "^3.2.1"
+    "turbo": "^2.7.4",
+    "vue-tsc": "^3.2.2"
   },
   "packageManager": "pnpm@10.26.2"
 }
