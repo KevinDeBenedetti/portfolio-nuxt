@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.3](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.2...v1.4.3) (2026-01-15)
+
+
+### 🐛 Bug Fixes
+
+* clean up dependencies and remove Makefile ([a7631f2](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/a7631f294a3da0a7cc2f01dfdbcfd12e7a5a76de))
+* replace Makefile commands with pnpm commands in CI workflows ([a4e065e](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/a4e065e8d25fad3693113a98199036ac94e43fec))
+* update formatting scripts and clean up ignore files ([3347dcc](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/3347dcc6f6deee16b758fc5ff9afababa79ed743))
+
 ## [1.4.2](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.1...v1.4.2) (2025-12-29)
 
 
