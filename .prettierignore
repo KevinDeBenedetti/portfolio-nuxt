@@ -1,0 +1,19 @@
+# Generated files
+CHANGELOG.md
+.github/
+
+# Build outputs
+.nuxt/
+.vercel/
+.turbo/
+.output/
+node_modules/
+
+# IDE
+.vscode/
+
+# Lock files
+pnpm-lock.yaml
+
+# Config directory
+config/
