@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.3...v1.4.4) (2026-01-18)
+
+
+### 🐛 Bug Fixes
+
+* update dependencies ([a28341c](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/a28341c384446735fc56299dff86a802537b2ec8))
+
 ## [1.4.3](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.2...v1.4.3) (2026-01-15)
 
 
