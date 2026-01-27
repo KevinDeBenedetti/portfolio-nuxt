@@ -20,18 +20,10 @@ updates:
     commit-message:
       prefix: 'chore(deps)'
     groups:
-      nuxt:
+      all-dependencies:
         patterns:
-          - '@nuxt/*'
-          - 'nuxt'
-          - 'vue'
-          - '@vue/*'
-      dev-dependencies:
-        dependency-type: 'development'
-        update-types:
-          - 'minor'
-          - 'patch'
-
+          - "*"
+          
   # GitHub Actions
   - package-ecosystem: 'github-actions'
     directory: '/'
