@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.5](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.4...v1.4.5) (2026-01-27)
+
+
+### 🐛 Bug Fixes
+
+* update dependencies via dependabot ([7f9dd85](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/7f9dd858d485143ea04769b8882734011f042635))
+* update oxfmt configuration ([8ea9aa2](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/8ea9aa2f3758bd1b3f35bbe1222a991c256504cf))
+
 ## [1.4.4](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.3...v1.4.4) (2026-01-18)
 
 
