@@ -15,19 +15,19 @@
   "embeddedLanguageFormatting": "auto",
   "overrides": [
     {
-      "files": "*.json",
+      "files": ["*.json"],
       "options": {
         "tabWidth": 2
       }
     },
     {
-      "files": "*.md",
+      "files": ["*.md"],
       "options": {
         "proseWrap": "preserve"
       }
     },
     {
-      "files": "*.vue",
+      "files": ["*.vue"],
       "options": {
         "parser": "vue"
       }
