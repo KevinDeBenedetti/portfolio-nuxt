@@ -19,6 +19,10 @@ updates:
       - 'automated'
     commit-message:
       prefix: 'chore(deps)'
+    # Ignore transitive dependencies that pnpm can't update via Dependabot
+    ignore:
+      - dependency-name: 'fast-xml-parser'
+        reason: 'Transitive dependency - pnpm limitation with Dependabot'
     groups:
       all-dependencies:
         patterns:
