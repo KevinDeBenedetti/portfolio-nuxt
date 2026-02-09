@@ -21,8 +21,8 @@ updates:
       prefix: 'chore(deps)'
     # Ignore transitive dependencies that pnpm can't update via Dependabot
     ignore:
+      # Transitive dependency - pnpm limitation with Dependabot
       - dependency-name: 'fast-xml-parser'
-        reason: 'Transitive dependency - pnpm limitation with Dependabot'
     groups:
       all-dependencies:
         patterns:
