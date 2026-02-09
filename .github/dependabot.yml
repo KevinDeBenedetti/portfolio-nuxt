@@ -23,7 +23,7 @@ updates:
       all-dependencies:
         patterns:
           - "*"
-          
+
   # GitHub Actions
   - package-ecosystem: 'github-actions'
     directory: '/'

@@ -140,6 +140,7 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    // @ts-expect-error - Vite plugin type mismatch between @tailwindcss/vite and Nuxt's bundled Vite/Rollup types (pnpm module isolation)
     plugins: [tailwindcss()],
     build: {
       sourcemap: false,
