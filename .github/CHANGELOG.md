@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.4.6](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.5...v1.4.6) (2026-02-09)
+
+
+### 🐛 Bug Fixes
+
+* remove reason for ignoring fast-xml-parser in dependabot configuration ([4c4978e](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/4c4978ee392a3e4dc75b4dc349cd03aea55368e1))
+* update dependabot configuration and add Vite plugin type error comment ([c8cef0f](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/c8cef0fe526310f10b648a060929d1af04196caf))
+* update dependencies ([99433d9](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/99433d91b6eb6d56eb25e09e3b937a6a644ca9a2))
+* update Docker directory path in dependabot configuration ([45bede3](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/45bede350904ac44dd1b5d4f919ce8b69f4d073d))
+* update fast-xml-parser dependency and add ignore rule for transitive dependencies ([806c0d4](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/806c0d42372b88deff5b12099632596cc5aa0de9))
+
 ## [1.4.5](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.4...v1.4.5) (2026-01-27)
 
 
