@@ -6,6 +6,8 @@ settings:
 
 overrides:
   fast-xml-parser: '>=5.3.5'
+  '@isaacs/brace-expansion': '>=5.0.1'
+  axios: '>=1.13.5'
 
 importers:
 
@@ -25,7 +27,7 @@ importers:
         version: 0.13.2(@unhead/vue@2.1.4(vue@3.5.28(typescript@5.9.3)))(db0@0.3.4(better-sqlite3@12.6.2))(ioredis@5.9.2)(magicast@0.5.1)(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3))
       '@nuxt/ui':
         specifier: ^4.4.0
-        version: 4.4.0(@nuxt/content@3.11.2(better-sqlite3@12.6.2)(magicast@0.5.1)(valibot@1.2.0(typescript@5.9.3)))(@tiptap/extensions@3.17.1(@tiptap/core@3.17.1(@tiptap/pm@3.17.1))(@tiptap/pm@3.17.1))(@tiptap/y-tiptap@3.0.1(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-view@1.41.5)(y-protocols@1.0.7(yjs@13.6.29))(yjs@13.6.29))(axios@1.13.4)(db0@0.3.4(better-sqlite3@12.6.2))(embla-carousel@8.6.0)(ioredis@5.9.2)(magicast@0.5.1)(tailwindcss@4.1.18)(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue-router@5.0.2(@vue/compiler-sfc@3.5.28)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))(yjs@13.6.29)(zod@3.25.76)
+        version: 4.4.0(@nuxt/content@3.11.2(better-sqlite3@12.6.2)(magicast@0.5.1)(valibot@1.2.0(typescript@5.9.3)))(@tiptap/extensions@3.17.1(@tiptap/core@3.17.1(@tiptap/pm@3.17.1))(@tiptap/pm@3.17.1))(@tiptap/y-tiptap@3.0.1(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-view@1.41.5)(y-protocols@1.0.7(yjs@13.6.29))(yjs@13.6.29))(axios@1.13.5)(db0@0.3.4(better-sqlite3@12.6.2))(embla-carousel@8.6.0)(ioredis@5.9.2)(magicast@0.5.1)(tailwindcss@4.1.18)(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue-router@5.0.2(@vue/compiler-sfc@3.5.28)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))(yjs@13.6.29)(zod@3.25.76)
       '@nuxtjs/i18n':
         specifier: ^10.2.3
         version: 10.2.3(@vue/compiler-dom@3.5.28)(db0@0.3.4(better-sqlite3@12.6.2))(eslint@9.39.2(jiti@2.6.1))(ioredis@5.9.2)(magicast@0.5.1)(rollup@4.57.0)(vue@3.5.28(typescript@5.9.3))
@@ -1094,8 +1096,8 @@ packages:
     resolution: {integrity: sha512-yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==}
     engines: {node: 20 || >=22}
 
-  '@isaacs/brace-expansion@5.0.0':
-    resolution: {integrity: sha512-ZT55BDLV0yv0RBm2czMiZ+SqCGO7AvmOM3G/w2xhVPH+te0aKgFjmBvGlL1dH+ql2tgGO3MVrbb3jCKyvpgnxA==}
+  '@isaacs/brace-expansion@5.0.1':
+    resolution: {integrity: sha512-WMz71T1JS624nWj2n2fnYAuPovhv7EUhk69R6i9dsVyzxt5eM3bjwvgk9L+APE1TRscGysAVMANkB0jh0LQZrQ==}
     engines: {node: 20 || >=22}
 
   '@isaacs/cliui@8.0.2':
@@ -2982,7 +2984,7 @@ packages:
     resolution: {integrity: sha512-eNQPdisnO9SvdydTIXnTE7c29yOsJBD/xkwEyQLdhDC/LKbqrFpXHb3uS//7NcIrQO3fWVuvMGp8dbK6mNEMCA==}
     peerDependencies:
       async-validator: ^4
-      axios: ^1
+      axios: '>=1.13.5'
       change-case: ^5
       drauu: ^0.4
       focus-trap: ^7
@@ -3149,8 +3151,8 @@ packages:
   axios-proxy-builder@0.1.2:
     resolution: {integrity: sha512-6uBVsBZzkB3tCC8iyx59mCjQckhB8+GQrI9Cop8eC7ybIsvs/KtnNgEBfRMSEa7GqK2VBGUzgjNYMdPIfotyPA==}
 
-  axios@1.13.4:
-    resolution: {integrity: sha512-1wVkUaAO6WyaYtCkcYCOx12ZgpGf9Zif+qXa4n+oYzK558YryKqiL6UWwd5DqiH3VRW0GYhTZQ/vlgJrCoNQlg==}
+  axios@1.13.5:
+    resolution: {integrity: sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==}
 
   b4a@1.7.3:
     resolution: {integrity: sha512-5Q2mfq2WfGuFp3uS//0s6baOJLMoVduPYVeNmDYxu5OUA1/cBfvr2RIS7vi62LdNj/urk1hfmj867I3qt6uZ7Q==}
@@ -7529,7 +7531,7 @@ snapshots:
 
   '@isaacs/balanced-match@4.0.1': {}
 
-  '@isaacs/brace-expansion@5.0.0':
+  '@isaacs/brace-expansion@5.0.1':
     dependencies:
       '@isaacs/balanced-match': 4.0.1
 
@@ -7548,7 +7550,7 @@ snapshots:
 
   '@j178/prek@0.3.2':
     dependencies:
-      axios: 1.13.4
+      axios: 1.13.5
       axios-proxy-builder: 0.1.2
       console.table: 0.10.0
       detect-libc: 2.1.2
@@ -8145,7 +8147,7 @@ snapshots:
       rc9: 3.0.0
       std-env: 3.10.0
 
-  '@nuxt/ui@4.4.0(@nuxt/content@3.11.2(better-sqlite3@12.6.2)(magicast@0.5.1)(valibot@1.2.0(typescript@5.9.3)))(@tiptap/extensions@3.17.1(@tiptap/core@3.17.1(@tiptap/pm@3.17.1))(@tiptap/pm@3.17.1))(@tiptap/y-tiptap@3.0.1(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-view@1.41.5)(y-protocols@1.0.7(yjs@13.6.29))(yjs@13.6.29))(axios@1.13.4)(db0@0.3.4(better-sqlite3@12.6.2))(embla-carousel@8.6.0)(ioredis@5.9.2)(magicast@0.5.1)(tailwindcss@4.1.18)(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue-router@5.0.2(@vue/compiler-sfc@3.5.28)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))(yjs@13.6.29)(zod@3.25.76)':
+  '@nuxt/ui@4.4.0(@nuxt/content@3.11.2(better-sqlite3@12.6.2)(magicast@0.5.1)(valibot@1.2.0(typescript@5.9.3)))(@tiptap/extensions@3.17.1(@tiptap/core@3.17.1(@tiptap/pm@3.17.1))(@tiptap/pm@3.17.1))(@tiptap/y-tiptap@3.0.1(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-view@1.41.5)(y-protocols@1.0.7(yjs@13.6.29))(yjs@13.6.29))(axios@1.13.5)(db0@0.3.4(better-sqlite3@12.6.2))(embla-carousel@8.6.0)(ioredis@5.9.2)(magicast@0.5.1)(tailwindcss@4.1.18)(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue-router@5.0.2(@vue/compiler-sfc@3.5.28)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))(yjs@13.6.29)(zod@3.25.76)':
     dependencies:
       '@floating-ui/dom': 1.7.5
       '@iconify/vue': 5.0.0(vue@3.5.28(typescript@5.9.3))
@@ -8180,7 +8182,7 @@ snapshots:
       '@tiptap/vue-3': 3.17.1(@floating-ui/dom@1.7.5)(@tiptap/core@3.17.1(@tiptap/pm@3.17.1))(@tiptap/pm@3.17.1)(vue@3.5.28(typescript@5.9.3))
       '@unhead/vue': 2.1.4(vue@3.5.28(typescript@5.9.3))
       '@vueuse/core': 14.1.0(vue@3.5.28(typescript@5.9.3))
-      '@vueuse/integrations': 14.1.0(axios@1.13.4)(fuse.js@7.1.0)(vue@3.5.28(typescript@5.9.3))
+      '@vueuse/integrations': 14.1.0(axios@1.13.5)(fuse.js@7.1.0)(vue@3.5.28(typescript@5.9.3))
       '@vueuse/shared': 14.1.0(vue@3.5.28(typescript@5.9.3))
       colortranslator: 5.0.0
       consola: 3.4.2
@@ -9799,13 +9801,13 @@ snapshots:
       '@vueuse/shared': 14.1.0(vue@3.5.28(typescript@5.9.3))
       vue: 3.5.28(typescript@5.9.3)
 
-  '@vueuse/integrations@14.1.0(axios@1.13.4)(fuse.js@7.1.0)(vue@3.5.28(typescript@5.9.3))':
+  '@vueuse/integrations@14.1.0(axios@1.13.5)(fuse.js@7.1.0)(vue@3.5.28(typescript@5.9.3))':
     dependencies:
       '@vueuse/core': 14.1.0(vue@3.5.28(typescript@5.9.3))
       '@vueuse/shared': 14.1.0(vue@3.5.28(typescript@5.9.3))
       vue: 3.5.28(typescript@5.9.3)
     optionalDependencies:
-      axios: 1.13.4
+      axios: 1.13.5
       fuse.js: 7.1.0
 
   '@vueuse/metadata@10.11.1': {}
@@ -9941,7 +9943,7 @@ snapshots:
     dependencies:
       tunnel: 0.0.6
 
-  axios@1.13.4:
+  axios@1.13.5:
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.5
@@ -11983,7 +11985,7 @@ snapshots:
 
   minimatch@10.1.1:
     dependencies:
-      '@isaacs/brace-expansion': 5.0.0
+      '@isaacs/brace-expansion': 5.0.1
 
   minimatch@3.1.2:
     dependencies:
