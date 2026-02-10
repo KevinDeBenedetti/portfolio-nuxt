@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.7](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.6...v1.4.7) (2026-02-10)
+
+
+### 🐛 Bug Fixes
+
+* update dependency overrides for fast-xml-parser, brace-expansion, and axios ([8a406c9](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/8a406c90214c83772b65856611d4182fbc6223c4))
+
 ## [1.4.6](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.5...v1.4.6) (2026-02-09)
 
 
