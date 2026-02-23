@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.11.2",
-    "@nuxt/fonts": "^0.13.0",
+    "@nuxt/fonts": "^0.14.0",
     "@nuxt/image": "2.0.0",
     "@nuxt/scripts": "0.13.2",
     "@nuxt/ui": "^4.4.0",
@@ -40,23 +40,23 @@
     "nuxt-security": "^2.5.1",
     "typescript": "5.9.3",
     "vue": "^3.5.28",
-    "vue-router": "^5.0.2"
+    "vue-router": "^5.0.3"
   },
   "devDependencies": {
     "@iconify-json/circle-flags": "^1.2.10",
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/solar": "^1.2.5",
-    "@j178/prek": "^0.3.2",
-    "@nuxt/devtools": "3.1.1",
+    "@j178/prek": "^0.3.3",
+    "@nuxt/devtools": "3.2.1",
     "@nuxt/icon": "^2.2.1",
-    "@tailwindcss/vite": "^4.1.18",
-    "oxfmt": "^0.28.0",
-    "oxlint": "^1.43.0",
-    "oxlint-tsgolint": "^0.11.5",
-    "tailwindcss": "^4.1.18",
-    "turbo": "^2.8.3",
-    "vue-tsc": "^3.2.4"
+    "@tailwindcss/vite": "^4.2.0",
+    "oxfmt": "^0.34.0",
+    "oxlint": "^1.49.0",
+    "oxlint-tsgolint": "^0.14.2",
+    "tailwindcss": "^4.2.0",
+    "turbo": "^2.8.10",
+    "vue-tsc": "^3.2.5"
   },
   "packageManager": "pnpm@10.26.2",
   "pnpm": {
