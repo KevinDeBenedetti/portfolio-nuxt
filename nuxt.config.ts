@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/scripts',
     'nuxt-security',
+    '@vercel/analytics/nuxt',
   ],
 
   // Security configuration using nuxt-security module
@@ -148,17 +149,7 @@ export default defineNuxtConfig({
     // Suppress @nuxtjs/mdc internal dependency warnings
     // These are internal dependencies that don't need client-side optimization
     optimizeDeps: {
-      exclude: [
-        '@nuxtjs/mdc',
-        'remark-gfm',
-        'remark-emoji',
-        'remark-mdc',
-        'remark-rehype',
-        'rehype-raw',
-        'parse5',
-        'unist-util-visit',
-        'unified',
-      ],
+      include: [],
     },
   },
 
