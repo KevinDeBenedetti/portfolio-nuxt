@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Analytics } from '@vercel/analytics/nuxt';
+import { Analytics } from '@vercel/analytics/nuxt/runtime';
 import { SpeedInsights } from '@vercel/speed-insights/vue';
 </script>
 
