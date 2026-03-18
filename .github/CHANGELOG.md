@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.7...v1.5.0) (2026-03-18)
+
+
+### ✨ Features
+
+* add CI/CD workflow and improve component structure with spacing ([4ad9b4c](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/4ad9b4c8b05e97db3a6cca8296822ba0d7d38e55))
+
+
+### 🐛 Bug Fixes
+
+* errors & update dependencies ([30e5be7](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/30e5be7b0955b0d6d9074acff61debe539b0a9d3))
+* remove TypeScript error comment for Vite plugin type mismatch ([74f830a](https://github.com/KevinDeBenedetti/portfolio-nuxt/commit/74f830adf32a4e70265e0fe4dbd67ccb6788e4bb))
+
 ## [1.4.7](https://github.com/KevinDeBenedetti/portfolio-nuxt/compare/v1.4.6...v1.4.7) (2026-02-10)
 
 
