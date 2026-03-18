@@ -2,13 +2,16 @@
 const { t } = useI18n();
 const localePath = useLocalePath();
 
+
 const isScrolled = ref(false);
 const isVisible = ref(true);
 const lastScrollY = ref(0);
 
+
 const handleScroll = () => {
   const currentScrollY = window.scrollY;
   isScrolled.value = currentScrollY > 0;
+
 
   if (currentScrollY > lastScrollY.value && currentScrollY > 100) {
     isVisible.value = false;
@@ -16,8 +19,10 @@ const handleScroll = () => {
     isVisible.value = true;
   }
 
+
   lastScrollY.value = currentScrollY;
 };
+
 
 const headerStyles = computed(() => ({
   transform: isVisible.value ? 'translateY(0)' : 'translateY(-100%)',
@@ -25,13 +30,16 @@ const headerStyles = computed(() => ({
   backgroundColor: isScrolled.value ? 'blur(12px)' : 'blur(0px)',
 }));
 
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true });
 });
 
+
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
+
 
 const items = computed(() => [
   {

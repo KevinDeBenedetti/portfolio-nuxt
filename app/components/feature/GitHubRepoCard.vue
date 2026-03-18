@@ -5,8 +5,10 @@ interface Props {
   repo: GitHubRepoFormatted;
 }
 
+
 const props = defineProps<Props>();
 const { locale } = useI18n();
+
 
 const languageColors: Record<string, string> = {
   TypeScript: '#3178c6',
@@ -31,10 +33,12 @@ const languageColors: Record<string, string> = {
   'C#': '#178600',
 };
 
+
 const languageColor = computed(() => {
   if (!props.repo.language) return '#8b8b8b';
   return languageColors[props.repo.language] || '#8b8b8b';
 });
+
 
 const formattedDate = computed(() => {
   const date = new Date(props.repo.pushedAt);

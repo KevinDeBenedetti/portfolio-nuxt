@@ -2,6 +2,7 @@
 import type { Collections } from '@nuxt/content';
 const { locale } = useI18n();
 
+
 const { data: page } = await useAsyncData(
   `page-legal-${locale.value}`,
   async () => {

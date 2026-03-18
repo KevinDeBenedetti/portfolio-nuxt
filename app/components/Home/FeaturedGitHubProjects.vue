@@ -2,7 +2,9 @@
 const localePath = useLocalePath();
 const { t } = useI18n();
 
+
 const { repos, isLoading } = useGitHubRepos();
+
 
 // Get only the 3 most recent repos
 const latestRepos = computed(() => repos.value?.slice(0, 3) ?? []);

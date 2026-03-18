@@ -6,6 +6,7 @@ const props = defineProps({
   },
 });
 
+
 const title = computed(() => props.project?.title);
 const description = computed(() => props.project?.description);
 const thumbnail = computed(() => props.project?.thumbnail);

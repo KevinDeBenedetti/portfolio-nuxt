@@ -248,8 +248,5 @@ export default defineNuxtConfig({
     },
     // Use native SQLite connector (compatible with Node.js v22.5.0+)
     experimental: { sqliteConnector: 'native' },
-    preview: {
-      api: 'https://api.nuxt.studio',
-    },
   },
 });
