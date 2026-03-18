@@ -1,7 +1,6 @@
 import type { H3Event } from 'h3';
-import type { GitHubRepo } from '~~/shared/types/github';
-
 import { EXCLUDED_REPOS, formatRepoName } from '~~/server/utils/github';
+import type { GitHubRepo } from '~~/shared/types/github';
 
 export default defineEventHandler(async (event: H3Event) => {
   const config = useRuntimeConfig(event);

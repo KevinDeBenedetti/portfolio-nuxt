@@ -3,6 +3,7 @@ const props = defineProps<{
   socials: string;
 }>();
 
+
 const links = [
   {
     name: 'GitHub',

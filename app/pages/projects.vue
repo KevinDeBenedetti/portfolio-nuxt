@@ -9,7 +9,9 @@ declare global {
   }
 }
 
+
 const { locale, t } = useI18n();
+
 
 const { data: page } = await useAsyncData(
   `page-projects-${locale.value}`,
@@ -22,9 +24,11 @@ const { data: page } = await useAsyncData(
   }
 );
 
+
 const { h1, firstParagraph } = useContentParser(
   (page.value as { body?: { value: unknown[] } })?.body?.value || []
 );
+
 
 const { data: projects } = await useAsyncData(
   `all-projects-${locale.value}`,
@@ -41,8 +45,10 @@ const { data: projects } = await useAsyncData(
   }
 );
 
+
 // Fetch GitHub repos
 const { repos: githubRepos, isLoading: isLoadingGitHub } = useGitHubRepos();
+
 
 watchEffect(() => {
   useSeoMeta({
@@ -55,6 +61,7 @@ watchEffect(() => {
   });
 });
 
+
 const { onLoaded } = useScriptNpm({
   packageName: 'js-confetti',
   file: 'dist/js-confetti.browser.js',
@@ -66,6 +73,7 @@ const { onLoaded } = useScriptNpm({
     },
   },
 });
+
 
 onLoaded(({ JSConfetti }) => {
   const confetti = new JSConfetti();

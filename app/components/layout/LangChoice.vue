@@ -1,6 +1,7 @@
 <script setup>
 const { locale, setLocale, t } = useI18n();
 
+
 function toggleLocale() {
   const newLocale = locale.value === 'fr' ? 'en' : 'fr';
   setLocale(newLocale);

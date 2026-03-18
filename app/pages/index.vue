@@ -2,6 +2,7 @@
 import type { Collections } from '@nuxt/content';
 const { t, locale } = useI18n();
 
+
 const { data: page } = await useAsyncData(
   `page-home-${locale.value}`,
   async () => {
@@ -12,6 +13,7 @@ const { data: page } = await useAsyncData(
     watch: [locale],
   }
 );
+
 
 watchEffect(() => {
   useSeoMeta({
