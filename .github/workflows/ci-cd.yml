@@ -108,7 +108,7 @@ jobs:
             turbo-quality-${{ runner.os }}-
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: ${{ needs.versions.outputs.pnpm-version }}
 
@@ -150,7 +150,7 @@ jobs:
             turbo-build-${{ runner.os }}-
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: ${{ needs.versions.outputs.pnpm-version }}
 
